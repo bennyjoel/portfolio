@@ -3,111 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benny Joel Lakamana | Production Coordinator & VFX Artist</title>
+    <title>Benny Joel Lakamana | Assistant Director</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Custom Cursor Logic
+            const cursor = document.querySelector('.custom-cursor');
+            
+            if (window.innerWidth > 768) {
+                document.addEventListener('mousemove', (e) => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                });
+
+                const interactives = document.querySelectorAll('a, .gallery-img, .btn-download, video');
+                interactives.forEach(el => {
+                    el.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
+                    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-grow'));
+                });
+            }
+
+            // 2. Parallax Scroll Effect for Hero Section
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroHeading = document.querySelector('.main-heading');
+                if (heroHeading && window.innerWidth > 768) {
+                    heroHeading.style.transform = `translateY(${scrolled * 0.35}px)`;
+                    heroHeading.style.opacity = 1 - (scrolled * 0.0025);
+                }
+            });
+
+            // 3. Intersection Observer for Scroll Fade-Ins
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
 </head>
 <body>
 
-    <header>
-        <div class="logo">BENNY JOEL</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#showreel">Main Showreel</a>
-            <a href="#portfolio">Works</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <div class="custom-cursor"></div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>BENNY JOEL LAKAMANA</h1>
-            <p class="subtitle">Production Coordinator & VFX Artist</p>
-            <div class="accent-line"></div>
-            <p class="tagline">Bridging the critical line between cinematic organization and ground-up digital artistry. Orchestrating high-end visual pipelines from concept to final frame.</p>
-            <a href="#showreel" class="btn">View Showreel</a>
+    <nav>
+        <div class="nav-container container">
+            <ul class="nav-links">
+                <li><a href="#about">ABOUT ME</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#works">WORKS</a></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
-    <section id="about" class="about-section">
-        <div class="about-container">
-            <h2>The Profile</h2>
-            <p>I operate at the intersection of structure and imagination. With core experience navigating the logistical complexities of film sets as a <strong>Production Coordinator</strong> paired with a deep technical focus as a <strong>VFX Artist</strong>, I streamline studio pipelines to bring uncompromising creative visions to life.</p>
-            <p>From organizing high-stakes operational workflows to manipulating pixels for immersive, real-time cinematic environments, I build the systems and visuals that define modern digital storytelling.</p>
-        </div>
-    </section>
+    <section id="about" class="section hero black-bg">
+        <div class="container hero-container fade-in">
+            <div class="main-heading">
+                <h1 class="hero-name"><span class="highlight">BENNY JOEL LAKAMANA</span></h1>
+                <h2 class="hero-title">ASSISTANT DIRECTOR</h2>
+            </div>
+            
+            <div class="about-content content-block fade-in">
+                <h2>Professional Summary</h2>
+                <p>Innovative co-director with expertise in creative concept development and risk management. Adept at managing multiple projects simultaneously while ensuring alignment across teams, leading to cohesive and impactful storytelling in film projects.</p>
+            </div>
 
-    <section id="showreel" class="showreel-section">
-        <h2>Cinematic Showreel</h2>
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/Qxwu8UrsDJ0" 
-                title="Benny Joel Lakamana - VFX & Production Showreel" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </section>
-
-    <section id="portfolio" class="portfolio-section">
-        
-        <div class="gallery-block">
-            <h3 class="section-title">Game Development Showcase</h3>
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <div class="card-media placeholder-gamedev"></div>
-                    <div class="card-details">
-                        <h4>Real-Time Environment Project</h4>
-                        <p>Unreal Engine • World Building</p>
-                    </div>
-                </div>
-                <div class="portfolio-card">
-                    <div class="card-media placeholder-gamedev"></div>
-                    <div class="card-details">
-                        <h4>Technical Direction / Pipeline</h4>
-                        <p>Core Systems • Tool Optimization</p>
-                    </div>
-                </div>
+            <div class="education content-block fade-in">
+                <h2>Education</h2>
+                <ul class="clean-list">
+                    <li><strong>BFA in Animation</strong> – Jawaharlal Nehru Architecture and Fine Arts University (JNAFAU) (2022–2026)</li>
+                    <li><strong>Diploma in Animation & VFX Prime</strong> – Arena Animation (2021–2025)</li>
+                </ul>
             </div>
         </div>
-
-        <div class="gallery-block">
-            <h3 class="section-title">Visual Effects Breakdown</h3>
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <div class="card-media placeholder-vfx"></div>
-                    <div class="card-details">
-                        <h4>Cinematic Compositing</h4>
-                        <p>Live Action Integration • FX Layers</p>
-                    </div>
-                </div>
-                <div class="portfolio-card">
-                    <div class="card-media placeholder-vfx"></div>
-                    <div class="card-details">
-                        <h4>Digital Sculpting & Assets</h4>
-                        <p>High-Fidelity Models • LookDev</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </section>
 
-    <footer id="contact">
-        <h2>Initiate Contact</h2>
-        <p class="contact-sub">Available for studio roles, pipeline technical direction, and creative collaborations.</p>
-        
-        <div class="contact-links">
-            <a href="mailto:your.email@example.com" class="contact-item">your.email@example.com</a>
-            <span class="separator">|</span>
-            <a href="https://www.artstation.com" target="_blank" class="contact-item">ArtStation Profile</a>
+    <section id="contact" class="section gray-bg fade-in">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-details">
+                <p><strong>Phone:</strong> <a href="tel:+919014133656">+91 9014133656</a></p>
+                <p><strong>Email:</strong> <a href="mailto:bennyofficial19@gmail.com">bennyofficial19@gmail.com</a></p>
+            </div>
         </div>
+    </section>
 
-        <div class="footer-bottom">
-            <p>© 2026 Benny Joel Lakamana. All Rights Reserved.</p>
-            <p class="royal-tag">Architecting the Legacies of Tomorrow.</p>
+    <section id="cv" class="section black-bg fade-in">
+        <div class="container">
+            <h2 class="section-title">Curriculum Vitae</h2>
+            
+            <div class="cv-grid">
+                <div class="cv-column fade-in">
+                    <h3>Experience</h3>
+                    <div class="job">
+                        <h4>Co-Director | Csix (Hyderabad, India)</h4>
+                        <ul>
+                            <li>Developed creative concepts and storyboards for short film projects.</li>
+                            <li>Managed multiple tasks simultaneously while adhering to tight deadlines.</li>
+                        </ul>
+                    </div>
+                    <div class="job">
+                        <h4>Assistant VFX Supervisor & VFX Coordinator | Technical Artist VFX (Hyderabad, India)</h4>
+                        <ul>
+                            <li>Supervised team of artists to maintain project deadlines.</li>
+                            <li>Managed workflow using project management software for tracking progress.</li>
+                            <li>Coordinated with other department supervisors to ensure smooth workflow and project alignment.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-column fade-in">
+                    <h3>Core Skills</h3>
+                    <ul class="skills-list">
+                        <li>VFX Coordination & Technical Artistry</li>
+                        <li>Storyboarding & Creative concept development</li>
+                        <li>Previsualization directly inside Unreal Engine 5.6</li>
+                        <li>Animation software & Chaos Control</li>
+                        <li>Risk, Project, and Time management</li>
+                        <li>Team collaboration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdf-container fade-in">
+                <h3>Full Resume</h3>
+                <iframe src="CV.pdf" width="100%" height="600px" style="border: 1px solid rgba(255, 255, 255, 0.2);"></iframe>
+                <br>
+                <a href="CV.pdf" download class="btn-download">Download PDF</a>
+            </div>
         </div>
+    </section>
+
+    <section id="works" class="section gray-bg fade-in">
+        <div class="container">
+            <h2 class="section-title">Commercial Works</h2>
+            
+            <div class="project-header fade-in">
+                <h3>Project: <span class="takshaka-title">TAKSHAKA</span></h3>
+                <p><strong>Production House:</strong> MSR Creations</p>
+                <p><strong>Roles:</strong> Production Coordinator & Assistant VFX Supervisor</p>
+            </div>
+
+            <div class="gallery-grid">
+                <img src="1 (1).jpeg" alt="On set monitor view" class="gallery-img fade-in">
+                <img src="1 (2).jpeg" alt="Behind the scenes with cast" class="gallery-img fade-in">
+                <img src="1 (3).jpeg" alt="Monitor frame setup" class="gallery-img fade-in">
+                <img src="1 (4).jpeg" alt="Cast and crew on location" class="gallery-img fade-in">
+                <img src="1 (5).jpeg" alt="Green screen stunt coordination" class="gallery-img fade-in">
+                <img src="1 (6).jpeg" alt="On set portrait" class="gallery-img fade-in">
+                
+                <video controls class="gallery-video fade-in">
+                    <source src="1 (1).mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Benny Joel Lakamana. All Rights Reserved.</p>
     </footer>
 
 </body>
