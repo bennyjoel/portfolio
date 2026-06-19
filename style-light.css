@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap');
+
+:root {
+    --bg: #F5F5F7;
+    --fg: #111111;
+    --muted: #888888;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --font: 'Outfit', sans-serif;
+    --transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 3D Glass Background Elements */
+.canvas-glass {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.glass-sphere {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05), inset 0 0 20px rgba(255,255,255,0.8);
+    animation: float 20s infinite alternate ease-in-out;
+}
+
+.sphere-a {
+    width: 35vw; height: 35vw;
+    top: 10%; right: -5%;
+}
+
+.sphere-b {
+    width: 25vw; height: 25vw;
+    bottom: 5%; left: 0%;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-80px) scale(1.05); }
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Typography */
+h1 {
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    color: var(--fg);
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 1px;
+}
+
+.contact-bold {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 900;
+    margin-top: 40px;
+    display: inline-block;
+    padding: 15px 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+}
+
+.contact-bold a {
+    color: var(--fg);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-bold a:hover {
+    color: #444;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 15px; height: 15px;
+    background: var(--fg);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background 0.3s;
+}
+
+.cursor-grow {
+    width: 60px; height: 60px;
+    background: rgba(17,17,17,0.1);
+    border: 1px solid var(--fg);
+}
+
+/* Highly Polished Dynamic Island */
+.nav-container-floating {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 100px;
+    
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.nav-container-floating .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-container-floating .nav-links a {
+    color: #444444;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.nav-container-floating .nav-links a:hover {
+    color: #111111;
+}
+
+/* Fade In Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Works Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    aspect-ratio: 16/10;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.gallery-item img, .gallery-item video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.gallery-item:hover img, .gallery-item:hover video {
+    transform: scale(1.05);
+}
+
+/* PDF Box */
+.pdf-container {
+    margin-top: 60px;
+    padding: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+}
+
+.btn-download {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: var(--fg);
+    color: var(--bg);
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    h1 { font-size: clamp(2.5rem, 15vw, 4.5rem); }
+    h2 { font-size: 1.4rem; }
+    .contact-bold { 
+        font-size: 1.1rem; 
+        padding: 10px 20px;
+    }
+    
+    /* Mobile Tweaks for Island */
+    .nav-container-floating {
+        padding: 0 25px;
+        height: 50px;
+        width: 90%;
+        max-width: 350px;
+        justify-content: center;
+    }
+    .nav-container-floating .nav-links {
+        gap: 20px;
+    }
+    .nav-container-floating .nav-links a {
+        font-size: 0.8rem;
+    }
+    
+    section { padding: 60px 0; }
+    
+    .sphere-a { width: 60vw; height: 60vw; }
+    .sphere-b { width: 40vw; height: 40vw; left: -10%; }
+}

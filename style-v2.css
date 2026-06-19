@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+    --bg: #FAFAF8;
+    --fg: #111111;
+    --dim: #7a7a7a;
+    --faint: rgba(0, 0, 0, 0.08);
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ==============================
+   NAVIGATION
+   ============================== */
+nav {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 100;
+    padding: 25px 0;
+    background: rgba(250, 250, 248, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s ease;
+}
+
+nav.scrolled {
+    border-bottom-color: var(--faint);
+}
+
+.nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-name {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--fg);
+    text-decoration: none;
+}
+
+.nav-right {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-right a {
+    color: var(--dim);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-right a:hover { color: var(--fg); }
+
+/* ==============================
+   SHARED CONTAINER
+   ============================== */
+.pad {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 6%;
+}
+
+/* ==============================
+   SCROLL ANIMATIONS
+   ============================== */
+.anim {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.anim.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+
+/* ==============================
+   HERO
+   ============================== */
+#hero {
+    padding: 160px 0 100px;
+    text-align: center;
+}
+
+.hero-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--dim);
+    margin-bottom: 25px;
+}
+
+.hero-name {
+    font-family: var(--sans);
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.hero-role {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 400;
+    color: var(--dim);
+    margin-bottom: 35px;
+}
+
+.hero-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.hero-contact a {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--fg);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.hero-contact a:hover {
+    color: var(--dim);
+    border-color: transparent;
+}
+
+.hero-contact .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--dim);
+}
+
+/* ==============================
+   SECTION STRUCTURE
+   ============================== */
+section {
+    padding: 80px 0;
+}
+
+.mono-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--dim);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mono-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--faint);
+}
+
+/* ==============================
+   ABOUT TEXT
+   ============================== */
+.about-text {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--dim);
+    max-width: 800px;
+}
+
+.about-text strong {
+    color: var(--fg);
+    font-weight: 500;
+}
+
+/* ==============================
+   EXPERIENCE
+   ============================== */
+.exp-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 25px;
+    padding: 35px 0;
+    border-top: 1px solid var(--faint);
+}
+
+.exp-card:last-of-type { border-bottom: 1px solid var(--faint); }
+
+.exp-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--dim);
+    padding-top: 6px;
+}
+
+.exp-content h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+}
+
+.exp-content p {
+    font-size: 1rem;
+    color: var(--dim);
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+/* ==============================
+   EDUCATION
+   ============================== */
+.edu-card {
+    padding: 25px 0;
+    border-top: 1px solid var(--faint);
+}
+
+.edu-card:last-of-type { border-bottom: 1px solid var(--faint); }
+
+.edu-card h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+}
+
+.edu-card span {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--dim);
+}
+
+/* ==============================
+   RESUME PDF
+   ============================== */
+.resume-wrap {
+    margin-top: 60px;
+    padding: 35px;
+    border: 1px solid var(--faint);
+    background: #fff;
+}
+
+.resume-wrap h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.resume-wrap iframe {
+    width: 100%;
+    height: 550px;
+    border: 1px solid var(--faint);
+}
+
+.btn-resume {
+    display: inline-block;
+    margin-top: 25px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--fg);
+    text-decoration: none;
+    border: 1px solid var(--fg);
+    padding: 12px 28px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-resume:hover {
+    background: var(--fg);
+    color: var(--bg);
+}
+
+/* ==============================
+   WORKS GALLERY
+   ============================== */
+.works-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.work-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: #eee;
+}
+
+.work-card img,
+.work-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.work-card:hover img,
+.work-card:hover video {
+    transform: scale(1.03);
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--faint);
+    text-align: center;
+}
+
+footer p {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ==============================
+   MOBILE
+   ============================== */
+@media (max-width: 768px) {
+    nav { padding: 18px 0; }
+    .nav-right { gap: 15px; }
+    .nav-right a { font-size: 0.65rem; }
+
+    #hero { padding: 130px 0 70px; }
+    .hero-name { font-size: clamp(2.8rem, 12vw, 4.5rem); letter-spacing: -1px; }
+    .hero-contact {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-contact .dot { display: none; }
+
+    section { padding: 50px 0; }
+    .mono-label { margin-bottom: 30px; }
+
+    .exp-card { grid-template-columns: 1fr; gap: 8px; padding: 25px 0; }
+    .works-grid { grid-template-columns: 1fr; gap: 6px; }
+
+    .resume-wrap { padding: 20px; }
+    .resume-wrap iframe { height: 350px; }
+}
+
+@media (max-width: 400px) {
+    .hero-name { font-size: 2.5rem; }
+    .nav-name { font-size: 0.8rem; }
+    .nav-right a { font-size: 0.6rem; letter-spacing: 0.5px; }
+}

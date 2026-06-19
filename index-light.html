@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benny Joel Lakamana | Assistant Director</title>
+    <link rel="stylesheet" href="style-light.css">
+</head>
+<body>
+
+    <!-- 3D Glass Background -->
+    <div class="canvas-glass">
+        <div class="glass-sphere sphere-a"></div>
+        <div class="glass-sphere sphere-b"></div>
+    </div>
+
+    <div class="custom-cursor" id="cursor"></div>
+
+    <nav class="nav-container-floating">
+        <ul class="nav-links">
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#works">WORKS</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container fade-in">
+            <h1>BENNY JOEL<br>LAKAMANA</h1>
+            <h2>ASSISTANT DIRECTOR</h2>
+            
+            <div class="contact-bold">
+                <a href="tel:+919014133656">+91 9014133656</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="mailto:bennyofficial19@gmail.com">bennyofficial19@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv">
+        <div class="container">
+            <div class="fade-in" style="margin-bottom: 80px;">
+                <h2 style="font-weight: 900; color: var(--fg);">Curriculum Vitae</h2>
+                <div style="margin-top: 40px;">
+                    <h3 style="font-size: 2rem; margin-bottom: 10px;">Experience</h3>
+                    <div style="margin-bottom: 40px;">
+                        <h4 style="font-size: 1.5rem; color: var(--muted); font-weight: 400;">Co-Director | Csix (Hyderabad, India)</h4>
+                        <p style="font-size: 1.2rem; max-width: 800px; margin-top: 10px;">Developed creative concepts and storyboards for short film projects. Managed multiple tasks simultaneously while adhering to tight deadlines.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px;">
+                    <h3 style="font-size: 2rem; margin-bottom: 20px;">Education</h3>
+                    <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--fg);">BFA in Animation – Jawaharlal Nehru Architecture and Fine Arts University (JNAFAU) (2022–2026)</p>
+                    <p style="font-size: 1.3rem; font-weight: 700; color: var(--fg);">Animation & VFX Prime – Arena Animation (2021–2025)</p>
+                </div>
+            </div>
+
+            <div class="pdf-container fade-in">
+                <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Full Resume</h3>
+                <iframe src="files/CV Resume (1).pdf" width="100%" height="600px" style="border: none; border-radius: 10px;"></iframe>
+                <a href="files/CV Resume (1).pdf" target="_blank" class="btn-download">View / Download PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="works">
+        <div class="container">
+            <h2 style="font-weight: 900; color: var(--fg);" class="fade-in">Works</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="files/1 (1).jpeg" alt="On set monitor view" loading="lazy">
+                </div>
+                <div class="gallery-item fade-in">
+                    <video src="files/1 (1).mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="files/1 (2).jpeg" alt="Behind the scenes with cast" loading="lazy">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="files/1 (3).jpeg" alt="Monitor frame setup" loading="lazy">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="files/1 (4).jpeg" alt="Cast and crew on location" loading="lazy">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="files/1 (5).jpeg" alt="Green screen stunt coordination" loading="lazy">
+                </div>
+                <!-- Image 1 (6) removed per request -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        if (window.matchMedia("(pointer: fine)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            const interactives = document.querySelectorAll('a, .gallery-item, .btn-download');
+            interactives.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-grow'));
+            });
+        } else {
+            cursor.style.display = 'none';
+        }
+
+        // Intersection Observer for Scroll Fade-Ins
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => appearOnScroll.observe(fader));
+    </script>
+</body>
+</html>

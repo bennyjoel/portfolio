@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benny Joel Lakamana — Assistant Director</title>
+    <meta name="description" content="Benny Joel Lakamana — Assistant Director, Hyderabad.">
+    <meta name="theme-color" content="#FAFAF8">
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-name">Benny Joel Lakamana</a>
+            <div class="nav-right">
+                <a href="#about">About</a>
+                <a href="#cv">CV</a>
+                <a href="#works">Works</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="pad">
+            <p class="hero-label anim">Portfolio — 2026</p>
+            <h1 class="hero-name anim d1">Benny Joel<br>Lakamana</h1>
+            <p class="hero-role anim d2">Assistant Director — Hyderabad, India</p>
+            <div class="hero-contact anim d3">
+                <a href="tel:+919014133656">+91 9014133656</a>
+                <span class="dot"></span>
+                <a href="mailto:bennyofficial19@gmail.com">bennyofficial19@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="pad">
+            <p class="mono-label anim">About</p>
+            <p class="about-text anim d1">
+                Filmmaker specializing in bridging <strong>practical on-set direction</strong> with <strong>high-end visual effects</strong>. I orchestrate complex productions seamlessly, preserving the creative vision from storyboard to final render.
+            </p>
+        </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+        <div class="pad">
+            <p class="mono-label anim">Experience</p>
+
+            <div class="exp-card anim">
+                <div class="exp-label">Csix<br>Hyderabad</div>
+                <div class="exp-content">
+                    <h3>Co-Director</h3>
+                    <p>Developed creative concepts and storyboards for short film projects. Managed multiple tasks simultaneously while adhering to tight deadlines.</p>
+                </div>
+            </div>
+
+            <p class="mono-label anim" style="margin-top: 70px;">Education</p>
+
+            <div class="edu-card anim">
+                <h4>BFA in Animation</h4>
+                <span>JNAFAU — 2022–2026</span>
+            </div>
+            <div class="edu-card anim">
+                <h4>Animation & VFX Prime</h4>
+                <span>Arena Animation — 2021–2025</span>
+            </div>
+
+            <div class="resume-wrap anim">
+                <h4>Resume</h4>
+                <iframe src="files/CV Resume (1).pdf"></iframe>
+                <br>
+                <a href="files/CV Resume (1).pdf" target="_blank" class="btn-resume">Download PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKS -->
+    <section id="works">
+        <div class="pad">
+            <p class="mono-label anim">Works</p>
+
+            <div class="works-grid">
+                <div class="work-card anim"><img src="files/1 (1).jpeg" alt="On set" loading="lazy"></div>
+                <div class="work-card anim d1"><video src="files/1 (1).mp4" autoplay loop muted playsinline></video></div>
+                <div class="work-card anim"><img src="files/1 (2).jpeg" alt="Behind the scenes" loading="lazy"></div>
+                <div class="work-card anim d1"><img src="files/1 (3).jpeg" alt="Monitor" loading="lazy"></div>
+                <div class="work-card anim"><img src="files/1 (4).jpeg" alt="Crew" loading="lazy"></div>
+                <div class="work-card anim d1"><img src="files/1 (5).jpeg" alt="Stunts" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer><div class="pad"><p>&copy; 2026 Benny Joel Lakamana</p></div></footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+        document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+
+        // Force hero visible on load
+        setTimeout(() => {
+            document.querySelectorAll('#hero .anim').forEach(el => el.classList.add('in'));
+        }, 100);
+
+        // Nav scroll border
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

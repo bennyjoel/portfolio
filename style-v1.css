@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+    --bg: #0c0c0e;
+    --fg: #f0f0f0;
+    --dim: #6b6b75;
+    --faint: rgba(255,255,255,0.05);
+    --display: 'Bebas Neue', sans-serif;
+    --body: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ==============================
+   NAVIGATION
+   ============================== */
+nav {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 100;
+    padding: 25px 0;
+    background: rgba(12,12,14,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--faint);
+}
+
+.nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: var(--fg);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--fg); }
+
+/* ==============================
+   SHARED CONTAINER
+   ============================== */
+.wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 6%;
+}
+
+/* ==============================
+   SCROLL ANIMATIONS
+   ============================== */
+.anim {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.anim.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+.d4 { transition-delay: 0.4s; }
+
+/* ==============================
+   HERO
+   ============================== */
+#hero {
+    padding: 140px 0 90px;
+    text-align: center;
+}
+
+.hero-name {
+    font-family: var(--display);
+    font-size: clamp(4rem, 14vw, 11rem);
+    line-height: 0.88;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.hero-role {
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: var(--dim);
+    margin-bottom: 35px;
+}
+
+.hero-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    font-weight: 600;
+}
+
+.hero-contact a {
+    color: var(--fg);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.hero-contact a:hover { opacity: 0.5; }
+
+.hero-contact .sep {
+    color: var(--dim);
+    font-weight: 300;
+}
+
+/* ==============================
+   SECTION STRUCTURE
+   ============================== */
+section {
+    padding: 90px 0;
+}
+
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--dim);
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--faint);
+}
+
+/* ==============================
+   ABOUT TEXT
+   ============================== */
+.about-text {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--dim);
+    max-width: 750px;
+}
+
+.about-text strong {
+    color: var(--fg);
+    font-weight: 500;
+}
+
+/* ==============================
+   EXPERIENCE
+   ============================== */
+.exp-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 25px;
+    padding: 30px 0;
+    border-top: 1px solid var(--faint);
+}
+
+.exp-row:last-of-type { border-bottom: 1px solid var(--faint); }
+
+.exp-where {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--dim);
+    padding-top: 5px;
+}
+
+.exp-title {
+    font-family: var(--display);
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.exp-desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--dim);
+    line-height: 1.7;
+    max-width: 550px;
+}
+
+/* ==============================
+   EDUCATION
+   ============================== */
+.edu-row {
+    padding: 22px 0;
+    border-top: 1px solid var(--faint);
+}
+
+.edu-row:last-of-type { border-bottom: 1px solid var(--faint); }
+
+.edu-degree {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+}
+
+.edu-school {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--dim);
+}
+
+/* ==============================
+   RESUME PDF
+   ============================== */
+.resume-block {
+    margin-top: 70px;
+}
+
+.resume-block h4 {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.resume-block iframe {
+    width: 100%;
+    height: 550px;
+    border: 1px solid var(--faint);
+    background: #111;
+}
+
+.btn-resume {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--fg);
+    text-decoration: none;
+    padding: 12px 28px;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-resume:hover {
+    background: var(--fg);
+    color: var(--bg);
+}
+
+/* ==============================
+   WORKS GALLERY
+   ============================== */
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.gallery-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: #111;
+}
+
+.gallery-card img,
+.gallery-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.gallery-card:hover img,
+.gallery-card:hover video {
+    transform: scale(1.05);
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+footer {
+    padding: 45px 0;
+    border-top: 1px solid var(--faint);
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ==============================
+   MOBILE
+   ============================== */
+@media (max-width: 768px) {
+    nav { padding: 18px 0; }
+    .nav-logo { font-size: 1.1rem; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 0.68rem; letter-spacing: 2px; }
+
+    #hero { padding: 110px 0 60px; }
+    .hero-name { font-size: clamp(3rem, 16vw, 5rem); letter-spacing: 2px; }
+    .hero-role { letter-spacing: 5px; margin-bottom: 25px; }
+    .hero-contact {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-contact .sep { display: none; }
+
+    section { padding: 60px 0; }
+    .section-label { margin-bottom: 30px; }
+
+    .exp-row { grid-template-columns: 1fr; gap: 5px; padding: 22px 0; }
+    .gallery { grid-template-columns: 1fr; gap: 5px; }
+
+    .resume-block { margin-top: 50px; }
+    .resume-block iframe { height: 320px; }
+}
+
+@media (max-width: 400px) {
+    .hero-name { font-size: 2.8rem; }
+    .nav-links { gap: 15px; }
+    .nav-links a { font-size: 0.6rem; letter-spacing: 1.5px; }
+}
