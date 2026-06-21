@@ -19,7 +19,8 @@
         <nav id="navbar" class="nav-island">
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#cv">CV</a>
+                <a href="#cv">Experience</a>
+                <a href="#resume">Resume</a>
                 <a href="#works">Works</a>
             </div>
         </nav>
@@ -79,7 +80,7 @@
                     <span>Arena Animation — 2021–2025</span>
                 </div>
 
-                <div class="resume-wrap anim">
+                <div id="resume" class="resume-wrap anim">
                     <h4>Full Resume</h4>
                     <iframe src="files/CV Resume (1).pdf"></iframe>
                     <br>
@@ -144,10 +145,7 @@
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Offset for the dynamic island
-                        behavior: 'smooth'
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });

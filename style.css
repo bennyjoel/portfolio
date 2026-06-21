@@ -189,6 +189,7 @@ body {
    ============================== */
 section {
     padding: 100px 0;
+    scroll-margin-top: 100px; /* Offset for dynamic island */
 }
 
 .mono-label {
@@ -289,6 +290,7 @@ section {
     border: 1px solid var(--faint);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    scroll-margin-top: 120px; /* Extra offset to clear nav */
 }
 
 .resume-wrap h4 {
