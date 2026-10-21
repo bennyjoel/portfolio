@@ -7,6 +7,9 @@ html_code = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Benny Joel Lakamana | Visual Design, 3D & Motion</title>
   <meta name="description" content="Portfolio of Benny Joel Lakamana — Visual Design, Feature Film VFX Coordination, Unreal Engine 5 Real-Time 3D Environments, and Motion Systems.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
   <!-- Inter & JetBrains Mono Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1181,7 +1184,7 @@ html_code = """<!DOCTYPE html>
       </p>
 
       <div class="hero-actions">
-        <a href="assets/docs/Benny_Joel_Lakamana_Deloitte_Associate_Design.pdf" target="_blank" class="btn btn-primary">
+        <a href="assets/docs/Benny_Joel_Lakamana_Associate_Design_Resume.pdf?v=20261021" download="Benny_Joel_Lakamana_Deloitte_Associate_Design.pdf" target="_blank" class="btn btn-primary">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           <span>Download Resume (PDF)</span>
         </a>
@@ -1786,7 +1789,7 @@ html_code = """<!DOCTYPE html>
         <strong style="color: var(--text-pure);">Benny Joel Lakamana</strong> • Visual Designer & 3D Artist • Hyderabad, India
       </div>
       <div class="footer-links">
-        <a href="assets/docs/Benny_Joel_Lakamana_Deloitte_Associate_Design.pdf" target="_blank" class="nav-link">Resume</a>
+        <a href="assets/docs/Benny_Joel_Lakamana_Associate_Design_Resume.pdf?v=20261021" download="Benny_Joel_Lakamana_Deloitte_Associate_Design.pdf" target="_blank" class="nav-link">Resume</a>
         <a href="https://dominator-ops.pages.dev" target="_blank" class="nav-link">Dominator Site</a>
         <a href="assets/decks/Takshaka_VFX_Master_Pitch_Deck.pdf" target="_blank" class="nav-link">Takshaka Deck</a>
         <a href="assets/decks/Crucible_3D_Cinematic_Pitch_Deck.pdf" target="_blank" class="nav-link">Crucible Deck</a>
