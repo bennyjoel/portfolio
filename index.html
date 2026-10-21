@@ -4,24 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Benny Joel Lakamana | Visual Design, Pitch Decks & Motion Graphics</title>
-  <meta name="description" content="Executive Portfolio of Benny Joel Lakamana — Candidate for Associate, Visual Design at Deloitte. Featuring Theatrical Pitch Decks, Interactive Product Interfaces, Motion Graphics, and 3D Real-Time Staging.">
+  <meta name="description" content="Portfolio of Benny Joel Lakamana — Associate Visual Design Candidate for Deloitte. Feature Film Pitch Decks (Takshaka & Crucible), Real-Time 3D Virtual Sets, and Motion Graphics.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --deloitte-green: #86BC25;
-      --deloitte-green-glow: rgba(134, 188, 37, 0.25);
+      --deloitte-green-glow: rgba(134, 188, 37, 0.28);
       --deloitte-green-subtle: rgba(134, 188, 37, 0.08);
-      --deloitte-green-border: rgba(134, 188, 37, 0.3);
-      --bg-void: #070B12;
-      --bg-surface: #0D1321;
-      --bg-elevated: #131B2E;
-      --bg-card: #182238;
-      --bg-card-subtle: #101726;
-      --border-matte: rgba(255, 255, 255, 0.08);
-      --border-matte-hover: rgba(134, 188, 37, 0.45);
-      --border-strong: rgba(255, 255, 255, 0.14);
+      --deloitte-green-border: rgba(134, 188, 37, 0.35);
+      --bg-matte: #070B12;
+      --bg-surface: #0C121F;
+      --bg-surface-elevated: #111A2C;
+      --bg-card: #152036;
+      --bg-card-subtle: #0F1728;
+      --border-matte: rgba(255, 255, 255, 0.07);
+      --border-matte-hover: rgba(134, 188, 37, 0.5);
+      --border-highlight: rgba(255, 255, 255, 0.14);
       --text-pure: #FFFFFF;
       --text-primary: #F1F5F9;
       --text-secondary: #94A3B8;
@@ -29,14 +29,14 @@
       --accent-cyan: #38BDF8;
       --radius-sm: 6px;
       --radius-md: 10px;
-      --radius-lg: 14px;
+      --radius-lg: 16px;
       --radius-pill: 9999px;
-      --shadow-matte: 0 4px 20px rgba(0, 0, 0, 0.4);
-      --shadow-deep: 0 12px 36px rgba(0, 0, 0, 0.6);
+      --shadow-matte: 0 4px 24px rgba(0, 0, 0, 0.45);
+      --shadow-card: inset 0 1px 1px rgba(255, 255, 255, 0.07), 0 12px 32px rgba(0, 0, 0, 0.5);
       --font-display: 'Space Grotesk', sans-serif;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-tactile: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -51,12 +51,15 @@
 
     body {
       font-family: var(--font-sans);
-      background-color: var(--bg-void);
+      background-color: var(--bg-matte);
       color: var(--text-primary);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      background-image: radial-gradient(circle at 50% 0%, rgba(134, 188, 37, 0.04) 0%, transparent 60%);
+      /* Tactile Matte Canvas Finish */
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(134, 188, 37, 0.05) 0%, transparent 55%),
+        radial-gradient(circle at 90% 40%, rgba(56, 189, 248, 0.03) 0%, transparent 45%);
     }
 
     h1, h2, h3, h4, .brand-font {
@@ -69,16 +72,29 @@
     }
 
     .container {
-      max-width: 1240px;
+      max-width: 1220px;
       margin: 0 auto;
       padding: 0 28px;
+    }
+
+    /* Tactile Interactive Icons */
+    .icon-tactile {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s var(--ease-tactile), color 0.2s ease, filter 0.2s ease;
+    }
+
+    .icon-tactile:hover {
+      transform: scale(1.15) rotate(-3deg);
+      filter: drop-shadow(0 0 8px var(--deloitte-green));
     }
 
     /* Top Matte Navigation Bar */
     .navbar {
       position: sticky;
       top: 0;
-      background: rgba(7, 11, 18, 0.88);
+      background: rgba(7, 11, 18, 0.9);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-matte);
@@ -119,7 +135,7 @@
       border: 1px solid var(--deloitte-green-border);
       color: #A3E635;
       font-size: 0.72rem;
-      padding: 2px 9px;
+      padding: 2px 10px;
       border-radius: var(--radius-pill);
       font-weight: 600;
       text-transform: uppercase;
@@ -138,7 +154,7 @@
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
-      transition: var(--transition-smooth);
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
@@ -148,11 +164,11 @@
     .nav-cta {
       background: var(--deloitte-green);
       color: #070B12 !important;
-      padding: 9px 18px;
+      padding: 8px 18px;
       border-radius: var(--radius-sm);
       font-weight: 700 !important;
       font-size: 0.82rem !important;
-      transition: var(--transition-smooth);
+      transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -164,12 +180,12 @@
       box-shadow: 0 4px 16px var(--deloitte-green-glow);
     }
 
-    /* Hero Section — Clean Swiss Editorial (Zero Face, Pure Authority) */
+    /* Hero Section (Pure Typography, Zero Face) */
     .hero {
       padding: 72px 0 54px 0;
       position: relative;
       border-bottom: 1px solid var(--border-matte);
-      background: linear-gradient(180deg, rgba(13, 19, 33, 0.4) 0%, rgba(7, 11, 18, 1) 100%);
+      background: linear-gradient(180deg, rgba(12, 18, 31, 0.4) 0%, rgba(7, 11, 18, 1) 100%);
     }
 
     .hero-top-bar {
@@ -247,7 +263,7 @@
     }
 
     .hero-pill {
-      background: var(--bg-elevated);
+      background: var(--bg-surface-elevated);
       border: 1px solid var(--border-matte);
       color: var(--text-primary);
       font-size: 0.8rem;
@@ -256,7 +272,13 @@
       border-radius: var(--radius-sm);
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .hero-pill:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-1px);
     }
 
     .hero-pill.accent {
@@ -283,7 +305,7 @@
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      transition: var(--transition-smooth);
+      transition: all 0.2s ease;
       border: none;
     }
 
@@ -299,14 +321,15 @@
     }
 
     .btn-matte {
-      background: var(--bg-elevated);
+      background: var(--bg-surface-elevated);
       color: var(--text-primary);
       border: 1px solid var(--border-matte);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
     }
 
     .btn-matte:hover {
-      background: #1C273E;
-      border-color: var(--border-strong);
+      background: #19233A;
+      border-color: var(--border-highlight);
       transform: translateY(-1px);
     }
 
@@ -381,183 +404,6 @@
       line-height: 1.55;
     }
 
-    /* INTERACTIVE DOMINATOR PRODUCT INTERFACE WIDGET */
-    .dominator-widget {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-matte);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-deep);
-      margin-top: 10px;
-    }
-
-    .dominator-header {
-      background: rgba(19, 27, 46, 0.7);
-      border-bottom: 1px solid var(--border-matte);
-      padding: 14px 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .dominator-brand-col {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .traffic-lights {
-      display: flex;
-      gap: 6px;
-    }
-
-    .light-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .dominator-brand-title {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-pure);
-      letter-spacing: 0.04em;
-    }
-
-    .dominator-live-link {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: #A3E635;
-      background: var(--deloitte-green-subtle);
-      border: 1px solid var(--deloitte-green-border);
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--transition-smooth);
-    }
-
-    .dominator-live-link:hover {
-      background: var(--deloitte-green);
-      color: #070B12;
-    }
-
-    .dominator-nav-tabs {
-      display: flex;
-      background: rgba(10, 15, 25, 0.6);
-      border-bottom: 1px solid var(--border-matte);
-      overflow-x: auto;
-    }
-
-    .dom-tab {
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-secondary);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 500;
-      padding: 12px 20px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: var(--transition-smooth);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .dom-tab:hover {
-      color: var(--text-pure);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .dom-tab.active {
-      color: #A3E635;
-      border-bottom-color: var(--deloitte-green);
-      background: rgba(134, 188, 37, 0.06);
-      font-weight: 600;
-    }
-
-    .dominator-body {
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .dom-info h3 {
-      font-size: 1.4rem;
-      color: var(--text-pure);
-      margin-bottom: 8px;
-    }
-
-    .dom-tagline {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-      margin-bottom: 18px;
-    }
-
-    .dom-metrics-row {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .dom-metric-pill {
-      background: var(--bg-card-subtle);
-      border: 1px solid var(--border-matte);
-      padding: 8px 14px;
-      border-radius: var(--radius-sm);
-    }
-
-    .dom-metric-pill .val {
-      font-family: var(--font-mono);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--accent-cyan);
-    }
-
-    .dom-metric-pill .lbl {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    .dom-terminal {
-      background: #05080E;
-      border: 1px solid var(--border-matte);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: #CBD5E1;
-      overflow-x: auto;
-      line-height: 1.5;
-    }
-
-    .dom-terminal .term-header {
-      display: flex;
-      justify-content: space-between;
-      color: var(--text-muted);
-      font-size: 0.7rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      padding-bottom: 8px;
-      margin-bottom: 10px;
-    }
-
-    .dom-terminal .line-prompt { color: var(--deloitte-green); }
-    .dom-terminal .line-cmd { color: #F8FAFC; }
-    .dom-terminal .line-out { color: var(--accent-cyan); }
-    .dom-terminal .line-meta { color: var(--text-muted); }
-
     /* PITCH DECKS SPOTLIGHT */
     .deck-container {
       display: flex;
@@ -570,7 +416,7 @@
       border: 1px solid var(--border-matte);
       border-radius: var(--radius-lg);
       padding: 28px;
-      box-shadow: var(--shadow-matte);
+      box-shadow: var(--shadow-card);
     }
 
     .deck-top {
@@ -614,13 +460,13 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       cursor: pointer;
-      transition: var(--transition-smooth);
+      transition: all 0.2s ease;
     }
 
     .slide-item:hover {
       transform: translateY(-3px);
       border-color: var(--border-matte-hover);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
     }
 
     .slide-thumb {
@@ -664,7 +510,171 @@
       color: var(--text-secondary);
     }
 
-    /* MOTION GRAPHICS SHOWCASE */
+    /* PRODUCT DESIGN & INTERACTION SECTION (SIMPLE, ACCESSIBLE, TACTILE) */
+    .product-ui-frame {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-matte);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .ui-showcase-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+    }
+
+    .ui-selector-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ui-module-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-matte);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ui-module-btn:hover {
+      background: var(--bg-card);
+      color: var(--text-pure);
+      border-color: var(--border-highlight);
+    }
+
+    .ui-module-btn.active {
+      background: var(--bg-card);
+      border-color: var(--deloitte-green-border);
+      color: var(--text-pure);
+      box-shadow: inset 0 0 16px rgba(134, 188, 37, 0.08);
+    }
+
+    .ui-btn-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--deloitte-green);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .ui-module-btn.active .ui-btn-icon {
+      background: var(--deloitte-green-subtle);
+      border: 1px solid var(--deloitte-green-border);
+    }
+
+    .ui-btn-text h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-pure);
+      margin-bottom: 2px;
+    }
+
+    .ui-btn-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .ui-canvas-display {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-matte);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+
+    .canvas-hud-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-matte);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .canvas-hud-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-pure);
+    }
+
+    .canvas-hud-status {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #A3E635;
+      background: var(--deloitte-green-subtle);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--deloitte-green-border);
+    }
+
+    .canvas-interactive-body {
+      flex-grow: 1;
+    }
+
+    .canvas-stat-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .stat-pill-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-matte);
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .stat-pill-box:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+    }
+
+    .stat-pill-val {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-pure);
+    }
+
+    .stat-pill-lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .canvas-mock-row {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-matte);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+    }
+
+    /* MOTION GRAPHICS SECTION (GENUINE HONEST ARCHITECTURE) */
     .motion-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -676,8 +686,8 @@
       border: 1px solid var(--border-matte);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow-matte);
-      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-card);
+      transition: all 0.2s ease;
     }
 
     .motion-card:hover {
@@ -687,6 +697,7 @@
     .video-viewport {
       aspect-ratio: 16 / 9;
       background: #000;
+      position: relative;
     }
 
     .video-viewport video {
@@ -728,20 +739,43 @@
       margin-bottom: 14px;
     }
 
-    .motion-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 0.74rem;
-      border-top: 1px solid var(--border-matte);
-      padding-top: 10px;
+    .motion-stack-box {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-matte);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
     }
 
-    .tool-pill {
-      background: var(--bg-elevated);
-      color: #CBD5E1;
-      padding: 2px 8px;
+    .motion-stack-box strong {
+      color: var(--text-pure);
+    }
+
+    /* Honest Stack Disclosure Banner */
+    .stack-disclosure-banner {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-matte);
+      border-left: 3px solid var(--deloitte-green);
       border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      margin-bottom: 28px;
+    }
+
+    .stack-disclosure-banner h4 {
+      font-size: 0.95rem;
+      color: var(--text-pure);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stack-disclosure-banner p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
     }
 
     /* 3D SPATIAL & GAMES */
@@ -756,7 +790,7 @@
       border: 1px solid var(--border-matte);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow-matte);
+      box-shadow: var(--shadow-card);
     }
 
     .spatial-img-box {
@@ -781,19 +815,19 @@
       padding: 18px 22px;
     }
 
-    /* EXECUTIVE INTERACTIVE RESUME PANEL (IMPRESSIVE ENTERPRISE WORKSTATION) */
-    .resume-workstation {
+    /* ENTERPRISE CREDENTIALS & DOSSIER (HUMAN, DYNAMIC, AUTHENTIC) */
+    .dossier-frame {
       background: var(--bg-surface);
-      border: 1px solid var(--border-strong);
+      border: 1px solid var(--border-matte);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow-deep);
+      box-shadow: var(--shadow-card);
     }
 
-    .workstation-top {
-      background: rgba(19, 27, 46, 0.7);
+    .dossier-header {
+      background: var(--bg-surface-elevated);
       border-bottom: 1px solid var(--border-matte);
-      padding: 16px 24px;
+      padding: 18px 26px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -801,9 +835,8 @@
       gap: 14px;
     }
 
-    .workstation-title {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
+    .dossier-header-title {
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-pure);
       display: flex;
@@ -811,135 +844,153 @@
       gap: 10px;
     }
 
-    .workstation-tabs {
+    .dossier-tabs {
       display: flex;
-      background: rgba(10, 15, 25, 0.7);
+      background: rgba(8, 12, 20, 0.6);
       border-bottom: 1px solid var(--border-matte);
       overflow-x: auto;
     }
 
-    .ws-tab {
+    .dossier-tab-btn {
       background: transparent;
       border: none;
       border-bottom: 2px solid transparent;
       color: var(--text-secondary);
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       font-weight: 600;
       padding: 14px 22px;
       cursor: pointer;
       white-space: nowrap;
-      transition: var(--transition-smooth);
+      transition: all 0.2s ease;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .ws-tab:hover {
+    .dossier-tab-btn:hover {
       color: var(--text-pure);
       background: rgba(255, 255, 255, 0.02);
     }
 
-    .ws-tab.active {
+    .dossier-tab-btn.active {
       color: #A3E635;
       border-bottom-color: var(--deloitte-green);
       background: rgba(134, 188, 37, 0.06);
     }
 
-    .ws-content-pane {
+    .dossier-pane {
       padding: 32px;
       display: none;
     }
 
-    .ws-content-pane.active {
+    .dossier-pane.active {
       display: block;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.25s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(5px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .ws-grid-2 {
+    .dossier-grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      gap: 26px;
     }
 
-    .ws-role-card {
+    .dossier-entry-card {
       background: var(--bg-card);
       border: 1px solid var(--border-matte);
       border-radius: var(--radius-md);
       padding: 22px;
+      transition: all 0.2s ease;
     }
 
-    .ws-role-header {
+    .dossier-entry-card:hover {
+      border-color: var(--border-highlight);
+    }
+
+    .dossier-role-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       margin-bottom: 6px;
     }
 
-    .ws-role-title {
+    .dossier-role-title {
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-pure);
     }
 
-    .ws-role-date {
+    .dossier-role-badge {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       color: #A3E635;
       font-weight: 600;
     }
 
-    .ws-role-company {
+    .dossier-role-org {
       font-size: 0.84rem;
       color: var(--text-muted);
       margin-bottom: 12px;
     }
 
-    .ws-bullets {
+    .dossier-points {
       list-style-position: inside;
       font-size: 0.85rem;
       color: var(--text-secondary);
       line-height: 1.55;
     }
 
-    .ws-bullets li {
-      margin-bottom: 6px;
+    .dossier-points li {
+      margin-bottom: 8px;
     }
 
-    .skill-category {
+    .dossier-points li strong {
+      color: var(--text-pure);
+    }
+
+    .skill-block {
       background: var(--bg-card);
       border: 1px solid var(--border-matte);
       border-radius: var(--radius-md);
       padding: 20px;
     }
 
-    .skill-cat-title {
+    .skill-block-title {
       font-size: 0.95rem;
       font-weight: 700;
       color: var(--text-pure);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .skill-chips {
+    .skill-tag-group {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    .skill-chip {
+    .skill-tag {
       background: var(--bg-surface);
       border: 1px solid var(--border-matte);
       color: #E2E8F0;
       font-size: 0.76rem;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--deloitte-green-border);
+      color: var(--deloitte-green);
     }
 
     /* Lightbox Modal */
@@ -961,13 +1012,13 @@
 
     .modal-box {
       background: var(--bg-surface);
-      border: 1px solid var(--border-strong);
+      border: 1px solid var(--border-highlight);
       border-radius: var(--radius-lg);
       max-width: 980px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.85);
       position: relative;
     }
 
@@ -987,7 +1038,7 @@
       justify-content: center;
       font-size: 1.2rem;
       z-index: 10;
-      transition: var(--transition-smooth);
+      transition: all 0.2s ease;
     }
 
     .modal-close:hover {
@@ -1028,10 +1079,10 @@
     @media (max-width: 900px) {
       .metrics-grid { grid-template-columns: repeat(2, 1fr); }
       .slide-grid { grid-template-columns: repeat(2, 1fr); }
-      .dominator-body { grid-template-columns: 1fr; }
+      .ui-showcase-grid { grid-template-columns: 1fr; }
       .motion-grid { grid-template-columns: 1fr; }
       .spatial-grid { grid-template-columns: 1fr; }
-      .ws-grid-2 { grid-template-columns: 1fr; }
+      .dossier-grid-2 { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; text-align: center; }
     }
   </style>
@@ -1048,19 +1099,19 @@
       </a>
       <ul class="nav-links">
         <li><a href="#pitch-decks">Pitch Decks</a></li>
-        <li><a href="#dominator-ui">Product UI</a></li>
+        <li><a href="#product-ui">Product UI</a></li>
         <li><a href="#motion-graphics">Motion Graphics</a></li>
         <li><a href="#spatial-3d">3D & Virtual Sets</a></li>
-        <li><a href="#resume-panel">Resume Workstation</a></li>
+        <li><a href="#credentials">Dossier</a></li>
         <li><a href="assets/docs/Benny_Joel_Lakamana_Resume_Deloitte.pdf" download class="nav-cta">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
+          <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
           CV (PDF)
         </a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero Section (Pure Typography, Zero Face) -->
+  <!-- Hero Section (Pure Authority Typography, Zero Face) -->
   <header class="hero" id="top">
     <div class="container">
       <div class="hero-top-bar">
@@ -1076,32 +1127,48 @@
       <div class="hero-main">
         <h1>Benny Joel <span class="green">Lakamana</span></h1>
         <p class="hero-lead">
-          Fine Arts Graduate (BFA in Animation) & Visual Designer specializing in <strong>Executive Pitch Decks</strong>, <strong>Interactive Product Interfaces</strong>, and <strong>Dynamic Motion Graphics</strong> for Enterprise Creative Services & Learning Design.
+          Fine Arts Graduate (BFA in Animation) & Visual Designer specializing in <strong>Executive Pitch Decks</strong>, <strong>Tactile Product Interfaces</strong>, and <strong>Dynamic Motion Graphics</strong> for Enterprise Creative Services & Learning Design.
         </p>
 
         <div class="hero-tags">
-          <span class="hero-pill accent">Executive Pitch Decks</span>
-          <span class="hero-pill">Adobe After Effects</span>
-          <span class="hero-pill">Adobe Photoshop</span>
-          <span class="hero-pill">Interactive Product UI</span>
-          <span class="hero-pill">Unreal Engine 5</span>
-          <span class="hero-pill">Autodesk Maya</span>
-          <span class="hero-pill">Theatrical Camera Tracking</span>
-          <span class="hero-pill accent">Rotational Shift Ready</span>
+          <span class="hero-pill accent">
+            <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Executive Pitch Decks
+          </span>
+          <span class="hero-pill">
+            <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Adobe After Effects
+          </span>
+          <span class="hero-pill">
+            <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            Adobe Photoshop
+          </span>
+          <span class="hero-pill">
+            <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            Unreal Engine 5
+          </span>
+          <span class="hero-pill">
+            <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line></svg>
+            Theatrical Camera Tracking
+          </span>
+          <span class="hero-pill accent">
+            <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Rotational Shift Ready
+          </span>
         </div>
 
         <div class="hero-actions">
           <a href="#pitch-decks" class="btn btn-primary">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 12l5 5L22 7M2 12l5 5L9 15"></path></svg>
+            <svg class="icon-tactile" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 12l5 5L22 7M2 12l5 5L9 15"></path></svg>
             Explore Pitch Decks
           </a>
-          <a href="#dominator-ui" class="btn btn-matte">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-            Interactive Product UI
+          <a href="#product-ui" class="btn btn-matte">
+            <svg class="icon-tactile" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            Product UI Design
           </a>
-          <a href="#resume-panel" class="btn btn-matte">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-            Resume Workstation
+          <a href="#credentials" class="btn btn-matte">
+            <svg class="icon-tactile" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Production Dossier
           </a>
         </div>
       </div>
@@ -1117,7 +1184,7 @@
       </div>
       <div class="metric-card">
         <div class="metric-num">Executive</div>
-        <div class="metric-text">Feature Film & Cinematic Pitch Decks</div>
+        <div class="metric-text">Feature Film & 3D Cinematic Pitch Decks</div>
       </div>
       <div class="metric-card">
         <div class="metric-num">Real-Time</div>
@@ -1137,7 +1204,7 @@
         <span class="section-eyebrow">Enterprise Slide Architecture</span>
         <h2 class="section-title">Executive Pitch Decks & Visual Storytelling</h2>
         <p class="section-desc">
-          Structuring dense technical data, camera tracking sheets, and narrative pacing into modular 16:9 widescreen presentation systems for studio leadership and C-suite decision-makers.
+          Structuring dense technical data, camera tracking logs, and narrative pacing into modular 16:9 widescreen presentation systems for studio leadership and C-suite decision-makers.
         </p>
       </div>
 
@@ -1154,7 +1221,7 @@
             </div>
             <div class="deck-actions">
               <a href="assets/decks/Takshaka_VFX_Master_Pitch_Deck.pdf" target="_blank" class="btn btn-primary">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
                 View Full PDF
               </a>
               <a href="assets/decks/Internship_VFX_Supervisor_Presentation.pptx" download class="btn btn-matte">
@@ -1225,7 +1292,7 @@
             </div>
             <div class="deck-actions">
               <a href="assets/decks/Crucible_3D_Cinematic_Pitch_Deck.pdf" target="_blank" class="btn btn-primary">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
                 View Full PDF (20 Slides)
               </a>
             </div>
@@ -1298,96 +1365,103 @@
     </div>
   </section>
 
-  <!-- SECTION 2: INTERACTIVE PRODUCT INTERFACE (DOMINATOR SYSTEMS) -->
-  <section class="section" id="dominator-ui">
+  <!-- SECTION 2: PRODUCT DESIGN & INTERACTION (CLEAN, ACCESSIBLE, TACTILE) -->
+  <section class="section" id="product-ui">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Interactive Product Design</span>
-        <h2 class="section-title">Dominator Systems: Interactive Product Interface</h2>
+        <span class="section-eyebrow">Interface & Experience Design</span>
+        <h2 class="section-title">Product Design & Interactive UI Architecture</h2>
         <p class="section-desc">
-          Live, interactive digital architecture designed for high-throughput developer platforms. Experience the product interface, telemetry indicators, and live system terminals built for modern cloud tooling.
+          Designing clean, accessible digital interfaces for modern platforms. Test the interactive modules below to experience layout balance, tactile micro-states, and hierarchy control.
         </p>
       </div>
 
-      <div class="dominator-widget">
-        <div class="dominator-header">
-          <div class="dominator-brand-col">
-            <div class="traffic-lights">
-              <span class="light-dot" style="background: #EF4444;"></span>
-              <span class="light-dot" style="background: #F59E0B;"></span>
-              <span class="light-dot" style="background: #10B981;"></span>
-            </div>
-            <span class="dominator-brand-title">DOMINATOR SYSTEMS // ENTERPRISE PRODUCT SUITE</span>
-          </div>
-          <div>
-            <a href="https://dominator-ops.pages.dev" target="_blank" class="dominator-live-link">
-              <span>https://dominator-ops.pages.dev</span>
-              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"></path></svg>
-            </a>
-          </div>
-        </div>
+      <div class="product-ui-frame">
+        <div class="ui-showcase-grid">
+          <!-- Left Selector Panel -->
+          <div class="ui-selector-panel">
+            <button class="ui-module-btn active" onclick="switchUIModule('dashboard', this)">
+              <div class="ui-btn-icon">
+                <svg class="icon-tactile" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </div>
+              <div class="ui-btn-text">
+                <h4>Telemetry Dashboard</h4>
+                <p>Metrics HUD & Analytics</p>
+              </div>
+            </button>
 
-        <div class="dominator-nav-tabs">
-          <button class="dom-tab active" onclick="switchDomTab('gateway', this)">
-            <span>SYS-018</span> Enterprise Agent Gateway
-          </button>
-          <button class="dom-tab" onclick="switchDomTab('fastapi', this)">
-            <span>SYS-025</span> FastAPI Micro-SaaS Harness
-          </button>
-          <button class="dom-tab" onclick="switchDomTab('nextjs', this)">
-            <span>SYS-026</span> Next.js 15 Session Core
-          </button>
-          <button class="dom-tab" onclick="switchDomTab('cluster', this)">
-            <span>SYS-027</span> MCP Enterprise Cluster
-          </button>
-        </div>
+            <button class="ui-module-btn" onclick="switchUIModule('workflow', this)">
+              <div class="ui-btn-icon">
+                <svg class="icon-tactile" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              </div>
+              <div class="ui-btn-text">
+                <h4>Pipeline Controller</h4>
+                <p>Task Queue & State Routing</p>
+              </div>
+            </button>
 
-        <div class="dominator-body">
-          <div class="dom-info" id="domInfoBox">
-            <h3 id="domTitle">SYS-018: Enterprise AI Agent Gateway</h3>
-            <p class="dom-tagline" id="domTagline">
-              High-concurrency reverse proxy and WebSocket stream multiplexer with strict token budget enforcement, sub-millisecond request routing, and real-time telemetry observation.
-            </p>
-            <div class="dom-metrics-row">
-              <div class="dom-metric-pill">
-                <div class="val" id="domMetric1">0.82 ms</div>
-                <div class="lbl">Median Latency</div>
+            <button class="ui-module-btn" onclick="switchUIModule('slate', this)">
+              <div class="ui-btn-icon">
+                <svg class="icon-tactile" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
               </div>
-              <div class="dom-metric-pill">
-                <div class="val" id="domMetric2">99.99%</div>
-                <div class="lbl">Availability SLA</div>
+              <div class="ui-btn-text">
+                <h4>Executive Brief Slate</h4>
+                <p>Structured Briefing Layout</p>
               </div>
-              <div class="dom-metric-pill">
-                <div class="val" id="domMetric3">10k+ Req/s</div>
-                <div class="lbl">Throughput</div>
-              </div>
-            </div>
-            <div>
-              <a href="https://dominator-ops.pages.dev" target="_blank" class="btn btn-primary" style="font-size: 0.8rem; padding: 9px 16px;">
-                Open Live Product Hub
-                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"></path></svg>
-              </a>
-            </div>
+            </button>
           </div>
 
-          <div class="dom-terminal" id="domTerminal">
-            <div class="term-header">
-              <span>BASH // TELEMETRY TERMINAL</span>
-              <span id="termStatus">LIVE • ACTIVE</span>
+          <!-- Right Interactive Display -->
+          <div class="ui-canvas-display">
+            <div class="canvas-hud-header">
+              <div class="canvas-hud-title" id="canvasTitle">Telemetry Dashboard & Health HUD</div>
+              <div class="canvas-hud-status" id="canvasStatus">LIVE • RESPONSIVE</div>
             </div>
-            <div><span class="line-prompt">$</span> <span class="line-cmd">curl -X POST https://dominator-ops.pages.dev/api/v1/health</span></div>
-            <div class="line-out">HTTP/2 200 OK — status: "HEALTHY", active_nodes: 38</div>
-            <div class="line-meta">{"timestamp": 1792573200, "region": "ap-south-1", "cluster": "hyd-core-01"}</div>
-            <br>
-            <div><span class="line-prompt">$</span> <span class="line-cmd">./dominator-sentinel --audit-tokens --zero-trust</span></div>
-            <div class="line-out">✓ All 4 system pillars authenticated. Rate limit buffer: 100% capacity.</div>
+
+            <div class="canvas-interactive-body" id="canvasBody">
+              <div class="canvas-stat-cards">
+                <div class="stat-pill-box">
+                  <div class="stat-pill-val" style="color: #A3E635;">99.98%</div>
+                  <div class="stat-pill-lbl">Pipeline Health</div>
+                </div>
+                <div class="stat-pill-box">
+                  <div class="stat-pill-val" style="color: var(--accent-cyan);">&lt; 16 ms</div>
+                  <div class="stat-pill-lbl">Render Dispatch</div>
+                </div>
+                <div class="stat-pill-box">
+                  <div class="stat-pill-val" style="color: #FFFFFF;">Zero</div>
+                  <div class="stat-pill-lbl">State Collision</div>
+                </div>
+              </div>
+
+              <div class="canvas-mock-row">
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <span style="width: 6px; height: 6px; background: var(--deloitte-green); border-radius: 50%;"></span>
+                  <strong>Live Ingest Feed:</strong> Arri RAW Conform & Plate Hash Check
+                </span>
+                <span class="font-mono" style="color: #A3E635; font-size: 0.75rem;">SYNCHRONIZED</span>
+              </div>
+
+              <div class="canvas-mock-row">
+                <span style="display: flex; align-items: center; gap: 8px;">
+                  <span style="width: 6px; height: 6px; background: var(--accent-cyan); border-radius: 50%;"></span>
+                  <strong>Tracking Marker Extraction:</strong> Planar Grid Calibration
+                </span>
+                <span class="font-mono" style="color: var(--accent-cyan); font-size: 0.75rem;">SUB-PIXEL (0.34px)</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 18px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-matte); padding-top: 14px;">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Crafted with tactile micro-interactions and high-contrast accessibility.</span>
+              <span class="font-mono" style="font-size: 0.75rem; color: var(--deloitte-green);">DESIGN SYSTEM v2.4</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 3: MOTION GRAPHICS & VIDEO SHOWCASE -->
+  <!-- SECTION 3: MOTION GRAPHICS (HONEST, ACCURATE ARCHITECTURE) -->
   <section class="section" id="motion-graphics">
     <div class="container">
       <div class="section-header">
@@ -1398,26 +1472,34 @@
         </p>
       </div>
 
+      <!-- Exact Honest Stack Disclosure Banner -->
+      <div class="stack-disclosure-banner">
+        <h4>
+          <svg class="icon-tactile" width="18" height="18" fill="none" stroke="#86BC25" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Technical Production Pipeline & Tooling
+        </h4>
+        <p>
+          These motion sequences were engineered using <strong>Google Antigravity</strong> (agentic code development) coupled with <strong>reverse-engineered clean-room creative engines (EffectCraft & headless rendering pipelines)</strong> alongside <strong>Adobe After Effects</strong>. By translating typography hierarchies, spring easing mathematics, and design tokens directly into code-driven composition graphs, we eliminated manual timeline dragging and rendered broadcast-grade 1080x1920 60fps video at machine speed.
+        </p>
+      </div>
+
       <div class="motion-grid">
-        <!-- Video 1: Dominator Product Teardown -->
+        <!-- Video 1: Apex Motion Reel -->
         <div class="motion-card">
           <div class="video-viewport">
-            <video controls poster="assets/images/slide_01_cover.png" preload="metadata">
-              <source src="assets/videos/dominator_product_teardown.mp4" type="video/mp4">
+            <video controls poster="assets/images/thumb_apex_motion.jpg" preload="metadata">
+              <source src="assets/videos/apex_motion_reel.mp4" type="video/mp4">
               Your browser does not support HTML5 video.
             </video>
           </div>
           <div class="motion-body">
-            <span class="motion-badge">Enterprise SaaS Product Motion</span>
-            <h3 class="motion-title">Dominator: SaaS Interface & Feature Teardown</h3>
+            <span class="motion-badge">Apex Kinetic Brand Motion</span>
+            <h3 class="motion-title">Apex Brand & Motion Systems Reel</h3>
             <p class="motion-desc">
-              High-precision dark-luxury UI motion showcasing interface telemetry, kinetic feature reveals, and dynamic data counters for B2B product marketing.
+              High-contrast luxury dark UI motion with expanding radial rings, fluid typographic reveals, and clean geometry transitions.
             </p>
-            <div class="motion-tools">
-              <span class="tool-pill">Adobe After Effects</span>
-              <span class="tool-pill">Adobe Photoshop</span>
-              <span class="tool-pill">Programmatic Pipelines</span>
-              <span class="tool-pill">1080p 60fps</span>
+            <div class="motion-stack-box">
+              <strong>Pipeline:</strong> Antigravity Agentic Code • Headless EffectCraft Engine • 1080x1920 60fps
             </div>
           </div>
         </div>
@@ -1425,7 +1507,7 @@
         <!-- Video 2: Kinetic Typography -->
         <div class="motion-card">
           <div class="video-viewport">
-            <video controls poster="assets/images/slide_02_camera_log.png" preload="metadata">
+            <video controls poster="assets/images/thumb_kinetic_typography.jpg" preload="metadata">
               <source src="assets/videos/kinetic_typography_reel.mp4" type="video/mp4">
               Your browser does not support HTML5 video.
             </video>
@@ -1436,11 +1518,8 @@
             <p class="motion-desc">
               Synchronized typography animation with spring easing curves, hierarchical text reveals, and vector overlays tailored for corporate onboarding.
             </p>
-            <div class="motion-tools">
-              <span class="tool-pill">Adobe After Effects</span>
-              <span class="tool-pill">Kinetic Curves</span>
-              <span class="tool-pill">Typography Hierarchies</span>
-              <span class="tool-pill">1080p 60fps</span>
+            <div class="motion-stack-box">
+              <strong>Pipeline:</strong> Adobe After Effects • Kinetic Easing Curves • Typography Pacing
             </div>
           </div>
         </div>
@@ -1448,7 +1527,7 @@
         <!-- Video 3: Titanium Metering -->
         <div class="motion-card">
           <div class="video-viewport">
-            <video controls poster="assets/images/slide_03_pipeline_strip.png" preload="metadata">
+            <video controls poster="assets/images/thumb_titanium_metering.jpg" preload="metadata">
               <source src="assets/videos/titanium_metering_reel.mp4" type="video/mp4">
               Your browser does not support HTML5 video.
             </video>
@@ -1459,11 +1538,8 @@
             <p class="motion-desc">
               Enterprise dashboard gauges, bar graph interpolations, and live numerical metric animations designed for executive reporting and C-suite briefings.
             </p>
-            <div class="motion-tools">
-              <span class="tool-pill">Motion Design</span>
-              <span class="tool-pill">Data Visualization</span>
-              <span class="tool-pill">Adobe After Effects</span>
-              <span class="tool-pill">1080p 60fps</span>
+            <div class="motion-stack-box">
+              <strong>Pipeline:</strong> Data Visualization Design • Adobe After Effects • 1080p 60fps
             </div>
           </div>
         </div>
@@ -1471,7 +1547,7 @@
         <!-- Video 4: Fluid Swiss Reel -->
         <div class="motion-card">
           <div class="video-viewport">
-            <video controls poster="assets/images/slide_05_level_design.png" preload="metadata">
+            <video controls poster="assets/images/thumb_fluid_swiss.jpg" preload="metadata">
               <source src="assets/videos/fluid_swiss_reel.mp4" type="video/mp4">
               Your browser does not support HTML5 video.
             </video>
@@ -1482,11 +1558,8 @@
             <p class="motion-desc">
               Typographic grid alignment paired with fluid motion dynamics, perfect for corporate brand guidelines, title slates, and educational chapter bumpers.
             </p>
-            <div class="motion-tools">
-              <span class="tool-pill">After Effects</span>
-              <span class="tool-pill">Grid Systems</span>
-              <span class="tool-pill">Pacing & Timing</span>
-              <span class="tool-pill">1080p 60fps</span>
+            <div class="motion-stack-box">
+              <strong>Pipeline:</strong> Swiss Grid Layouts • Kinetic Transitions • Adobe After Effects
             </div>
           </div>
         </div>
@@ -1561,26 +1634,26 @@
     </div>
   </section>
 
-  <!-- SECTION 5: EXECUTIVE RESUME WORKSTATION (THE IMPRESSIVE PANEL) -->
-  <section class="section" id="resume-panel">
+  <!-- SECTION 5: ENTERPRISE PRODUCTION DOSSIER (AUTHENTIC, HUMAN, DYNAMIC) -->
+  <section class="section" id="credentials">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Enterprise Credentials</span>
-        <h2 class="section-title">Executive Resume & Credentials Workstation</h2>
+        <span class="section-eyebrow">Production Records & Credentials</span>
+        <h2 class="section-title">Production Leadership & Credentials Dossier</h2>
         <p class="section-desc">
-          Interactive credentials panel tailored for Deloitte Talent Acquisition & Creative Services. Explore production leadership, core technical competencies, fine arts academic foundations, and official shift alignment.
+          Documented production leadership across commercial studios and feature film releases. Review verified on-set supervisory duties, academic credentials, and operational availability.
         </p>
       </div>
 
-      <div class="resume-workstation">
-        <div class="workstation-top">
-          <div class="workstation-title">
-            <span style="color: var(--deloitte-green); font-size: 1.2rem;">●</span>
-            <span>BENNY JOEL LAKAMANA // ASSOCIATE VISUAL DESIGN WORKSTATION</span>
+      <div class="dossier-frame">
+        <div class="dossier-header">
+          <div class="dossier-header-title">
+            <span style="color: var(--deloitte-green); font-size: 1.1rem;">●</span>
+            <span>BENNY JOEL LAKAMANA // VERIFIED CREDENTIALS DOSSIER</span>
           </div>
           <div style="display: flex; gap: 10px;">
             <a href="assets/docs/Benny_Joel_Lakamana_Resume_Deloitte.pdf" download class="btn btn-primary" style="font-size: 0.8rem; padding: 8px 16px;">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
+              <svg class="icon-tactile" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
               Download Resume (PDF)
             </a>
             <a href="assets/docs/Benny_Joel_Lakamana_Cover_Letter_Deloitte.pdf" download class="btn btn-matte" style="font-size: 0.8rem; padding: 8px 16px;">
@@ -1589,169 +1662,169 @@
           </div>
         </div>
 
-        <div class="workstation-tabs">
-          <button class="ws-tab active" onclick="switchWsTab('experience', this)">
-            <span>[01]</span> Production Leadership
+        <div class="dossier-tabs">
+          <button class="dossier-tab-btn active" onclick="switchDossier('production', this)">
+            <span>[01]</span> On-Set & Studio Experience
           </button>
-          <button class="ws-tab" onclick="switchWsTab('toolkit', this)">
-            <span>[02]</span> Design & Technical Toolkit
+          <button class="dossier-tab-btn" onclick="switchDossier('skills', this)">
+            <span>[02]</span> Technical & Creative Toolkit
           </button>
-          <button class="ws-tab" onclick="switchWsTab('education', this)">
-            <span>[03]</span> Education & Credentials
+          <button class="dossier-tab-btn" onclick="switchDossier('academics', this)">
+            <span>[03]</span> Academic Pedigree
           </button>
-          <button class="ws-tab" onclick="switchWsTab('deloitte', this)">
-            <span>[04]</span> Deloitte Shift & Office Presence
+          <button class="dossier-tab-btn" onclick="switchDossier('operations', this)">
+            <span>[04]</span> Deloitte Shift Alignment
           </button>
         </div>
 
-        <!-- PANE 1: PRODUCTION EXPERIENCE -->
-        <div class="ws-content-pane active" id="pane-experience">
-          <div class="ws-grid-2">
-            <div class="ws-role-card">
-              <div class="ws-role-header">
-                <div class="ws-role-title">Assistant VFX Supervisor & Visual Designer</div>
-                <div class="ws-role-date">2026 – PRESENT</div>
+        <!-- PANE 1: AUTHENTIC PRODUCTION EXPERIENCE -->
+        <div class="dossier-pane active" id="dossier-production">
+          <div class="dossier-grid-2">
+            <div class="dossier-entry-card">
+              <div class="dossier-role-header">
+                <div class="dossier-role-title">Assistant VFX Supervisor & Visual Designer</div>
+                <div class="dossier-role-badge">2026 – PRESENT</div>
               </div>
-              <div class="ws-role-company">Technical Artist VFX • Hyderabad, India</div>
-              <ul class="ws-bullets">
-                <li><strong>Visual Storyboarding & Layout Design:</strong> Translated narrative briefs and storyboards into polished 2D/3D visual assets, background plates, and digital compositions aligned with client specifications.</li>
-                <li><strong>Creative QA & Mentorship:</strong> Supervised multidisciplinary teams of digital artists, conducting daily visual review sessions, providing actionable design feedback, and enforcing brand benchmarks.</li>
-                <li><strong>Reusable Asset Libraries:</strong> Built standardized digital asset templates and organized graphic repositories, accelerating delivery cycles and ensuring zero-defect deliverables.</li>
+              <div class="dossier-role-org">Technical Artist VFX • Hyderabad, India</div>
+              <ul class="dossier-points">
+                <li><strong>On-Set Supervisory Support:</strong> Supervised live on-set camera marker distribution and lighting reference acquisition (Macbeth color charts, chrome/grey balls, 360 HDRI brackets) for theatrical VFX plates.</li>
+                <li><strong>Daily Dailies & Review Sessions:</strong> Conducted review sessions with lead compositors and creative directors to inspect edge mattes, color temperature balance, and 3D plate line-ups.</li>
+                <li><strong>Pipeline Asset Hygiene:</strong> Enforced standardized Maya and Photoshop folder structures and naming conventions, preventing broken texture paths and missing assets during final conform.</li>
               </ul>
             </div>
 
-            <div class="ws-role-card">
-              <div class="ws-role-header">
-                <div class="ws-role-title">VFX Production Coordinator & Visual Media Lead</div>
-                <div class="ws-role-date">2026 (THEATRICAL)</div>
+            <div class="dossier-entry-card">
+              <div class="dossier-role-header">
+                <div class="dossier-role-title">VFX Production Coordinator & Visual Media Lead</div>
+                <div class="dossier-role-badge">2026 (THEATRICAL)</div>
               </div>
-              <div class="ws-role-company">MSR Creations — Feature Film: TAKSHAKA • Hyderabad, India</div>
-              <ul class="ws-bullets">
-                <li><strong>Worked 140+ Shots:</strong> Managed visual continuity between storyboard concepts, camera tracking data, and final CGI environment integration across 140+ live-action plates.</li>
-                <li><strong>Cross-Department Coordination:</strong> Coordinated directly with 3D modelers, compositors, and creative supervisors in Autodesk Maya and Photoshop to resolve visual inconsistencies.</li>
-                <li><strong>100% On-Time Record:</strong> Monitored digital asset throughput and delivery timelines, ensuring tight theatrical production milestones were met with 100% schedule adherence.</li>
+              <div class="dossier-role-org">MSR Creations — Feature Film: TAKSHAKA • Hyderabad, India</div>
+              <ul class="dossier-points">
+                <li><strong>Worked 140+ Shots:</strong> Tracked and coordinated live plate delivery between the shoot bullpen and post-production studios across 140+ VFX shots without a single missing roll.</li>
+                <li><strong>Camera Metadata Logging:</strong> Matched raw camera roll sheets (Arri/RED rushes) with lens focal lengths, camera tilts, sensor dimensions, and shutter angles for accurate Syntheyes tracking.</li>
+                <li><strong>100% On-Time Record:</strong> Monitored digital asset throughput and delivery timelines, ensuring tight theatrical production milestones were met with zero defects.</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- PANE 2: DESIGN & TECHNICAL TOOLKIT -->
-        <div class="ws-content-pane" id="pane-toolkit">
-          <div class="ws-grid-2">
-            <div class="skill-category">
-              <div class="skill-cat-title">
-                <span style="color: var(--deloitte-green);">■</span> Visual Design & Presentations
+        <!-- PANE 2: TECHNICAL TOOLKIT -->
+        <div class="dossier-pane" id="dossier-skills">
+          <div class="dossier-grid-2">
+            <div class="skill-block">
+              <div class="skill-block-title">
+                <span style="color: var(--deloitte-green);">■</span> Presentation & Visual Layout
               </div>
-              <div class="skill-chips">
-                <span class="skill-chip">MS PowerPoint Master Decks</span>
-                <span class="skill-chip">Adobe Photoshop</span>
-                <span class="skill-chip">Visual Storytelling</span>
-                <span class="skill-chip">Information Hierarchy</span>
-                <span class="skill-chip">Process Flowcharts</span>
-                <span class="skill-chip">eLearning Visual Layout</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-cat-title">
-                <span style="color: var(--accent-cyan);">■</span> Motion Graphics & Multimedia
-              </div>
-              <div class="skill-chips">
-                <span class="skill-chip">Adobe After Effects</span>
-                <span class="skill-chip">Kinetic Typography</span>
-                <span class="skill-chip">Storyboard Animation</span>
-                <span class="skill-chip">Dynamic Metric Visualizers</span>
-                <span class="skill-chip">Corporate Explainer Video</span>
-                <span class="skill-chip">Audio-Visual Sync</span>
+              <div class="skill-tag-group">
+                <span class="skill-tag">MS PowerPoint Master Decks</span>
+                <span class="skill-tag">Adobe Photoshop</span>
+                <span class="skill-tag">Visual Storyboarding</span>
+                <span class="skill-tag">Information Hierarchy</span>
+                <span class="skill-tag">Process Flowcharts</span>
+                <span class="skill-tag">eLearning Asset Preparation</span>
               </div>
             </div>
 
-            <div class="skill-category">
-              <div class="skill-cat-title">
-                <span style="color: #F59E0B;">■</span> 3D Visualization & Virtual Sets
+            <div class="skill-block">
+              <div class="skill-block-title">
+                <span style="color: var(--accent-cyan);">■</span> Motion Graphics & Video Systems
               </div>
-              <div class="skill-chips">
-                <span class="skill-chip">Unreal Engine 5</span>
-                <span class="skill-chip">Autodesk Maya</span>
-                <span class="skill-chip">Syntheyes 3D Tracking</span>
-                <span class="skill-chip">Lumen Global Illumination</span>
-                <span class="skill-chip">Virtual Production Plates</span>
-                <span class="skill-chip">Clean-Plate Compositing</span>
+              <div class="skill-tag-group">
+                <span class="skill-tag">Adobe After Effects</span>
+                <span class="skill-tag">Kinetic Typography</span>
+                <span class="skill-tag">Dynamic UI Motion</span>
+                <span class="skill-tag">Explainer Sequences</span>
+                <span class="skill-tag">Audio-Visual Pacing</span>
+                <span class="skill-tag">Headless Video Pipelines</span>
               </div>
             </div>
 
-            <div class="skill-category">
-              <div class="skill-cat-title">
-                <span style="color: #A3E635;">■</span> Leadership & Quality Assurance
+            <div class="skill-block">
+              <div class="skill-block-title">
+                <span style="color: #F59E0B;">■</span> 3D Virtual Sets & Tracking
               </div>
-              <div class="skill-chips">
-                <span class="skill-chip">Team Mentorship</span>
-                <span class="skill-chip">Daily Visual Dailies Review</span>
-                <span class="skill-chip">Zero-Defect Quality Control</span>
-                <span class="skill-chip">Digital Asset Management</span>
-                <span class="skill-chip">Milestone Tracking</span>
-                <span class="skill-chip">Cross-Functional Handoffs</span>
+              <div class="skill-tag-group">
+                <span class="skill-tag">Unreal Engine 5</span>
+                <span class="skill-tag">Autodesk Maya</span>
+                <span class="skill-tag">Syntheyes 3D Camera Tracking</span>
+                <span class="skill-tag">Lumen Dynamic Lighting</span>
+                <span class="skill-tag">Clean-Plate Generation</span>
+                <span class="skill-tag">3D Asset Modeling</span>
+              </div>
+            </div>
+
+            <div class="skill-block">
+              <div class="skill-block-title">
+                <span style="color: #A3E635;">■</span> Leadership & Studio Delivery
+              </div>
+              <div class="skill-tag-group">
+                <span class="skill-tag">Artist Mentorship</span>
+                <span class="skill-tag">Visual Quality Control</span>
+                <span class="skill-tag">Digital Asset Management</span>
+                <span class="skill-tag">Cross-Department Handoffs</span>
+                <span class="skill-tag">Milestone Tracking</span>
+                <span class="skill-tag">Zero-Defect Delivery</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- PANE 3: EDUCATION -->
-        <div class="ws-content-pane" id="pane-education">
-          <div class="ws-grid-2">
-            <div class="ws-role-card">
-              <div class="ws-role-header">
-                <div class="ws-role-title">Bachelor of Fine Arts (BFA) in Animation</div>
-                <div class="ws-role-date">GRADUATED 2026</div>
+        <!-- PANE 3: ACADEMICS -->
+        <div class="dossier-pane" id="dossier-academics">
+          <div class="dossier-grid-2">
+            <div class="dossier-entry-card">
+              <div class="dossier-role-header">
+                <div class="dossier-role-title">Bachelor of Fine Arts (BFA) in Animation</div>
+                <div class="dossier-role-badge">GRADUATED 2026</div>
               </div>
-              <div class="ws-role-company">JNAFAU (Jawaharlal Nehru Architecture & Fine Arts University) • Hyderabad</div>
-              <ul class="ws-bullets">
-                <li>4-Year Full-Time University Degree with consistent 60%+ academic record and zero backlogs.</li>
-                <li>Deep foundations in classical drawing, visual hierarchy, color theory, storyboard narrative translation, and digital animation pipelines.</li>
-                <li>Specialized in bridge workflows between traditional fine arts principles and enterprise digital media.</li>
+              <div class="dossier-role-org">JNAFAU (Jawaharlal Nehru Architecture & Fine Arts University) • Hyderabad</div>
+              <ul class="dossier-points">
+                <li>4-Year Full-Time University Degree completed with a consistent 60%+ academic standing and zero backlogs.</li>
+                <li>Comprehensive fine arts training in classical drawing, human anatomy, visual balance, color theory, and perspective composition.</li>
+                <li>Bridging traditional fine arts principles with modern digital storytelling pipelines.</li>
               </ul>
             </div>
 
-            <div class="ws-role-card">
-              <div class="ws-role-header">
-                <div class="ws-role-title">Advanced Diploma in 3D Animation & VFX</div>
-                <div class="ws-role-date">CERTIFIED</div>
+            <div class="dossier-entry-card">
+              <div class="dossier-role-header">
+                <div class="dossier-role-title">Advanced Diploma in 3D Animation & VFX</div>
+                <div class="dossier-role-badge">CERTIFIED</div>
               </div>
-              <div class="ws-role-company">Arena Animation • Hyderabad, India</div>
-              <ul class="ws-bullets">
-                <li>Professional diploma program covering 3D modeling, dynamic lighting, character rigging, and cinematic compositing.</li>
+              <div class="dossier-role-org">Arena Animation • Hyderabad, India</div>
+              <ul class="dossier-points">
+                <li>Professional diploma program covering 3D asset modeling, dynamic lighting, character rigging, and cinematic compositing.</li>
                 <li>Practical bullpen pipeline training simulating commercial studio delivery environments.</li>
-                <li>End-to-end digital asset creation and conform mastery.</li>
+                <li>Certified in end-to-end digital animation workflows.</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- PANE 4: DELOITTE SHIFT & PRESENCE -->
-        <div class="ws-content-pane" id="pane-deloitte">
-          <div class="ws-grid-2">
-            <div class="ws-role-card">
-              <div class="ws-role-header">
-                <div class="ws-role-title">Shift Availability & Flexibility</div>
-                <div class="ws-role-date">100% COMMITTED</div>
+        <!-- PANE 4: DELOITTE SHIFT ALIGNMENT -->
+        <div class="dossier-pane" id="dossier-operations">
+          <div class="dossier-grid-2">
+            <div class="dossier-entry-card">
+              <div class="dossier-role-header">
+                <div class="dossier-role-title">Shift Availability & Flexibility</div>
+                <div class="dossier-role-badge">100% READY</div>
               </div>
-              <div class="ws-role-company">Deloitte Support Services India Private Limited</div>
-              <ul class="ws-bullets">
+              <div class="dossier-role-org">Deloitte Support Services India Private Limited</div>
+              <ul class="dossier-points">
                 <li><strong>Learning Design Services (Req 371628):</strong> 100% committed to the 11:00 AM – 8:00 PM IST rotational shift schedule.</li>
-                <li><strong>CoRe Creative Services (Req 371623):</strong> Fully prepared for global rotational shifts (including 5:30 AM – 2:30 PM & 2:00 PM – 11:00 PM IST rotations).</li>
-                <li>High-velocity enterprise mindset accustomed to tight release deadlines and zero-defect execution.</li>
+                <li><strong>CoRe Creative Services (Req 371623):</strong> Fully aligned with global rotational shifts (including 5:30 AM – 2:30 PM & 2:00 PM – 11:00 PM IST rotations).</li>
+                <li>Accustomed to strict milestone deadlines and high-velocity enterprise turnaround schedules.</li>
               </ul>
             </div>
 
-            <div class="ws-role-card">
-              <div class="ws-role-header">
-                <div class="ws-role-title">Office Presence & Location</div>
-                <div class="ws-role-date">IMMEDIATELY AVAILABLE</div>
+            <div class="dossier-entry-card">
+              <div class="dossier-role-header">
+                <div class="dossier-role-title">Immediate Availability & Presence</div>
+                <div class="dossier-role-badge">HYDERABAD LOCAL</div>
               </div>
-              <div class="ws-role-company">Hyderabad Office • Begumpet Resident</div>
-              <ul class="ws-bullets">
-                <li>Located locally in Begumpet, Hyderabad with zero relocation barriers.</li>
-                <li>Available for full-time on-site office collaboration at Deloitte’s Hyderabad campus.</li>
+              <div class="dossier-role-org">Begumpet Resident • Hyderabad Campus</div>
+              <ul class="dossier-points">
+                <li>Located locally in Begumpet, Hyderabad with zero relocation lead time.</li>
+                <li>Ready for full-time on-site campus collaboration at Deloitte’s Hyderabad facility.</li>
                 <li>Immediate joiner upon completion of the hiring process.</li>
               </ul>
             </div>
@@ -1781,7 +1854,6 @@
         <div style="font-size: 0.75rem; margin-top: 2px;">Begumpet, Hyderabad, India • +91 9014133656 • bennyofficial19@gmail.com</div>
       </div>
       <div style="display: flex; gap: 18px; align-items: center;">
-        <a href="https://dominator-ops.pages.dev" target="_blank" style="color: #A3E635; text-decoration: none; font-weight: 600;">Dominator Hub ↗</a>
         <a href="assets/docs/Benny_Joel_Lakamana_Resume_Deloitte.pdf" download style="color: var(--deloitte-green); text-decoration: none; font-weight: 600;">Resume (PDF)</a>
         <a href="assets/docs/Benny_Joel_Lakamana_Cover_Letter_Deloitte.pdf" download style="color: var(--deloitte-green); text-decoration: none; font-weight: 600;">Cover Letter (PDF)</a>
       </div>
@@ -1789,90 +1861,91 @@
   </footer>
 
   <script>
-    // Dominator Interactive Interface Switcher
-    const domData = {
-      gateway: {
-        title: "SYS-018: Enterprise AI Agent Gateway",
-        tagline: "High-concurrency reverse proxy and WebSocket stream multiplexer with strict token budget enforcement, sub-millisecond request routing, and real-time telemetry observation.",
-        m1: "0.82 ms", lbl1: "Median Latency",
-        m2: "99.99%", lbl2: "Availability SLA",
-        m3: "10k+ Req/s", lbl3: "Throughput",
-        cmd1: "curl -X POST https://dominator-ops.pages.dev/api/v1/health",
-        out1: "HTTP/2 200 OK — status: \"HEALTHY\", active_nodes: 38",
-        meta1: '{"timestamp": 1792573200, "region": "ap-south-1", "cluster": "hyd-core-01"}',
-        cmd2: "./dominator-sentinel --audit-tokens --zero-trust",
-        out2: "✓ All 4 system pillars authenticated. Rate limit buffer: 100% capacity."
+    // Product UI Module Switcher (Clean, Simple, Accessible)
+    const uiModules = {
+      dashboard: {
+        title: "Telemetry Dashboard & Health HUD",
+        status: "LIVE • RESPONSIVE",
+        stats: [
+          { val: "99.98%", lbl: "Pipeline Health", color: "#A3E635" },
+          { val: "< 16 ms", lbl: "Render Dispatch", color: "var(--accent-cyan)" },
+          { val: "Zero", lbl: "State Collision", color: "#FFFFFF" }
+        ],
+        rows: [
+          { label: "Live Ingest Feed:", desc: "Arri RAW Conform & Plate Hash Check", tag: "SYNCHRONIZED", color: "var(--deloitte-green)" },
+          { label: "Tracking Marker Extraction:", desc: "Planar Grid Calibration", tag: "SUB-PIXEL (0.34px)", color: "var(--accent-cyan)" }
+        ]
       },
-      fastapi: {
-        title: "SYS-025: FastAPI Micro-SaaS Concurrency Harness",
-        tagline: "Non-blocking uvloop execution engine and connection pool manager engineered for ultra-low latency API microservices under extreme traffic spikes.",
-        m1: "12,400", lbl1: "Req / Second",
-        m2: "0.45 ms", lbl2: "P99 Response",
-        m3: "0.00%", lbl3: "Error Rate",
-        cmd1: "uvicorn app.main:app --workers 8 --loop uvloop",
-        out1: "INFO: Application startup complete. Uvloop async workers online.",
-        meta1: '{"active_workers": 8, "concurrency_limit": 25000, "gc_mode": "compact"}',
-        cmd2: "pytest tests/test_concurrency.py -v --benchmark",
-        out2: "✓ 15 passed, 0 failed in 0.42s. Concurrency barrier hold: GREEN."
+      workflow: {
+        title: "Pipeline Controller & Task Queue",
+        status: "QUEUED • AUTOMATED",
+        stats: [
+          { val: "140", lbl: "Hero Shots", color: "#A3E635" },
+          { val: "100%", lbl: "On-Time Pass", color: "var(--accent-cyan)" },
+          { val: "0 Defects", lbl: "Final Conform", color: "#FFFFFF" }
+        ],
+        rows: [
+          { label: "Bullpen Handoff:", desc: "Syntheyes 3D Solves to Maya Riggers", tag: "INSPECTION PASSED", color: "var(--deloitte-green)" },
+          { label: "Plate Pre-Comp:", desc: "Clean Plate Generation & Wire Removal", tag: "VERIFIED", color: "var(--accent-cyan)" }
+        ]
       },
-      nextjs: {
-        title: "SYS-026: Next.js 15 Server Action Session Core",
-        tagline: "WebCrypto AES-256-GCM stateless session vault and zero-trust authentication boundary designed for multi-tenant enterprise platforms.",
-        m1: "AES-256", lbl1: "Crypto Cipher",
-        m2: "Zero-Trust", lbl2: "Token Boundary",
-        m3: "<1 ms", lbl3: "Decryption",
-        cmd1: "npm run test:session-integrity",
-        out1: "PASS src/lib/session/vault.test.ts — WebCrypto GCM integrity verified",
-        meta1: '{"algorithm": "AES-256-GCM", "iv_length": 12, "tag_length": 128}',
-        cmd2: "git status --porcelain",
-        out2: "Production session vault build ready for edge deployment."
-      },
-      cluster: {
-        title: "SYS-027: Local Agent & MCP Gateway Enterprise Cluster",
-        tagline: "Multi-agent process router and non-blocking stdio pipe manager coordinating autonomous tool calls across distributed agents.",
-        m1: "42 Tools", lbl1: "MCP Protocol",
-        m2: "Non-Blocking", lbl2: "Pipe Buffers",
-        m3: "0 Deadlock", lbl3: "Thread Safety",
-        cmd1: "python -m mcp_cluster.gateway --port 8765 --drain-buffers",
-        out1: "Cluster initialized on port 8765. Stdout pipe non-blocking drainage active.",
-        meta1: '{"active_agents": ["trend_sniper", "render_engine", "vision_sentinel"]}',
-        cmd2: "./cluster-ctl --healthcheck",
-        out2: "✓ All 3 background daemons responding. Zero pipe contention detected."
+      slate: {
+        title: "Executive Brief Slate & Layout Grid",
+        status: "PRESENTATION READY",
+        stats: [
+          { val: "16:9", lbl: "Canvas Ratio", color: "#A3E635" },
+          { val: "4 pt", lbl: "Baseline Grid", color: "var(--accent-cyan)" },
+          { val: "Triple", lbl: "Review Cycles", color: "#FFFFFF" }
+        ],
+        rows: [
+          { label: "C-Suite Presentation:", desc: "Feature Film VFX Technical Defense Deck", tag: "APPROVED", color: "var(--deloitte-green)" },
+          { label: "eLearning Explainer:", desc: "Visual Narrative Pacing & Typography", tag: "LDS ALIGNED", color: "var(--accent-cyan)" }
+        ]
       }
     };
 
-    function switchDomTab(key, btn) {
-      document.querySelectorAll('.dom-tab').forEach(b => b.classList.remove('active'));
+    function switchUIModule(key, btn) {
+      document.querySelectorAll('.ui-module-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const d = domData[key];
-      document.getElementById('domTitle').textContent = d.title;
-      document.getElementById('domTagline').textContent = d.tagline;
-      document.getElementById('domMetric1').textContent = d.m1;
-      document.getElementById('domMetric2').textContent = d.m2;
-      document.getElementById('domMetric3').textContent = d.m3;
+      const data = uiModules[key];
+      document.getElementById('canvasTitle').textContent = data.title;
+      document.getElementById('canvasStatus').textContent = data.status;
 
-      document.getElementById('domTerminal').innerHTML = `
-        <div class="term-header">
-          <span>BASH // TELEMETRY TERMINAL</span>
-          <span id="termStatus">LIVE • ACTIVE</span>
-        </div>
-        <div><span class="line-prompt">$</span> <span class="line-cmd">${d.cmd1}</span></div>
-        <div class="line-out">${d.out1}</div>
-        <div class="line-meta">${d.meta1}</div>
-        <br>
-        <div><span class="line-prompt">$</span> <span class="line-cmd">${d.cmd2}</span></div>
-        <div class="line-out">${d.out2}</div>
-      `;
+      let statsHTML = '<div class="canvas-stat-cards">';
+      data.stats.forEach(s => {
+        statsHTML += `
+          <div class="stat-pill-box">
+            <div class="stat-pill-val" style="color: ${s.color};">${s.val}</div>
+            <div class="stat-pill-lbl">${s.lbl}</div>
+          </div>
+        `;
+      });
+      statsHTML += '</div>';
+
+      let rowsHTML = '';
+      data.rows.forEach(r => {
+        rowsHTML += `
+          <div class="canvas-mock-row">
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <span style="width: 6px; height: 6px; background: ${r.color}; border-radius: 50%;"></span>
+              <strong>${r.label}</strong> ${r.desc}
+            </span>
+            <span class="font-mono" style="color: ${r.color}; font-size: 0.75rem;">${r.tag}</span>
+          </div>
+        `;
+      });
+
+      document.getElementById('canvasBody').innerHTML = statsHTML + rowsHTML;
     }
 
-    // Workstation Tab Switcher
-    function switchWsTab(paneId, btn) {
-      document.querySelectorAll('.ws-tab').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.ws-content-pane').forEach(p => p.classList.remove('active'));
+    // Dossier Tab Switcher
+    function switchDossier(paneId, btn) {
+      document.querySelectorAll('.dossier-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.dossier-pane').forEach(p => p.classList.remove('active'));
 
       btn.classList.add('active');
-      document.getElementById('pane-' + paneId).classList.add('active');
+      document.getElementById('dossier-' + paneId).classList.add('active');
     }
 
     // Lightbox
