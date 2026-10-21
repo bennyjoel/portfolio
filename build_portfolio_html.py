@@ -5,67 +5,57 @@ html_code = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Benny Joel Lakamana | Visual Design, Production Decks & Motion Systems</title>
-  <meta name="description" content="Executive Visual Design, Feature Film VFX Technical Decks, Real-Time 3D Environments, and Programmatic Motion Graphics by Benny Joel Lakamana.">
+  <title>Benny Joel | Visual Design, 3D & Motion</title>
+  <meta name="description" content="Portfolio of Benny Joel — Visual Design, Feature Film VFX Coordination, Unreal Engine 5 Real-Time 3D Environments, and Motion Systems.">
 
   <!-- Inter & JetBrains Mono Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       DARK LUXURY MATTE DESIGN SYSTEM (WCAG AAA ACCESSIBLE & TACTILE)
+       MINIMAL LUXURY MATTE DESIGN SYSTEM
        ========================================================================== */
     :root {
-      --bg-canvas: #090B0E;
-      --bg-surface: #11141A;
-      --bg-surface-elevated: #161A22;
-      --bg-card: #131720;
-      --bg-glass: rgba(17, 20, 26, 0.85);
+      --bg-canvas: #080A0E;
+      --bg-surface: #0E121A;
+      --bg-surface-elevated: #131822;
+      --bg-card: #10141D;
+      --bg-glass: rgba(14, 18, 26, 0.88);
 
-      --border-matte: #202633;
-      --border-highlight: #313A4D;
-      --border-interactive: #424F69;
+      --border-matte: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.16);
+      --border-active: rgba(134, 188, 37, 0.4);
 
-      --text-pure: #FFFFFF;
-      --text-primary: #ECEFF4;
-      --text-secondary: #9DA7B8;
-      --text-muted: #647087;
+      --text-pure: #F8FAFC;
+      --text-primary: #E2E8F0;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
 
-      --accent-emerald: #00F5A0;
-      --accent-emerald-subtle: rgba(0, 245, 160, 0.10);
-      --accent-emerald-border: rgba(0, 245, 160, 0.28);
-
+      --accent-green: #86BC25;
+      --accent-green-subtle: rgba(134, 188, 37, 0.12);
       --accent-cyan: #00E5FF;
       --accent-cyan-subtle: rgba(0, 229, 255, 0.10);
-      --accent-cyan-border: rgba(0, 229, 255, 0.28);
-
-      --accent-amber: #F59E0B;
-      --accent-purple: #A78BFA;
-
-      --deloitte-green: #86BC25;
-      --deloitte-green-subtle: rgba(134, 188, 37, 0.12);
-      --deloitte-green-border: rgba(134, 188, 37, 0.35);
 
       --radius-sm: 6px;
       --radius-md: 10px;
-      --radius-lg: 16px;
+      --radius-lg: 14px;
       --radius-pill: 9999px;
 
-      --shadow-matte: 0 4px 20px rgba(0, 0, 0, 0.45);
-      --shadow-elevated: 0 10px 30px rgba(0, 0, 0, 0.65);
-      --shadow-glow-emerald: 0 0 24px rgba(0, 245, 160, 0.16);
-      --shadow-glow-green: 0 0 24px rgba(134, 188, 37, 0.18);
-
+      --shadow-matte: 0 4px 24px rgba(0, 0, 0, 0.45);
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', SFMono-Regular, Consolas, monospace;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -75,12 +65,11 @@ html_code = """<!DOCTYPE html>
       font-size: 15px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(ellipse at 50% 0%, rgba(134, 188, 37, 0.04) 0%, transparent 65%),
-        radial-gradient(circle at 100% 20%, rgba(0, 229, 255, 0.02) 0%, transparent 50%);
-      background-attachment: fixed;
+    }
+
+    img, video {
+      display: block;
+      max-width: 100%;
     }
 
     a {
@@ -94,35 +83,30 @@ html_code = """<!DOCTYPE html>
       padding: 0 24px;
     }
 
-    .font-mono {
-      font-family: var(--font-mono);
-    }
-
     /* ==========================================================================
-       NAVIGATION BAR (EXECUTIVE, MINIMAL, TACTILE)
+       NAVIGATION
        ========================================================================== */
-    .nav-bar {
+    .site-nav {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(9, 11, 14, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-matte);
-      padding: 14px 0;
-      transition: border-color 0.2s ease;
+      height: 68px;
     }
 
     .nav-inner {
+      height: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
     }
 
-    .nav-brand {
+    .brand-logo {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 12px;
       font-weight: 700;
       font-size: 1.05rem;
@@ -130,15 +114,15 @@ html_code = """<!DOCTYPE html>
       color: var(--text-pure);
     }
 
-    .nav-brand-title {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-green);
     }
 
-    .nav-menu {
+    .nav-links {
       display: flex;
       align-items: center;
       gap: 24px;
@@ -146,7 +130,7 @@ html_code = """<!DOCTYPE html>
     }
 
     .nav-link {
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       font-weight: 500;
       color: var(--text-secondary);
       transition: color 0.15s ease;
@@ -156,212 +140,191 @@ html_code = """<!DOCTYPE html>
       color: var(--text-pure);
     }
 
-    .nav-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 14px;
-      background: var(--deloitte-green-subtle);
-      border: 1px solid var(--deloitte-green-border);
-      border-radius: var(--radius-pill);
-      font-size: 0.74rem;
+    .nav-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-matte);
+      color: var(--text-pure);
+      font-size: 0.8rem;
       font-weight: 600;
-      color: #A3E635;
-      font-family: var(--font-mono);
-      letter-spacing: 0.02em;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
     }
 
-    .ping-circle {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--deloitte-green);
-      box-shadow: 0 0 8px var(--deloitte-green);
+    .nav-btn:hover {
+      border-color: var(--border-highlight);
+      background: var(--border-matte);
     }
 
     /* ==========================================================================
-       HERO ARCHITECTURE (AUTHORITATIVE, TYPOGRAPHIC, ZERO AVATARS)
+       HERO (BOLD, MINIMAL, AESTHETIC MATTE NAME)
        ========================================================================== */
     .hero-section {
-      padding: 72px 0 54px;
+      padding: 96px 0 64px 0;
       border-bottom: 1px solid var(--border-matte);
-      position: relative;
     }
 
-    .hero-eyebrow {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--deloitte-green);
-      margin-bottom: 16px;
-      background: var(--deloitte-green-subtle);
-      border: 1px solid var(--deloitte-green-border);
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-    }
-
-    .hero-headline {
-      font-size: 2.85rem;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.035em;
-      color: var(--text-pure);
-      max-width: 900px;
-      margin-bottom: 20px;
-    }
-
-    .hero-headline span {
-      background: linear-gradient(135deg, #FFFFFF 30%, #9DA7B8 100%);
+    .hero-name {
+      font-size: clamp(3.4rem, 8vw, 6.4rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+      background: linear-gradient(180deg, #FFFFFF 30%, #94A3B8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
     }
 
-    .hero-summary {
+    .hero-role {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-role-dot {
+      color: var(--accent-green);
+    }
+
+    .hero-bio {
       font-size: 1.05rem;
-      line-height: 1.65;
       color: var(--text-secondary);
-      max-width: 820px;
-      margin-bottom: 34px;
+      max-width: 720px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--text-pure);
+      color: #080A0E;
+      border: 1px solid var(--text-pure);
+    }
+
+    .btn-primary:hover {
+      background: #E2E8F0;
+      border-color: #E2E8F0;
+      transform: translateY(-1px);
+    }
+
+    .btn-matte {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-matte);
+    }
+
+    .btn-matte:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-highlight);
+      color: var(--text-pure);
+      transform: translateY(-1px);
+    }
+
+    .btn-green {
+      background: var(--accent-green-subtle);
+      color: #A3E635;
+      border: 1px solid rgba(134, 188, 37, 0.3);
+    }
+
+    .btn-green:hover {
+      background: rgba(134, 188, 37, 0.2);
+      border-color: rgba(134, 188, 37, 0.5);
+      color: #BEF264;
+      transform: translateY(-1px);
     }
 
     .hero-stats-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 36px;
-      padding-top: 28px;
+      gap: 18px;
+      padding-top: 36px;
       border-top: 1px solid var(--border-matte);
     }
 
     .hero-stat-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-matte);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-sm);
       padding: 18px 20px;
-      transition: all 0.2s ease;
-    }
-
-    .hero-stat-card:hover {
-      border-color: var(--border-highlight);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-matte);
     }
 
     .hero-stat-num {
-      font-family: var(--font-mono);
-      font-size: 1.55rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--text-pure);
+      letter-spacing: -0.02em;
       margin-bottom: 4px;
     }
 
     .hero-stat-label {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.04em;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 10px 20px;
-      border-radius: var(--radius-sm);
-      font-size: 0.86rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--text-pure);
-      color: #0B0E14;
-      border-color: #FFFFFF;
-    }
-
-    .btn-primary:hover {
-      background: #E2E8F0;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-matte {
-      background: var(--bg-surface-elevated);
-      color: var(--text-primary);
-      border-color: var(--border-matte);
-    }
-
-    .btn-matte:hover {
-      background: var(--bg-surface);
-      border-color: var(--border-highlight);
-      color: var(--text-pure);
-      transform: translateY(-1px);
-    }
-
-    .btn-emerald {
-      background: var(--deloitte-green-subtle);
-      color: #A3E635;
-      border-color: var(--deloitte-green-border);
-    }
-
-    .btn-emerald:hover {
-      background: rgba(134, 188, 37, 0.22);
-      border-color: var(--deloitte-green);
-      transform: translateY(-1px);
     }
 
     /* ==========================================================================
        SECTION HEADERS
        ========================================================================== */
     .section {
-      padding: 72px 0;
+      padding: 80px 0;
       border-bottom: 1px solid var(--border-matte);
     }
 
     .section-header {
-      margin-bottom: 38px;
+      margin-bottom: 44px;
     }
 
     .section-eyebrow {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--deloitte-green);
+      font-size: 0.75rem;
+      color: var(--accent-green);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      display: inline-block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      display: block;
     }
 
     .section-title {
-      font-size: 1.85rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       color: var(--text-pure);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .section-desc {
-      font-size: 0.94rem;
+      font-size: 0.95rem;
       color: var(--text-secondary);
-      max-width: 780px;
+      max-width: 680px;
       line-height: 1.6;
     }
 
     /* ==========================================================================
-       PITCH DECKS SECTION
+       SECTION 1: PITCH DECKS
        ========================================================================== */
     .deck-grid {
       display: grid;
@@ -372,21 +335,21 @@ html_code = """<!DOCTYPE html>
     .deck-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-matte);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
-      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
+      transition: all 0.25s ease;
     }
 
     .deck-card:hover {
       border-color: var(--border-highlight);
-      box-shadow: var(--shadow-elevated);
       transform: translateY(-3px);
+      box-shadow: var(--shadow-matte);
     }
 
     .deck-preview-carousel {
-      background: #06080B;
+      background: #040608;
       padding: 16px;
       border-bottom: 1px solid var(--border-matte);
     }
@@ -399,55 +362,54 @@ html_code = """<!DOCTYPE html>
 
     .slide-thumb {
       aspect-ratio: 16 / 9;
-      background: var(--bg-surface-elevated);
+      background: #0B0E14;
       border: 1px solid var(--border-matte);
-      border-radius: var(--radius-sm);
+      border-radius: 4px;
       overflow: hidden;
       cursor: pointer;
       position: relative;
-      transition: all 0.2s ease;
-    }
-
-    .slide-thumb:hover {
-      border-color: var(--deloitte-green);
-      transform: scale(1.02);
     }
 
     .slide-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .slide-thumb:hover img {
+      transform: scale(1.05);
     }
 
     .deck-body {
       padding: 24px;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      flex: 1;
     }
 
     .deck-tag-row {
       display: flex;
       gap: 8px;
-      margin-bottom: 12px;
       flex-wrap: wrap;
+      margin-bottom: 12px;
     }
 
     .deck-tag {
+      font-size: 0.72rem;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 2px 8px;
+      font-weight: 600;
+      padding: 3px 8px;
       border-radius: 4px;
-      background: var(--bg-surface-elevated);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text-secondary);
       border: 1px solid var(--border-matte);
     }
 
     .deck-tag.primary {
-      background: var(--deloitte-green-subtle);
+      background: var(--accent-green-subtle);
       color: #A3E635;
-      border-color: var(--deloitte-green-border);
+      border-color: rgba(134, 188, 37, 0.3);
     }
 
     .deck-title {
@@ -455,22 +417,25 @@ html_code = """<!DOCTYPE html>
       font-weight: 700;
       color: var(--text-pure);
       margin-bottom: 10px;
+      letter-spacing: -0.01em;
     }
 
     .deck-summary {
       font-size: 0.88rem;
       color: var(--text-secondary);
-      line-height: 1.55;
+      line-height: 1.6;
       margin-bottom: 20px;
-      flex-grow: 1;
+      flex: 1;
     }
 
     .deck-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 16px;
       border-top: 1px solid var(--border-matte);
+      padding-top: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .deck-meta {
@@ -480,8 +445,48 @@ html_code = """<!DOCTYPE html>
     }
 
     /* ==========================================================================
-       INTERFACE & EXPERIENCE DESIGN (AUTHENTIC CASE STUDY GRID)
+       SECTION 2: PRODUCT UI & DOMINATOR SYSTEMS
        ========================================================================== */
+    .live-banner {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-matte);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .live-banner-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      background: #A3E635;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #A3E635;
+    }
+
+    .live-banner-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-bottom: 2px;
+    }
+
+    .live-banner-url {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
     .ui-case-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -493,9 +498,9 @@ html_code = """<!DOCTYPE html>
       border: 1px solid var(--border-matte);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
+      transition: all 0.25s ease;
     }
 
     .ui-case-card:hover {
@@ -508,7 +513,7 @@ html_code = """<!DOCTYPE html>
       position: relative;
       width: 100%;
       height: 220px;
-      background: #06080B;
+      background: #040608;
       overflow: hidden;
       cursor: pointer;
     }
@@ -527,7 +532,7 @@ html_code = """<!DOCTYPE html>
     .ui-case-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(9, 11, 14, 0.45);
+      background: rgba(8, 10, 14, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -541,7 +546,7 @@ html_code = """<!DOCTYPE html>
 
     .ui-expand-pill {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--text-pure);
       background: var(--bg-glass);
       border: 1px solid var(--border-highlight);
@@ -580,8 +585,18 @@ html_code = """<!DOCTYPE html>
       padding-top: 14px;
     }
 
+    .ui-spec-pill {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-matte);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
     /* ==========================================================================
-       MOTION GRAPHICS SECTION (GENUINE HONEST ARCHITECTURE & CLEAN AUDIO)
+       SECTION 3: MOTION GRAPHICS & REELS
        ========================================================================== */
     .motion-grid {
       display: grid;
@@ -592,7 +607,7 @@ html_code = """<!DOCTYPE html>
     .motion-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-matte);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -601,40 +616,40 @@ html_code = """<!DOCTYPE html>
 
     .motion-card:hover {
       border-color: var(--border-highlight);
-      box-shadow: var(--shadow-elevated);
       transform: translateY(-3px);
+      box-shadow: var(--shadow-matte);
     }
 
     .video-viewport {
-      aspect-ratio: 9 / 16;
-      max-height: 540px;
-      background: #000000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
+      background: #000;
+      aspect-ratio: 9 / 16;
+      max-height: 520px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
 
     .video-viewport video {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      background: #050709;
+      object-fit: cover;
     }
 
     .motion-body {
       padding: 22px;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      flex: 1;
     }
 
     .motion-badge {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--deloitte-green);
-      font-weight: 600;
+      color: #A3E635;
       margin-bottom: 8px;
+      display: block;
     }
 
     .motion-title {
@@ -645,51 +660,48 @@ html_code = """<!DOCTYPE html>
     }
 
     .motion-desc {
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
-      line-height: 1.55;
-      margin-bottom: 16px;
-      flex-grow: 1;
+      line-height: 1.6;
+      margin-bottom: 14px;
+      flex: 1;
     }
 
     .motion-stack-box {
-      background: var(--bg-canvas);
-      border: 1px solid var(--border-matte);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      font-size: 0.76rem;
-      color: var(--text-muted);
       font-family: var(--font-mono);
-    }
-
-    .motion-stack-box strong {
-      color: var(--text-secondary);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-matte);
+      padding-top: 12px;
     }
 
     .disclosure-banner {
       background: var(--bg-surface);
-      border: 1px solid var(--border-matte);
-      border-left: 3px solid var(--deloitte-green);
-      border-radius: var(--radius-md);
-      padding: 18px 22px;
-      margin-bottom: 30px;
+      border-left: 3px solid var(--accent-green);
+      border-top: 1px solid var(--border-matte);
+      border-right: 1px solid var(--border-matte);
+      border-bottom: 1px solid var(--border-matte);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin-bottom: 32px;
     }
 
     .disclosure-banner h4 {
-      font-size: 0.92rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-pure);
       margin-bottom: 4px;
+      font-family: var(--font-mono);
     }
 
     .disclosure-banner p {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-secondary);
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     /* ==========================================================================
-       3D ENVIRONMENTS & VIRTUAL SETS (INSTAGRAM PRIMITIVE-BASED CAPTURES)
+       SECTION 4: 3D ENVIRONMENTS & VIRTUAL SETS
        ========================================================================== */
     .spatial-grid {
       display: grid;
@@ -702,9 +714,9 @@ html_code = """<!DOCTYPE html>
       border: 1px solid var(--border-matte);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
+      transition: all 0.25s ease;
     }
 
     .spatial-card:hover {
@@ -714,34 +726,34 @@ html_code = """<!DOCTYPE html>
     }
 
     .spatial-img-box {
-      aspect-ratio: 16 / 10;
-      background: #05070A;
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: #040608;
       overflow: hidden;
       cursor: pointer;
-      position: relative;
     }
 
     .spatial-img-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
-      display: block;
+      transition: transform 0.4s ease;
     }
 
-    .spatial-img-box:hover img {
-      transform: scale(1.03);
+    .spatial-card:hover .spatial-img-box img {
+      transform: scale(1.04);
     }
 
     .spatial-body {
-      padding: 18px 20px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      flex: 1;
     }
 
     /* ==========================================================================
-       PRODUCTION RECORDS & CREDENTIALS (HUMAN, CLEAN, UNIQUE, AESTHETIC)
+       SECTION 5: CREDENTIALS & PRODUCTION DOSSIER
        ========================================================================== */
     .dossier-grid {
       display: grid;
@@ -753,8 +765,8 @@ html_code = """<!DOCTYPE html>
     .dossier-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-matte);
-      border-radius: var(--radius-lg);
-      padding: 26px 24px;
+      border-radius: var(--radius-md);
+      padding: 24px;
       display: flex;
       flex-direction: column;
       transition: all 0.25s ease;
@@ -762,69 +774,56 @@ html_code = """<!DOCTYPE html>
 
     .dossier-card:hover {
       border-color: var(--border-highlight);
-      box-shadow: var(--shadow-matte);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .dossier-card-tag {
+      font-size: 0.72rem;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      color: var(--accent-green);
       font-weight: 600;
-      color: var(--deloitte-green);
-      letter-spacing: 0.04em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
     }
 
     .dossier-card-title {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-pure);
-      margin-bottom: 12px;
-      line-height: 1.3;
+      margin-bottom: 10px;
     }
 
     .dossier-card-desc {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
       line-height: 1.6;
-      margin-bottom: 20px;
-      flex-grow: 1;
+      margin-bottom: 18px;
+      flex: 1;
     }
 
     .dossier-pills-row {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: auto;
+      border-top: 1px solid var(--border-matte);
+      padding-top: 14px;
     }
 
-    .dossier-pill {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      background: var(--bg-canvas);
-      border: 1px solid var(--border-matte);
-      padding: 3px 8px;
-      border-radius: 4px;
-      color: var(--text-muted);
-    }
-
-    /* Dual Education & Availability Box */
     .dual-credentials-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
     .credential-box {
       background: var(--bg-surface);
       border: 1px solid var(--border-matte);
-      border-radius: var(--radius-lg);
-      padding: 26px;
+      border-radius: var(--radius-md);
+      padding: 24px;
     }
 
     .credential-box-title {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--text-pure);
       margin-bottom: 18px;
@@ -834,14 +833,14 @@ html_code = """<!DOCTYPE html>
     }
 
     .edu-item {
-      padding-bottom: 16px;
       margin-bottom: 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-matte);
     }
 
     .edu-item:last-child {
-      padding-bottom: 0;
       margin-bottom: 0;
+      padding-bottom: 0;
       border-bottom: none;
     }
 
@@ -849,30 +848,29 @@ html_code = """<!DOCTYPE html>
       font-size: 0.95rem;
       font-weight: 700;
       color: var(--text-pure);
-      margin-bottom: 3px;
-    }
-
-    .edu-inst {
-      font-size: 0.84rem;
-      color: var(--deloitte-green);
-      font-family: var(--font-mono);
       margin-bottom: 4px;
     }
 
-    .edu-note {
-      font-size: 0.8rem;
+    .edu-inst {
+      font-size: 0.82rem;
       color: var(--text-muted);
+      margin-bottom: 6px;
+      font-family: var(--font-mono);
+    }
+
+    .edu-note {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
       line-height: 1.5;
     }
 
-    /* Availability items */
     .avail-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 0.84rem;
       padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.86rem;
+      border-bottom: 1px solid var(--border-matte);
     }
 
     .avail-row:last-child {
@@ -881,43 +879,43 @@ html_code = """<!DOCTYPE html>
     }
 
     .avail-label {
-      color: var(--text-secondary);
+      color: var(--text-muted);
     }
 
     .avail-val {
-      font-family: var(--font-mono);
       font-weight: 600;
       color: var(--text-pure);
+      font-family: var(--font-mono);
     }
 
     /* ==========================================================================
-       MODAL & LIGHTBOX
+       LIGHTBOX MODAL
        ========================================================================== */
     .modal-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(5, 7, 10, 0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 2000;
-      display: none;
+      inset: 0;
+      background: rgba(4, 6, 9, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
     }
 
     .modal-overlay.active {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
     }
 
     .modal-container {
       background: var(--bg-surface);
-      border: 1px solid var(--border-highlight);
+      border: 1px solid var(--border-matte);
       border-radius: var(--radius-lg);
-      max-width: 1000px;
+      max-width: 1080px;
       width: 100%;
       max-height: 90vh;
       display: flex;
@@ -927,7 +925,7 @@ html_code = """<!DOCTYPE html>
     }
 
     .modal-header {
-      padding: 16px 22px;
+      padding: 16px 20px;
       border-bottom: 1px solid var(--border-matte);
       display: flex;
       justify-content: space-between;
@@ -944,11 +942,10 @@ html_code = """<!DOCTYPE html>
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       cursor: pointer;
       line-height: 1;
       padding: 4px;
-      transition: color 0.15s ease;
     }
 
     .modal-close:hover {
@@ -956,24 +953,27 @@ html_code = """<!DOCTYPE html>
     }
 
     .modal-body {
-      padding: 22px;
+      padding: 20px;
       overflow-y: auto;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
     }
 
     .modal-body img {
-      max-width: 100%;
-      max-height: 70vh;
+      max-height: 68vh;
+      width: auto;
+      object-fit: contain;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-matte);
-      object-fit: contain;
     }
 
     .modal-desc {
-      margin-top: 14px;
       font-size: 0.88rem;
       color: var(--text-secondary);
-      text-align: left;
+      text-align: center;
+      max-width: 800px;
       line-height: 1.6;
     }
 
@@ -983,7 +983,7 @@ html_code = """<!DOCTYPE html>
     .site-footer {
       padding: 48px 0;
       border-top: 1px solid var(--border-matte);
-      background: var(--bg-surface);
+      background: #05070A;
     }
 
     .footer-inner {
@@ -992,46 +992,40 @@ html_code = """<!DOCTYPE html>
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
-    }
-
-    .footer-info {
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
     }
 
     .footer-links {
       display: flex;
-      gap: 18px;
+      gap: 20px;
     }
 
     /* Responsive */
     @media (max-width: 1024px) {
-      .deck-grid, .motion-grid, .dual-credentials-row {
+      .deck-grid, .motion-grid {
         grid-template-columns: 1fr;
       }
-      .spatial-grid, .dossier-grid, .ui-case-grid {
+      .spatial-grid, .dossier-grid, .ui-case-grid, .dual-credentials-row {
         grid-template-columns: repeat(2, 1fr);
       }
       .hero-stats-row {
         grid-template-columns: repeat(2, 1fr);
-      }
-      .hud-grid {
-        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 640px) {
-      .spatial-grid, .dossier-grid, .ui-case-grid {
+      .spatial-grid, .dossier-grid, .ui-case-grid, .dual-credentials-row {
         grid-template-columns: 1fr;
       }
       .hero-stats-row {
         grid-template-columns: 1fr;
       }
-      .nav-menu {
+      .nav-links {
         display: none;
       }
-      .hero-headline {
-        font-size: 2.1rem;
+      .hero-name {
+        font-size: 2.8rem;
       }
     }
   </style>
@@ -1039,70 +1033,75 @@ html_code = """<!DOCTYPE html>
 <body>
 
   <!-- NAVIGATION -->
-  <nav class="nav-bar">
+  <nav class="site-nav">
     <div class="container nav-inner">
-      <a href="#" class="nav-brand">
-        <span>Benny Joel Lakamana</span>
-        <span class="nav-brand-title">Visual Designer & Technical Director</span>
+      <a href="#" class="brand-logo">
+        <span class="brand-mark"></span>
+        <span>Benny Joel</span>
       </a>
 
-      <ul class="nav-menu">
+      <ul class="nav-links">
         <li><a href="#pitch-decks" class="nav-link">Pitch Decks</a></li>
-        <li><a href="#interface-design" class="nav-link">UI Architecture</a></li>
-        <li><a href="#motion-graphics" class="nav-link">Motion Systems</a></li>
-        <li><a href="#virtual-sets" class="nav-link">3D & Virtual Sets</a></li>
-        <li><a href="#credentials" class="nav-link">Production Dossier</a></li>
+        <li><a href="#product-ui" class="nav-link">Product UI</a></li>
+        <li><a href="#3d-sets" class="nav-link">3D Sets</a></li>
+        <li><a href="#motion" class="nav-link">Motion</a></li>
+        <li><a href="#credentials" class="nav-link">Credentials</a></li>
       </ul>
 
-      <div class="nav-status-pill">
-        <span class="ping-circle"></span>
-        <span>Available for Immediate Placement • Hyderabad, India</span>
-      </div>
+      <a href="https://dominator-ops.pages.dev" target="_blank" class="nav-btn">
+        <span>Dominator Systems ↗</span>
+      </a>
     </div>
   </nav>
 
   <!-- HERO SECTION -->
   <section class="hero-section">
     <div class="container">
-      <span class="hero-eyebrow">Visual Design • Real-Time 3D Architecture • Programmatic Motion</span>
-      <h1 class="hero-headline">
-        Executive Visual Design, Feature Film Pitch Decks & <span>Motion Production Systems</span>
-      </h1>
-      <p class="hero-summary">
-        Synthesizing high-stakes visual communication, 140+ feature film VFX shot coordination, real-time Unreal Engine 5 virtual set extensions, and code-driven 60fps kinetic motion graphics. Engineered for enterprise precision and immediate rotational shift deployment.
+      <h1 class="hero-name">Benny Joel</h1>
+
+      <div class="hero-role">
+        <span>Visual Designer</span>
+        <span class="hero-role-dot">•</span>
+        <span>3D Technical Artist</span>
+        <span class="hero-role-dot">•</span>
+        <span>Motion Systems</span>
+      </div>
+
+      <p class="hero-bio">
+        Work across feature film on-set VFX coordination, real-time Unreal Engine 5 virtual set extensions, high-conversion product interfaces, and code-driven motion systems. Based in Hyderabad, India.
       </p>
 
       <div class="hero-actions">
         <a href="assets/docs/Benny_Joel_Lakamana_Resume_Deloitte.pdf" target="_blank" class="btn btn-primary">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          <span>Download Executive Resume (PDF)</span>
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Download Resume (PDF)</span>
         </a>
-        <a href="assets/docs/Benny_Joel_Lakamana_Cover_Letter_Deloitte.pdf" target="_blank" class="btn btn-matte">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          <span>View Cover Letter (PDF)</span>
+        <a href="https://dominator-ops.pages.dev" target="_blank" class="btn btn-green">
+          <span style="display:inline-block; width:6px; height:6px; background:#A3E635; border-radius:50%;"></span>
+          <span>View Dominator Systems Live ↗</span>
         </a>
-        <a href="https://github.com/bennyjoel/portfolio" target="_blank" class="btn btn-emerald">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          <span>Verified GitHub Repository</span>
+        <a href="https://github.com/bennyjoel/portfolio" target="_blank" class="btn btn-matte">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>GitHub</span>
         </a>
       </div>
 
       <div class="hero-stats-row">
         <div class="hero-stat-card">
           <div class="hero-stat-num" style="color: #A3E635;">140+ Shots</div>
-          <div class="hero-stat-label">VFX Coordinated • Feature Film</div>
+          <div class="hero-stat-label">Feature Film VFX • Takshaka</div>
         </div>
         <div class="hero-stat-card">
-          <div class="hero-stat-num" style="color: var(--accent-cyan);">Technical Decks</div>
-          <div class="hero-stat-label">Theatrical & 3D Cinematic Specifications</div>
+          <div class="hero-stat-num" style="color: var(--accent-cyan);">Unreal Engine 5</div>
+          <div class="hero-stat-label">Real-Time Virtual Sets & Previs</div>
         </div>
         <div class="hero-stat-card">
-          <div class="hero-stat-num" style="color: #FFFFFF;">Sub-Pixel</div>
-          <div class="hero-stat-label">0.34px Syntheyes 3D Solves</div>
+          <div class="hero-stat-num" style="color: #FFFFFF;">Dominator Systems</div>
+          <div class="hero-stat-label">Storefront UI & Design System</div>
         </div>
         <div class="hero-stat-card">
-          <div class="hero-stat-num" style="color: var(--accent-purple);">4-Year BFA</div>
-          <div class="hero-stat-label">Fine Arts in Animation • JNAFAU</div>
+          <div class="hero-stat-num" style="color: #CBD5E1;">BFA in Animation</div>
+          <div class="hero-stat-label">4-Year Degree • JNAFAU</div>
         </div>
       </div>
     </div>
@@ -1112,10 +1111,10 @@ html_code = """<!DOCTYPE html>
   <section class="section" id="pitch-decks">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Theatrical & Animation Decks</span>
-        <h2 class="section-title">Executive Technical Pitch Decks</h2>
+        <span class="section-eyebrow">01 / Technical Presentations</span>
+        <h2 class="section-title">Pitch Decks & Production Specifications</h2>
         <p class="section-desc">
-          High-impact executive slide decks presenting complex cinematic workflows, matchmoving mathematics, Unreal Engine 5 virtual production pipelines, and character world-building.
+          Technical presentation decks authored for theatrical feature film VFX supervisor defense and animated short film virtual production in Unreal Engine 5.
         </p>
       </div>
 
@@ -1137,13 +1136,12 @@ html_code = """<!DOCTYPE html>
           </div>
           <div class="deck-body">
             <div class="deck-tag-row">
-              <span class="deck-tag primary">FEATURE FILM DEFENSE DECK</span>
-              <span class="deck-tag">THEATRICAL VFX</span>
-              <span class="deck-tag">ON-SET METRIC PROOF</span>
+              <span class="deck-tag primary">THEATRICAL VFX</span>
+              <span class="deck-tag">ON-SET DATA METRICS</span>
             </div>
-            <h3 class="deck-title">Takshaka: Feature Film Technical Defense Deck</h3>
+            <h3 class="deck-title">Takshaka: Technical Defense Deck</h3>
             <p class="deck-summary">
-              Comprehensive technical presentation defending on-set camera data logging, 3D Syntheyes camera recovery, Unreal Engine 5 virtual set extension, and high-fidelity live plate reconstruction across 140+ feature film VFX shots.
+              On-set camera data logging, 3D Syntheyes camera recovery, Unreal Engine 5 virtual set extensions, and high-fidelity plate reconstruction across 140+ feature film VFX shots.
             </p>
             <div class="deck-footer">
               <span class="deck-meta">1920x1080 MASTER PDF</span>
@@ -1172,12 +1170,11 @@ html_code = """<!DOCTYPE html>
           <div class="deck-body">
             <div class="deck-tag-row">
               <span class="deck-tag primary">3D ANIMATED SHORT FILM</span>
-              <span class="deck-tag">3D CINEMATIC</span>
               <span class="deck-tag">UE5 REAL-TIME PREVIS</span>
             </div>
             <h3 class="deck-title">Crucible: 3D Cinematic Pitch Deck</h3>
             <p class="deck-summary">
-              Comprehensive master cinematic pitch deck for an animated short film. Details character world-building, high-stress facial silhouette design, Unreal Engine 5 Lumen lighting setup, and real-time virtual camera previs.
+              Cinematic pitch deck for an animated short film. Details character world-building, high-stress facial silhouette design, Unreal Engine 5 Lumen lighting setups, and real-time virtual camera previs.
             </p>
             <div class="deck-footer">
               <span class="deck-meta">1920x1080 MASTER PDF</span>
@@ -1191,15 +1188,29 @@ html_code = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- SECTION 2: INTERFACE & EXPERIENCE DESIGN (AUTHENTIC CASE STUDIES) -->
-  <section class="section" id="interface-design">
+  <!-- SECTION 2: PRODUCT UI & DOMINATOR SYSTEMS -->
+  <section class="section" id="product-ui">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Interface & Experience Design</span>
-        <h2 class="section-title">Design System Architecture & Digital Product Interfaces</h2>
+        <span class="section-eyebrow">02 / Interface & Systems</span>
+        <h2 class="section-title">Dominator Systems: Product UI & Storefront Architecture</h2>
         <p class="section-desc">
-          Scalable, accessible digital products and enterprise design systems engineered with strict 8px layout rhythm, WCAG AAA contrast compliance, and high-conversion visual hierarchy.
+          Production digital product interfaces, responsive mobile viewports, and enterprise dashboard architecture engineered with strict 8px grid balance, WCAG AAA accessibility, and dark luxury finish.
         </p>
+      </div>
+
+      <!-- LIVE WEBSITE LAUNCH BANNER -->
+      <div class="live-banner">
+        <div class="live-banner-info">
+          <span class="live-dot"></span>
+          <div>
+            <div class="live-banner-title">Dominator Systems Production Storefront</div>
+            <div class="live-banner-url">https://dominator-ops.pages.dev</div>
+          </div>
+        </div>
+        <a href="https://dominator-ops.pages.dev" target="_blank" class="btn btn-green">
+          <span>Launch Live Website ↗</span>
+        </a>
       </div>
 
       <div class="ui-case-grid">
@@ -1208,7 +1219,7 @@ html_code = """<!DOCTYPE html>
           <div class="ui-case-img-box" onclick="openModal('assets/images/ui_dominator_desktop.png', 'Dominator: Desktop Storefront & E-Commerce Interface', 'High-conversion Dark Luxury storefront architecture featuring 8px layout rhythm, WCAG AAA accessible typography, clear CTA visual hierarchy, and frictionless checkout flow.')">
             <img src="assets/images/ui_dominator_desktop.png" alt="Dominator Desktop UI">
             <div class="ui-case-overlay">
-              <span class="ui-expand-pill">Inspect Interface ↗</span>
+              <span class="ui-expand-pill">Inspect Preview ↗</span>
             </div>
           </div>
           <div class="ui-case-body">
@@ -1216,15 +1227,15 @@ html_code = """<!DOCTYPE html>
               <span class="deck-tag primary">E-COMMERCE ARCHITECTURE</span>
               <span class="deck-tag">DESKTOP UI (1280x800)</span>
             </div>
-            <h3 class="ui-case-title">Dominator: High-Conversion Desktop Storefront</h3>
+            <h3 class="ui-case-title">Dominator: Desktop Storefront</h3>
             <p class="ui-case-desc">
               Full desktop storefront interface engineered for dark luxury visual appeal, high data density, and clear conversion paths. Implements strict typography scales, tactile button elevations, and frictionless checkout flows.
             </p>
             <div class="ui-case-specs">
-              <span class="dossier-pill">8px Layout Grid</span>
-              <span class="dossier-pill">WCAG AAA Contrast</span>
-              <span class="dossier-pill">Conversion UX</span>
-              <span class="dossier-pill">Dark Luxury Theme</span>
+              <span class="ui-spec-pill">8px Layout Grid</span>
+              <span class="ui-spec-pill">WCAG AAA Contrast</span>
+              <span class="ui-spec-pill">Conversion UX</span>
+              <span class="ui-spec-pill">Dark Luxury Theme</span>
             </div>
           </div>
         </div>
@@ -1234,7 +1245,7 @@ html_code = """<!DOCTYPE html>
           <div class="ui-case-img-box" onclick="openModal('assets/images/ui_dominator_mobile.png', 'Dominator: Mobile Responsive Interface & Thumb-Zone Ergonomics', 'Ergonomic mobile viewport layout optimized for single-handed thumb interaction, fluid typography scaling, tactile touch targets, and sticky action controls.')">
             <img src="assets/images/ui_dominator_mobile.png" alt="Dominator Mobile UI" style="object-position: top center;">
             <div class="ui-case-overlay">
-              <span class="ui-expand-pill">Inspect Interface ↗</span>
+              <span class="ui-expand-pill">Inspect Preview ↗</span>
             </div>
           </div>
           <div class="ui-case-body">
@@ -1242,15 +1253,15 @@ html_code = """<!DOCTYPE html>
               <span class="deck-tag primary">MOBILE EXPERIENCE</span>
               <span class="deck-tag">VIEWPORT (390x844)</span>
             </div>
-            <h3 class="ui-case-title">Dominator: Mobile Responsive UX & Thumb Ergonomics</h3>
+            <h3 class="ui-case-title">Dominator: Mobile Responsive UX</h3>
             <p class="ui-case-desc">
               Mobile viewport adaptation centered on ergonomic thumb-zone reachability, sticky high-contrast CTA anchors, fluid type scaling, and minimum 48px touch targets to prevent accidental taps.
             </p>
             <div class="ui-case-specs">
-              <span class="dossier-pill">Thumb-Zone Mapping</span>
-              <span class="dossier-pill">Touch Targets ≥48px</span>
-              <span class="dossier-pill">Fluid Typography</span>
-              <span class="dossier-pill">Sticky CTA Anchor</span>
+              <span class="ui-spec-pill">Thumb-Zone Mapping</span>
+              <span class="ui-spec-pill">Touch Targets ≥48px</span>
+              <span class="ui-spec-pill">Fluid Typography</span>
+              <span class="ui-spec-pill">Sticky CTA Anchor</span>
             </div>
           </div>
         </div>
@@ -1260,7 +1271,7 @@ html_code = """<!DOCTYPE html>
           <div class="ui-case-img-box" onclick="openModal('assets/images/ui_enterprise_dashboard.png', 'Enterprise Operations: Studio Pipeline & Asset Management Dashboard', 'High-density enterprise analytics dashboard organizing multi-agent operational telemetry, real-time render nodes, and asset ingestion status.')">
             <img src="assets/images/ui_enterprise_dashboard.png" alt="Enterprise Operations Dashboard">
             <div class="ui-case-overlay">
-              <span class="ui-expand-pill">Inspect Interface ↗</span>
+              <span class="ui-expand-pill">Inspect Preview ↗</span>
             </div>
           </div>
           <div class="ui-case-body">
@@ -1273,10 +1284,10 @@ html_code = """<!DOCTYPE html>
               High-density enterprise control interface for tracking studio production throughput, real-time render node dispatch, and asset ingestion statuses with zero visual clutter.
             </p>
             <div class="ui-case-specs">
-              <span class="dossier-pill">High Data Density</span>
-              <span class="dossier-pill">Status Badging</span>
-              <span class="dossier-pill">Design Tokens</span>
-              <span class="dossier-pill">Studio Workstation</span>
+              <span class="ui-spec-pill">High Data Density</span>
+              <span class="ui-spec-pill">Status Badging</span>
+              <span class="ui-spec-pill">Design Tokens</span>
+              <span class="ui-spec-pill">Studio Workstation</span>
             </div>
           </div>
         </div>
@@ -1284,117 +1295,14 @@ html_code = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- SECTION 3: MOTION GRAPHICS (HONEST, ACCURATE ARCHITECTURE & CLEAN AUDIO) -->
-  <section class="section" id="motion-graphics">
+  <!-- SECTION 3: 3D ENVIRONMENTS & VIRTUAL SETS -->
+  <section class="section" id="3d-sets">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Programmatic Motion & Creative Tech</span>
-        <h2 class="section-title">Broadcast Motion Graphics & Kinetic Typography</h2>
+        <span class="section-eyebrow">03 / Real-Time 3D & Tracking</span>
+        <h2 class="section-title">3D Environments & Camera Tracking</h2>
         <p class="section-desc">
-          High-velocity typography, dark luxury UI motion, and real-time audio-reactive rendering engineered programmatically at 1080x1920 60fps.
-        </p>
-      </div>
-
-      <!-- Honest Tooling Disclosure -->
-      <div class="disclosure-banner">
-        <h4>Technical Production Pipeline & Tooling Disclosure</h4>
-        <p>
-          These motion sequences were engineered using <strong>Google Antigravity</strong> (agentic code development) coupled with <strong>reverse-engineered clean-room creative engines (EffectCraft & headless rendering pipelines)</strong> alongside <strong>Adobe After Effects</strong>. By translating typography hierarchies, spring easing mathematics, and design tokens directly into code-driven composition graphs, we eliminated manual keyframing and rendered broadcast-grade 1080x1920 60fps video at machine speed.
-        </p>
-      </div>
-
-      <div class="motion-grid">
-        <!-- REEL 1: APEX MOTION (CLEAN SINGLE-VOICE AUDIO) -->
-        <div class="motion-card">
-          <div class="video-viewport">
-            <video controls poster="assets/images/thumb_apex_motion.jpg" preload="metadata">
-              <source src="assets/videos/apex_motion_reel.mp4" type="video/mp4">
-              Your browser does not support HTML5 video.
-            </video>
-          </div>
-          <div class="motion-body">
-            <span class="motion-badge">Apex Grand Motion System • Clean Broadcast Master</span>
-            <h3 class="motion-title">Apex Grand Motion System (SYS-035)</h3>
-            <p class="motion-desc">
-              High-contrast luxury dark UI motion with expanding radial rings, fluid typographic reveals, and sub-millisecond code execution telemetry. Mastered audio with clean Christopher neural voiceover and EBU R128 loudness normalization.
-            </p>
-            <div class="motion-stack-box">
-              <strong>Pipeline:</strong> Antigravity Agentic Code • Headless EffectCraft Engine • 1080x1920 60fps
-            </div>
-          </div>
-        </div>
-
-        <!-- REEL 2: KINETIC TYPOGRAPHY -->
-        <div class="motion-card">
-          <div class="video-viewport">
-            <video controls poster="assets/images/thumb_kinetic_typography.jpg" preload="metadata">
-              <source src="assets/videos/kinetic_typography_reel.mp4" type="video/mp4">
-              Your browser does not support HTML5 video.
-            </video>
-          </div>
-          <div class="motion-body">
-            <span class="motion-badge">High-Velocity Typography • Spring Easing</span>
-            <h3 class="motion-title">Kinetic Typographic Identity System</h3>
-            <p class="motion-desc">
-              Dynamic kinetic typography highlighting typographic scale, negative tracking, and spring momentum easing for broadcast and executive social distribution.
-            </p>
-            <div class="motion-stack-box">
-              <strong>Pipeline:</strong> Reverse-Engineered EffectCraft Core • Spring Physics • 1080x1920 60fps
-            </div>
-          </div>
-        </div>
-
-        <!-- REEL 3: TITANIUM METERING -->
-        <div class="motion-card">
-          <div class="video-viewport">
-            <video controls poster="assets/images/thumb_titanium_metering.jpg" preload="metadata">
-              <source src="assets/videos/titanium_metering_reel.mp4" type="video/mp4">
-              Your browser does not support HTML5 video.
-            </video>
-          </div>
-          <div class="motion-body">
-            <span class="motion-badge">Telemetry HUD • Dynamic Data Streams</span>
-            <h3 class="motion-title">Titanium Metering & Telemetry HUD</h3>
-            <p class="motion-desc">
-              Precision technical data visualization showcasing live counters, audio waveform reactive meters, and real-time pipeline status cards in a dark titanium aesthetic.
-            </p>
-            <div class="motion-stack-box">
-              <strong>Pipeline:</strong> Procedural Math Shaders • Headless Clean-Room Render Engine
-            </div>
-          </div>
-        </div>
-
-        <!-- REEL 4: FLUID SWISS -->
-        <div class="motion-card">
-          <div class="video-viewport">
-            <video controls poster="assets/images/thumb_fluid_swiss.jpg" preload="metadata">
-              <source src="assets/videos/fluid_swiss_reel.mp4" type="video/mp4">
-              Your browser does not support HTML5 video.
-            </video>
-          </div>
-          <div class="motion-body">
-            <span class="motion-badge">Swiss Grotesque • Editorial Layout</span>
-            <h3 class="motion-title">Swiss Monolith Editorial Motion</h3>
-            <p class="motion-desc">
-              Editorial-style motion graphics implementing Swiss International Typographic Style principles: strict mathematical grid alignment, high-contrast black/white geometry, and fluid mask wipe transitions.
-            </p>
-            <div class="motion-stack-box">
-              <strong>Pipeline:</strong> Antigravity Code Orchestrator • Adobe After Effects Comp Graph
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 4: 3D ENVIRONMENTS & VIRTUAL SETS (INSTAGRAM PRIMITIVE-BASED RENDERS) -->
-  <section class="section" id="virtual-sets">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">Real-Time 3D & Virtual Production</span>
-        <h2 class="section-title">3D Environments, Virtual Sets & Camera Tracking</h2>
-        <p class="section-desc">
-          High-resolution 3D environments, virtual background plates, and theatrical camera tracking authored in Unreal Engine 5, Autodesk Maya, and Syntheyes. High-resolution captures from the primitive-based project archives.
+          Real-time 3D environments, virtual background plates, and theatrical camera tracking authored in Unreal Engine 5, Autodesk Maya, and Syntheyes. High-resolution captures from project archives.
         </p>
       </div>
 
@@ -1420,7 +1328,7 @@ html_code = """<!DOCTYPE html>
           </div>
           <div class="spatial-body">
             <span class="motion-badge">Unreal Engine 5 • Daylight Illumination</span>
-            <h3 class="motion-title">Grand Temple Colonnade (Daylight)</h3>
+            <h3 class="motion-title">Grand Temple Colonnade</h3>
             <p class="motion-desc">
               Monumental architectural environment built with Nanite geometry, real-time sun illumination, and calibrated camera focal depth.
             </p>
@@ -1486,14 +1394,117 @@ html_code = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- SECTION 5: PRODUCTION DOSSIER & CREDENTIALS (HUMAN, CLEAN, UNIQUE, AESTHETIC) -->
+  <!-- SECTION 4: MOTION GRAPHICS -->
+  <section class="section" id="motion">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">04 / Kinetic Motion</span>
+        <h2 class="section-title">Broadcast Motion Graphics & Kinetic Typography</h2>
+        <p class="section-desc">
+          Dynamic typography, dark luxury UI motion, and real-time audio-reactive rendering engineered programmatically at 1080x1920 60fps.
+        </p>
+      </div>
+
+      <!-- Pipeline Disclosure -->
+      <div class="disclosure-banner">
+        <h4>Production Pipeline & Tooling Disclosure</h4>
+        <p>
+          Engineered using <strong>Google Antigravity</strong> and <strong>clean-room creative engines (EffectCraft)</strong> alongside <strong>Adobe After Effects</strong>. Code-driven layout graphs eliminate manual keyframing and render broadcast-grade 1080x1920 60fps video at machine speed.
+        </p>
+      </div>
+
+      <div class="motion-grid">
+        <!-- REEL 1: APEX MOTION (CLEAN SINGLE-VOICE AUDIO) -->
+        <div class="motion-card">
+          <div class="video-viewport">
+            <video controls poster="assets/images/thumb_apex_motion.jpg" preload="metadata">
+              <source src="assets/videos/apex_motion_reel.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
+          <div class="motion-body">
+            <span class="motion-badge">Apex Grand Motion System • Clean Broadcast Master</span>
+            <h3 class="motion-title">Apex Grand Motion System</h3>
+            <p class="motion-desc">
+              High-contrast luxury dark UI motion with expanding radial rings, fluid typographic reveals, and clean neural voiceover mastering.
+            </p>
+            <div class="motion-stack-box">
+              <strong>Pipeline:</strong> Antigravity Agentic Code • Headless EffectCraft Engine • 1080x1920 60fps
+            </div>
+          </div>
+        </div>
+
+        <!-- REEL 2: KINETIC TYPOGRAPHY -->
+        <div class="motion-card">
+          <div class="video-viewport">
+            <video controls poster="assets/images/thumb_kinetic_typography.jpg" preload="metadata">
+              <source src="assets/videos/kinetic_typography_reel.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
+          <div class="motion-body">
+            <span class="motion-badge">High-Velocity Typography • Spring Easing</span>
+            <h3 class="motion-title">Kinetic Typographic Identity System</h3>
+            <p class="motion-desc">
+              Dynamic kinetic typography highlighting typographic scale, negative tracking, and spring momentum easing for broadcast distribution.
+            </p>
+            <div class="motion-stack-box">
+              <strong>Pipeline:</strong> Reverse-Engineered EffectCraft Core • Spring Physics • 1080x1920 60fps
+            </div>
+          </div>
+        </div>
+
+        <!-- REEL 3: TITANIUM METERING -->
+        <div class="motion-card">
+          <div class="video-viewport">
+            <video controls poster="assets/images/thumb_titanium_metering.jpg" preload="metadata">
+              <source src="assets/videos/titanium_metering_reel.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
+          <div class="motion-body">
+            <span class="motion-badge">Telemetry HUD • Dynamic Data Streams</span>
+            <h3 class="motion-title">Titanium Metering & Telemetry HUD</h3>
+            <p class="motion-desc">
+              Precision technical data visualization showcasing live counters, audio waveform reactive meters, and real-time status cards.
+            </p>
+            <div class="motion-stack-box">
+              <strong>Pipeline:</strong> Procedural Math Shaders • Headless Clean-Room Render Engine
+            </div>
+          </div>
+        </div>
+
+        <!-- REEL 4: FLUID SWISS -->
+        <div class="motion-card">
+          <div class="video-viewport">
+            <video controls poster="assets/images/thumb_fluid_swiss.jpg" preload="metadata">
+              <source src="assets/videos/fluid_swiss_reel.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
+          <div class="motion-body">
+            <span class="motion-badge">Swiss Grotesque • Editorial Layout</span>
+            <h3 class="motion-title">Swiss Monolith Editorial Motion</h3>
+            <p class="motion-desc">
+              Editorial motion graphics implementing Swiss Style principles: strict grid alignment, high-contrast geometry, and fluid wipe transitions.
+            </p>
+            <div class="motion-stack-box">
+              <strong>Pipeline:</strong> Antigravity Code Orchestrator • Adobe After Effects Comp Graph
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: CREDENTIALS & EXPERIENCE -->
   <section class="section" id="credentials">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Verified Track Record</span>
-        <h2 class="section-title">Production Records & Enterprise Credentials</h2>
+        <span class="section-eyebrow">05 / Background & Qualifications</span>
+        <h2 class="section-title">Production Records & Credentials</h2>
         <p class="section-desc">
-          Concrete studio production deliveries across feature film VFX pipelines, real-time 3D previs, and scalable design system engineering.
+          Studio production deliveries across feature film VFX pipelines, real-time 3D previs, and scalable design system engineering.
         </p>
       </div>
 
@@ -1507,10 +1518,10 @@ html_code = """<!DOCTYPE html>
             Directed on-set data acquisition across principal photography: Macbeth color chart registration, 360° HDRI lighting brackets, and Arri/RED raw camera metadata logging. Managed 140+ VFX shots through Syntheyes 3D matchmoving, wire removal, and final supervisor review.
           </p>
           <div class="dossier-pills-row">
-            <span class="dossier-pill">140+ Shots</span>
-            <span class="dossier-pill">Syntheyes 3D</span>
-            <span class="dossier-pill">Macbeth HDRI</span>
-            <span class="dossier-pill">Arri/RED Conform</span>
+            <span class="ui-spec-pill">140+ Shots</span>
+            <span class="ui-spec-pill">Syntheyes 3D</span>
+            <span class="ui-spec-pill">Macbeth HDRI</span>
+            <span class="ui-spec-pill">Arri/RED Conform</span>
           </div>
         </div>
 
@@ -1522,25 +1533,25 @@ html_code = """<!DOCTYPE html>
             Authored complete technical defense pitch deck for Unreal Engine 5 animated short film production. Engineered real-time virtual camera rigs, Nanite mesh optimization, and Lumen dynamic lighting passes for immediate executive previsualization.
           </p>
           <div class="dossier-pills-row">
-            <span class="dossier-pill">Technical Pitch Deck</span>
-            <span class="dossier-pill">Unreal Engine 5</span>
-            <span class="dossier-pill">Lumen Lighting</span>
-            <span class="dossier-pill">Nanite Geometry</span>
+            <span class="ui-spec-pill">Technical Pitch Deck</span>
+            <span class="ui-spec-pill">Unreal Engine 5</span>
+            <span class="ui-spec-pill">Lumen Lighting</span>
+            <span class="ui-spec-pill">Nanite Geometry</span>
           </div>
         </div>
 
-        <!-- CARD 3: DESIGN SYSTEMS -->
+        <!-- CARD 3: DOMINATOR SYSTEMS -->
         <div class="dossier-card">
-          <span class="dossier-card-tag">INTERFACE ARCHITECTURE • MOTION SYSTEMS</span>
-          <h3 class="dossier-card-title">Enterprise Design Systems & Programmatic Motion</h3>
+          <span class="dossier-card-tag">PRODUCT ARCHITECTURE • DESIGN SYSTEMS</span>
+          <h3 class="dossier-card-title">Dominator Systems: Digital Product UI</h3>
           <p class="dossier-card-desc">
-            Architected scalable digital interfaces with strict typographic balance, 8px layout grids, and WCAG AAA accessibility. Pioneered code-driven motion graphics combining agentic code, reverse-engineered clean-room engines, and After Effects for 60fps renders.
+            Architected scalable digital interfaces with strict typographic balance, 8px layout grids, and WCAG AAA accessibility. Built high-conversion storefronts and programmatic motion graphics rendering at 60fps.
           </p>
           <div class="dossier-pills-row">
-            <span class="dossier-pill">Design Tokens</span>
-            <span class="dossier-pill">Adobe Photoshop</span>
-            <span class="dossier-pill">After Effects</span>
-            <span class="dossier-pill">60fps Motion</span>
+            <span class="ui-spec-pill">Design Tokens</span>
+            <span class="ui-spec-pill">Adobe Photoshop</span>
+            <span class="ui-spec-pill">After Effects</span>
+            <span class="ui-spec-pill">60fps Motion</span>
           </div>
         </div>
       </div>
@@ -1550,7 +1561,7 @@ html_code = """<!DOCTYPE html>
         <!-- Academic Qualifications -->
         <div class="credential-box">
           <h4 class="credential-box-title">
-            <svg width="18" height="18" fill="none" stroke="var(--deloitte-green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            <svg width="18" height="18" fill="none" stroke="var(--accent-green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
             <span>Academic Qualifications</span>
           </h4>
 
@@ -1566,7 +1577,7 @@ html_code = """<!DOCTYPE html>
             <div class="edu-deg">Advanced Diploma in 3D Animation & VFX</div>
             <div class="edu-inst">Arena Animation • Hyderabad, India</div>
             <div class="edu-note">
-              Intensive studio training in 3D pipeline asset authoring, dynamic lighting setups, and digital compositing.
+              Studio training in 3D pipeline asset authoring, dynamic lighting setups, and digital compositing.
             </div>
           </div>
         </div>
@@ -1579,12 +1590,12 @@ html_code = """<!DOCTYPE html>
           </h4>
 
           <div class="avail-row">
-            <span class="avail-label">Current Location:</span>
+            <span class="avail-label">Location:</span>
             <span class="avail-val">Hyderabad, Telangana, India</span>
           </div>
           <div class="avail-row">
             <span class="avail-label">Office Proximity:</span>
-            <span class="avail-val">Immediate Begumpet & HITEC City Transit</span>
+            <span class="avail-val">Begumpet & HITEC City Transit Ready</span>
           </div>
           <div class="avail-row">
             <span class="avail-label">Shift Readiness:</span>
@@ -1596,7 +1607,7 @@ html_code = """<!DOCTYPE html>
           </div>
           <div class="avail-row">
             <span class="avail-label">Primary Workstation:</span>
-            <span class="avail-val">Dual-Monitor High-Compute Rig + Full Studio Setup</span>
+            <span class="avail-val">Dual-Monitor High-Compute Rig + Studio Setup</span>
           </div>
         </div>
       </div>
@@ -1621,10 +1632,11 @@ html_code = """<!DOCTYPE html>
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-info">
-        <strong style="color: var(--text-pure);">Benny Joel Lakamana</strong> • Visual Designer & Technical Director • Hyderabad, India
+        <strong style="color: var(--text-pure);">Benny Joel</strong> • Visual Designer & 3D Artist • Hyderabad, India
       </div>
       <div class="footer-links">
-        <a href="assets/docs/Benny_Joel_Lakamana_Resume_Deloitte.pdf" target="_blank" class="nav-link">Resume (PDF)</a>
+        <a href="assets/docs/Benny_Joel_Lakamana_Resume_Deloitte.pdf" target="_blank" class="nav-link">Resume</a>
+        <a href="https://dominator-ops.pages.dev" target="_blank" class="nav-link">Dominator Site</a>
         <a href="assets/decks/Takshaka_VFX_Master_Pitch_Deck.pdf" target="_blank" class="nav-link">Takshaka Deck</a>
         <a href="assets/decks/Crucible_3D_Cinematic_Pitch_Deck.pdf" target="_blank" class="nav-link">Crucible Deck</a>
         <a href="https://github.com/bennyjoel/portfolio" target="_blank" class="nav-link">GitHub</a>
@@ -1634,7 +1646,7 @@ html_code = """<!DOCTYPE html>
 
   <!-- LIGHTBOX MODAL JAVASCRIPT -->
   <script>
-        function openModal(imgSrc, title, desc) {
+    function openModal(imgSrc, title, desc) {
       document.getElementById('modalImg').src = imgSrc;
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('modalDesc').textContent = desc;
