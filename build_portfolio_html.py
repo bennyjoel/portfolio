@@ -809,78 +809,117 @@ html_code = """<!DOCTYPE html>
       padding-top: 14px;
     }
 
-    .dual-credentials-row {
+    /* ==========================================================================
+       HIGHLIGHTED ACADEMIC QUALIFICATIONS SHOWCASE
+       ========================================================================== */
+    .academic-showcase-box {
+      margin-top: 36px;
+      background: linear-gradient(145deg, rgba(16, 21, 30, 0.95), rgba(9, 12, 17, 0.98));
+      border: 1px solid rgba(0, 229, 255, 0.24);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .academic-showcase-box:hover {
+      border-color: rgba(0, 229, 255, 0.42);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 32px rgba(0, 229, 255, 0.08);
+    }
+
+    .academic-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 22px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .academic-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .academic-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .academic-main-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-pure);
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .academic-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .academic-master-badge {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.28);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    .academic-cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
-    .credential-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-matte);
-      border-radius: var(--radius-md);
+    .edu-card {
+      background: rgba(12, 16, 23, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
       padding: 24px;
-    }
-
-    .cred-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border-matte);
-      padding-bottom: 14px;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .credential-box-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-pure);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .cred-sub-badge {
-      font-size: 0.7rem;
-      font-family: var(--font-mono);
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* Smooth Academic Cards */
-    .edu-card-list {
+      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-    }
-
-    .edu-card {
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-matte);
-      border-radius: var(--radius-sm);
-      padding: 18px 20px;
-      transition: all 0.2s ease;
+      justify-content: space-between;
     }
 
     .edu-card:hover {
-      border-color: var(--border-highlight);
+      border-color: rgba(0, 229, 255, 0.35);
+      background: rgba(15, 20, 29, 0.95);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .edu-card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .edu-badge {
       font-size: 0.7rem;
       font-family: var(--font-mono);
       font-weight: 600;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 4px;
+      letter-spacing: 0.04em;
     }
 
     .edu-badge.university {
@@ -899,27 +938,31 @@ html_code = """<!DOCTYPE html>
       font-size: 0.75rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .edu-deg-title {
-      font-size: 1.02rem;
+      font-size: 1.08rem;
       font-weight: 700;
       color: var(--text-pure);
       margin-bottom: 4px;
     }
 
     .edu-institution {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      margin-bottom: 10px;
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      margin-bottom: 12px;
       font-family: var(--font-mono);
+      font-weight: 500;
     }
 
     .edu-summary-text {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 12px;
+      line-height: 1.6;
+      margin-bottom: 16px;
     }
 
     .edu-focus-pills {
@@ -929,37 +972,20 @@ html_code = """<!DOCTYPE html>
     }
 
     .edu-pill {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-family: var(--font-mono);
       background: rgba(255, 255, 255, 0.04);
       color: var(--text-secondary);
       border: 1px solid var(--border-matte);
-      padding: 2px 7px;
+      padding: 3px 9px;
       border-radius: 4px;
+      transition: all 0.2s ease;
     }
 
-    .avail-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.84rem;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border-matte);
-    }
-
-    .avail-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .avail-label {
-      color: var(--text-muted);
-    }
-
-    .avail-val {
-      font-weight: 600;
+    .edu-pill:hover {
+      border-color: rgba(0, 229, 255, 0.3);
       color: var(--text-pure);
-      font-family: var(--font-mono);
+      background: rgba(0, 229, 255, 0.05);
     }
 
     /* ==========================================================================
@@ -1080,8 +1106,11 @@ html_code = """<!DOCTYPE html>
       .deck-grid, .motion-grid {
         grid-template-columns: 1fr;
       }
-      .spatial-grid, .dossier-grid, .ui-case-grid, .dual-credentials-row {
+      .spatial-grid, .dossier-grid, .ui-case-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .academic-cards-grid {
+        grid-template-columns: 1fr;
       }
       .hero-stats-row {
         grid-template-columns: repeat(2, 1fr);
@@ -1089,8 +1118,14 @@ html_code = """<!DOCTYPE html>
     }
 
     @media (max-width: 640px) {
-      .spatial-grid, .dossier-grid, .ui-case-grid, .dual-credentials-row, .deck-grid {
+      .spatial-grid, .dossier-grid, .ui-case-grid, .deck-grid {
         grid-template-columns: 1fr;
+      }
+      .academic-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .academic-showcase-box {
+        padding: 20px;
       }
       .hero-stats-row {
         grid-template-columns: 1fr;
@@ -1142,7 +1177,7 @@ html_code = """<!DOCTYPE html>
       </div>
 
       <p class="hero-bio">
-        Work across feature film on-set VFX coordination, real-time Unreal Engine 5 virtual set extensions, high-conversion product interfaces, and code-driven motion systems. Based in Hyderabad, India.
+        Work across feature film on-set VFX coordination, Unreal Engine trailer-to-game sequences, 3D previs development, high-conversion product interfaces, and code-driven motion systems. Based in Hyderabad, India.
       </p>
 
       <div class="hero-actions">
@@ -1163,7 +1198,7 @@ html_code = """<!DOCTYPE html>
         </div>
         <div class="hero-stat-card">
           <div class="hero-stat-num" style="color: var(--accent-cyan);">Unreal Engine 5</div>
-          <div class="hero-stat-label">Real-Time Virtual Sets & Previs</div>
+          <div class="hero-stat-label">Trailer-to-Game</div>
         </div>
         <div class="hero-stat-card">
           <div class="hero-stat-num" style="color: #FFFFFF;">Dominator Systems</div>
@@ -1184,7 +1219,7 @@ html_code = """<!DOCTYPE html>
         <span class="section-eyebrow">01 / Technical Presentations</span>
         <h2 class="section-title">Pitch Decks & Production Specifications</h2>
         <p class="section-desc">
-          Technical presentation decks authored for theatrical feature film VFX supervisor defense, real-time cinematic world-building, and animated short film production in Unreal Engine 5.
+          Technical presentation decks authored for theatrical feature film VFX supervisor defense and 3D previsualization sequences.
         </p>
       </div>
 
@@ -1226,25 +1261,25 @@ html_code = """<!DOCTYPE html>
         <div class="deck-card">
           <div class="deck-preview-carousel">
             <div class="carousel-track">
-              <div class="slide-thumb" onclick="openModal('assets/images/crucible_slide_01.png', 'Crucible: 3D Cinematic Short Film Pitch Deck', 'Title presentation introducing the animated universe, dark luxury aesthetic, and thematic lore.')">
+              <div class="slide-thumb" onclick="openModal('assets/images/crucible_slide_01.png', 'Crucible: 3D Previs Sequence Deck', 'Title presentation introducing the 3D previsualization sequence, dark luxury aesthetic, and narrative lore.')">
                 <img src="assets/images/crucible_slide_01.png" alt="Crucible Slide 1">
               </div>
-              <div class="slide-thumb" onclick="openModal('assets/images/crucible_slide_05.png', 'Crucible: Character Design & Silhouette Breakdown', 'Architectural character silhouettes, anatomy reference, and Unreal Engine 5 Substrate shading specs.')">
+              <div class="slide-thumb" onclick="openModal('assets/images/crucible_slide_05.png', 'Crucible: Character Design & Silhouette Breakdown', 'Architectural character silhouettes, anatomy reference, and 3D visual specifications.')">
                 <img src="assets/images/crucible_slide_05.png" alt="Crucible Slide 5">
               </div>
-              <div class="slide-thumb" onclick="openModal('assets/images/crucible_slide_12.png', 'Crucible: Real-Time Environment Previs & Lighting', 'Unreal Engine 5 Lumen lighting pass, volumetric fog density, and virtual production set extensions.')">
+              <div class="slide-thumb" onclick="openModal('assets/images/crucible_slide_12.png', 'Crucible: 3D Environment Previs & Lighting', 'Lighting pass, atmospheric volumetrics, and virtual set layout.')">
                 <img src="assets/images/crucible_slide_12.png" alt="Crucible Slide 12">
               </div>
             </div>
           </div>
           <div class="deck-body">
             <div class="deck-tag-row">
-              <span class="deck-tag primary">3D ANIMATED SHORT FILM</span>
-              <span class="deck-tag">UE5 REAL-TIME PREVIS</span>
+              <span class="deck-tag primary">3D PREVIS SEQUENCE</span>
+              <span class="deck-tag">TRAILER-TO-GAME / PREVIS</span>
             </div>
-            <h3 class="deck-title">Crucible: 3D Cinematic Pitch Deck</h3>
+            <h3 class="deck-title">Crucible: 3D Previs Sequence Deck</h3>
             <p class="deck-summary">
-              Cinematic pitch deck for an animated short film. Details character world-building, high-stress facial silhouette design, Unreal Engine 5 Lumen lighting setups, and real-time virtual camera previs.
+              Previsualization sequence for 3D cinematic production. Details character silhouettes, spatial lighting setups, camera blocking, and narrative visual staging.
             </p>
             <div class="deck-footer">
               <span class="deck-meta">1920x1080 MASTER PDF</span>
@@ -1259,25 +1294,25 @@ html_code = """<!DOCTYPE html>
         <div class="deck-card">
           <div class="deck-preview-carousel">
             <div class="carousel-track">
-              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_01.png', 'Aarav: Title & Universe Presentation', 'Title slide for Aarav, establishing the war drama universe and cinematic narrative direction.')">
+              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_01.png', 'Aarav: Title & Universe Presentation', 'Title slide for Aarav, establishing the universe and cinematic narrative direction.')">
                 <img src="assets/images/aarav_slide_01.png" alt="Aarav Slide 1">
               </div>
-              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_02.png', 'Aarav: Synopsis & Real-Time Unreal Pipeline', 'Breakdown of thematic tragedy, CGI look development, and real-time Unreal Engine cinematic execution.')">
+              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_02.png', 'Aarav: Synopsis & Visual Direction', 'Breakdown of thematic narrative beats, CGI look development, and cinematic sequence execution.')">
                 <img src="assets/images/aarav_slide_02.png" alt="Aarav Slide 2">
               </div>
-              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_04.png', 'Aarav: Visual Mood & Character Concept', 'Cinematic concept lighting, dramatic atmosphere, and real-time scene look development.')">
+              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_04.png', 'Aarav: Visual Mood & Character Concept', 'Cinematic concept lighting, dramatic atmosphere, and scene look development.')">
                 <img src="assets/images/aarav_slide_04.png" alt="Aarav Slide 4">
               </div>
             </div>
           </div>
           <div class="deck-body">
             <div class="deck-tag-row">
-              <span class="deck-tag primary">WAR DRAMA CINEMATIC</span>
-              <span class="deck-tag">UNREAL ENGINE REAL-TIME</span>
+              <span class="deck-tag primary">3D PREVIS SEQUENCE</span>
+              <span class="deck-tag">TRAILER-TO-GAME / PREVIS</span>
             </div>
-            <h3 class="deck-title">Aarav: Cinematic Short Film Pitch Deck</h3>
+            <h3 class="deck-title">Aarav: 3D Previs Sequence Deck</h3>
             <p class="deck-summary">
-              High-end CGI cinematic world-building and character direction for an emotional war drama. Covers emotional narrative arcs, dramatic lighting, and real-time Unreal Engine execution.
+              Previsualization sequence for 3D cinematic production. Covers emotional narrative progression, dramatic key lighting, camera movement, and thematic visual development.
             </p>
             <div class="deck-footer">
               <span class="deck-meta">1920x1080 MASTER PDF</span>
@@ -1508,7 +1543,7 @@ html_code = """<!DOCTYPE html>
         <span class="section-eyebrow">04 / Real-Time 3D & Tracking</span>
         <h2 class="section-title">3D Environments & Camera Tracking</h2>
         <p class="section-desc">
-          Real-time 3D environments, virtual background plates, and theatrical camera tracking authored in Unreal Engine 5, Autodesk Maya, and Syntheyes. High-resolution captures from project archives.
+          Trailer-to-game environments, virtual background plates, and theatrical camera tracking authored in Unreal Engine 5, Autodesk Maya, and Syntheyes. High-resolution captures from project archives.
         </p>
       </div>
 
@@ -1557,14 +1592,14 @@ html_code = """<!DOCTYPE html>
 
         <!-- ENV 4: WORLDBREAKER GAME LEVEL -->
         <div class="spatial-card">
-          <div class="spatial-img-box" onclick="openModal('assets/images/env_worldbreaker_cinematic.jpg', 'Unreal Engine 5: Worldbreaker Game Level & Terrain', 'High-scale real-time environment built for gameplay traversal, Nanite geometry streaming, and cinematic camera choreography in Worldbreaker.')">
+          <div class="spatial-img-box" onclick="openModal('assets/images/env_worldbreaker_cinematic.jpg', 'Unreal Engine 5: Worldbreaker Trailer-to-Game Environment', 'High-scale trailer-to-game environment built for gameplay traversal, Nanite geometry streaming, and cinematic camera choreography in Worldbreaker.')">
             <img src="assets/images/env_worldbreaker_cinematic.jpg" alt="Worldbreaker Environment">
           </div>
           <div class="spatial-body">
-            <span class="motion-badge">Level Design • World Partition</span>
-            <h3 class="motion-title">Worldbreaker Game Level & Terrain</h3>
+            <span class="motion-badge">Unreal Engine • Trailer-to-Game</span>
+            <h3 class="motion-title">Worldbreaker: Trailer-to-Game Environment</h3>
             <p class="motion-desc">
-              Expansive real-time level built in Unreal Engine for Worldbreaker, engineered for seamless camera traversal and multi-layered atmospheric lighting.
+              Expansive trailer-to-game level built in Unreal Engine for Worldbreaker, engineered for seamless camera traversal and multi-layered atmospheric lighting.
             </p>
           </div>
         </div>
@@ -1628,18 +1663,18 @@ html_code = """<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- CARD 2: CRUCIBLE & UE5 -->
+        <!-- CARD 2: CRUCIBLE & AARAV -->
         <div class="dossier-card">
-          <span class="dossier-card-tag">ANIMATED SHORT FILM • 3D TECHNICAL ARTIST</span>
-          <h3 class="dossier-card-title">Crucible: Real-Time Previs & Virtual Production</h3>
+          <span class="dossier-card-tag">3D PREVIS & CINEMATICS • TECHNICAL ARTIST</span>
+          <h3 class="dossier-card-title">Crucible & Aarav: 3D Previs Sequences</h3>
           <p class="dossier-card-desc">
-            Authored complete technical defense pitch deck for Unreal Engine 5 animated short film production. Engineered real-time virtual camera rigs, Nanite mesh optimization, and Lumen dynamic lighting passes for immediate executive previsualization.
+            Authored complete technical pitch decks for 3D previsualization sequences, trailer-to-game visual pacing, virtual camera staging, and dynamic lighting passes.
           </p>
           <div class="dossier-pills-row">
             <span class="ui-spec-pill">Technical Pitch Deck</span>
-            <span class="ui-spec-pill">Unreal Engine 5</span>
-            <span class="ui-spec-pill">Lumen Lighting</span>
-            <span class="ui-spec-pill">Nanite Geometry</span>
+            <span class="ui-spec-pill">Trailer-to-Game</span>
+            <span class="ui-spec-pill">3D Previs Sequences</span>
+            <span class="ui-spec-pill">Camera Staging</span>
           </div>
         </div>
 
@@ -1659,88 +1694,71 @@ html_code = """<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- DUAL EDUCATION & AVAILABILITY ROW -->
-      <div class="dual-credentials-row">
-        <!-- Academic Qualifications (Smooth, Visual, Structured) -->
-        <div class="credential-box">
-          <div class="cred-header-row">
-            <h4 class="credential-box-title">
-              <svg width="18" height="18" fill="none" stroke="var(--accent-green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-              <span>Academic Qualifications</span>
-            </h4>
-            <span class="cred-sub-badge">FORMAL DEGREE & STUDIO ACCREDITATION</span>
+      <!-- ACADEMIC QUALIFICATIONS (HERO SHOWCASE) -->
+      <div class="academic-showcase-box">
+        <div class="academic-header-bar">
+          <div class="academic-header-left">
+            <div class="academic-icon-wrap">
+              <svg width="22" height="22" fill="none" stroke="var(--accent-cyan)" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="academic-main-title">Academic Qualifications & Foundation</h4>
+              <p class="academic-subtitle">Formal university degree education and professional studio production training</p>
+            </div>
           </div>
+          <span class="academic-master-badge">ACCREDITED QUALIFICATIONS</span>
+        </div>
 
-          <div class="edu-card-list">
-            <!-- EDU 1: JNAFAU BFA -->
-            <div class="edu-card">
+        <div class="academic-cards-grid">
+          <!-- EDU 1: JNAFAU BFA -->
+          <div class="edu-card">
+            <div>
               <div class="edu-card-top">
                 <span class="edu-badge university">4-YEAR UNIVERSITY DEGREE</span>
-                <span class="edu-location">Hyderabad, India</span>
+                <span class="edu-location">
+                  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Hyderabad, India
+                </span>
               </div>
               <h5 class="edu-deg-title">Bachelor of Fine Arts (BFA) in Digital Animation</h5>
               <div class="edu-institution">JNAFAU (Jawaharlal Nehru Architecture & Fine Arts University)</div>
               <p class="edu-summary-text">
-                Four years of full-time academic studio rigor covering classical human anatomy, 3D CGI modeling, spatial cinematography, lighting theory, and narrative digital previsualization.
+                Four years of full-time academic studio rigor covering classical human anatomy, 3D CGI modeling, spatial cinematography, lighting physics, and narrative previsualization.
               </p>
-              <div class="edu-focus-pills">
-                <span class="edu-pill">Anatomy & Figure Drawing</span>
-                <span class="edu-pill">3D CGI Modeling</span>
-                <span class="edu-pill">Cinematography Theory</span>
-                <span class="edu-pill">Digital Previs</span>
-              </div>
             </div>
+            <div class="edu-focus-pills">
+              <span class="edu-pill">Anatomy & Figure Drawing</span>
+              <span class="edu-pill">3D CGI Modeling</span>
+              <span class="edu-pill">Cinematography Theory</span>
+              <span class="edu-pill">3D Previs Sequences</span>
+            </div>
+          </div>
 
-            <!-- EDU 2: ARENA ANIMATION DIPLOMA (STRICTLY NO DATES/YEARS) -->
-            <div class="edu-card">
+          <!-- EDU 2: ARENA ANIMATION DIPLOMA (STRICTLY NO DATES/YEARS) -->
+          <div class="edu-card">
+            <div>
               <div class="edu-card-top">
                 <span class="edu-badge studio">INTENSIVE STUDIO DIPLOMA</span>
-                <span class="edu-location">Hyderabad, India</span>
+                <span class="edu-location">
+                  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Hyderabad, India
+                </span>
               </div>
               <h5 class="edu-deg-title">Advanced Diploma in 3D Animation & VFX</h5>
               <div class="edu-institution">Arena Animation</div>
               <p class="edu-summary-text">
                 Hands-on practical studio training in end-to-end 3D production pipelines, dynamic character rigging, lighting integration, and digital multi-pass compositing.
               </p>
-              <div class="edu-focus-pills">
-                <span class="edu-pill">3D Pipeline Production</span>
-                <span class="edu-pill">Lighting & Shading</span>
-                <span class="edu-pill">Digital Compositing</span>
-                <span class="edu-pill">VFX LookDev</span>
-              </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Professional Availability -->
-        <div class="credential-box">
-          <div class="cred-header-row">
-            <h4 class="credential-box-title">
-              <svg width="18" height="18" fill="none" stroke="#A3E635" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>Professional Availability & Location</span>
-            </h4>
-            <span class="cred-sub-badge">IMMEDIATE ENGAGEMENT</span>
-          </div>
-
-          <div class="avail-row">
-            <span class="avail-label">Location:</span>
-            <span class="avail-val">Hyderabad, Telangana, India</span>
-          </div>
-          <div class="avail-row">
-            <span class="avail-label">Office Proximity:</span>
-            <span class="avail-val">Begumpet & HITEC City Transit Ready</span>
-          </div>
-          <div class="avail-row">
-            <span class="avail-label">Shift Readiness:</span>
-            <span class="avail-val" style="color: #A3E635;">100% Rotational Shifts (11 AM – 8 PM / Flexible)</span>
-          </div>
-          <div class="avail-row">
-            <span class="avail-label">Notice Period:</span>
-            <span class="avail-val" style="color: var(--accent-cyan);">Immediate Joining (Zero Day Notice)</span>
-          </div>
-          <div class="avail-row">
-            <span class="avail-label">Primary Workstation:</span>
-            <span class="avail-val">Dual-Monitor High-Compute Rig + Studio Setup</span>
+            <div class="edu-focus-pills">
+              <span class="edu-pill">3D Pipeline Production</span>
+              <span class="edu-pill">Lighting & Shading</span>
+              <span class="edu-pill">Digital Compositing</span>
+              <span class="edu-pill">VFX LookDev</span>
+            </div>
           </div>
         </div>
       </div>
