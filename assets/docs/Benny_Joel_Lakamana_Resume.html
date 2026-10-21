@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Benny Joel Lakamana - Curriculum Vitae</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    @page { 
+      size: A4 portrait; 
+      margin: 0; 
+    }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      background: #ffffff;
+      color: #1e293b;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      overflow: hidden;
+    }
+
+    body {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Hero Monolith Header */
+    .hero-header {
+      background: #090d16;
+      color: #ffffff;
+      padding: 9.5mm 13mm 7.5mm 13mm;
+      border-bottom: 2.5px solid #1e293b;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 5px;
+    }
+
+    .hero-name-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 21pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #ffffff;
+      margin-bottom: 3.5px;
+    }
+
+    .hero-role {
+      font-size: 9pt;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #38bdf8;
+    }
+
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 13px;
+      font-size: 7.8pt;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 6px;
+      margin-top: 4px;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .contact-item svg {
+      width: 10px;
+      height: 10px;
+      fill: #cbd5e1;
+    }
+
+    /* Body Wrapper */
+    .body-wrapper {
+      padding: 6.5mm 13mm 5mm 13mm;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Executive Summary */
+    .summary-box {
+      background: #f8fafc;
+      border-left: 3px solid #090d16;
+      border-radius: 0 4px 4px 0;
+      padding: 6px 11px;
+      font-size: 8.1pt;
+      line-height: 1.38;
+      color: #334155;
+      margin-bottom: 7px;
+    }
+
+    .summary-box strong {
+      color: #090d16;
+      font-weight: 700;
+    }
+
+    /* Content Grid */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 32% 65.5%;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .col-left, .col-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Headings */
+    .section-head {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8.2pt;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: #090d16;
+      border-bottom: 1.5px solid #090d16;
+      padding-bottom: 2px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-head::after {
+      content: '';
+      width: 10px;
+      height: 1.5px;
+      background: #94a3b8;
+    }
+
+    /* Left Column Units */
+    .skill-block {
+      margin-bottom: 4px;
+    }
+
+    .skill-cat {
+      font-size: 7.4pt;
+      font-weight: 700;
+      color: #090d16;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 1px;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      margin-top: 1.5px;
+    }
+
+    .chip {
+      font-size: 6.6pt;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #1e293b;
+      padding: 1px 4.5px;
+      border-radius: 2.5px;
+      border: 1px solid #e2e8f0;
+      line-height: 1.25;
+    }
+
+    .chip.dark {
+      background: #090d16;
+      color: #ffffff;
+      border-color: #090d16;
+    }
+
+    .chip.cyan {
+      background: #e0f2fe;
+      color: #0369a1;
+      border-color: #bae6fd;
+    }
+
+    /* Education */
+    .edu-unit {
+      margin-bottom: 4.5px;
+    }
+
+    .edu-title {
+      font-size: 7.8pt;
+      font-weight: 700;
+      color: #090d16;
+      line-height: 1.2;
+    }
+
+    .edu-place {
+      font-size: 7.3pt;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 6.8pt;
+      color: #64748b;
+      margin-bottom: 1px;
+    }
+
+    .honor-badge {
+      display: inline-block;
+      font-size: 6.6pt;
+      font-weight: 700;
+      color: #090d16;
+      background: #e2e8f0;
+      padding: 1px 4.5px;
+      border-radius: 2.5px;
+      margin: 1px 0;
+    }
+
+    .edu-subnote {
+      font-size: 6.8pt;
+      color: #64748b;
+      line-height: 1.2;
+    }
+
+    /* Competencies */
+    .comp-unit {
+      list-style: none;
+    }
+
+    .comp-item {
+      font-size: 7.3pt;
+      color: #334155;
+      font-weight: 500;
+      margin-bottom: 2.5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.2;
+    }
+
+    .comp-dot {
+      width: 3.5px;
+      height: 3.5px;
+      background: #090d16;
+      border-radius: 50%;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    /* Languages */
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.3pt;
+      padding: 1.5px 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .lang-row:last-child { border-bottom: none; }
+    .lang-row .name { color: #090d16; font-weight: 600; }
+    .lang-row .level { color: #64748b; }
+
+    /* Experience */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .job-entry {
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .job-entry::before {
+      content: '';
+      position: absolute;
+      left: 3.5px;
+      top: 7px;
+      bottom: -10px;
+      width: 1.5px;
+      background: #cbd5e1;
+      z-index: 1;
+    }
+
+    .job-entry:last-child::before {
+      display: none;
+    }
+
+    .job-entry::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 3.5px;
+      width: 8.5px;
+      height: 8.5px;
+      border-radius: 50%;
+      background: #090d16;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px #090d16;
+      z-index: 2;
+    }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .job-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8.7pt;
+      font-weight: 700;
+      color: #090d16;
+    }
+
+    .job-date {
+      font-size: 7.1pt;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .job-company {
+      font-size: 7.6pt;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2.5px;
+    }
+
+    .job-bullets {
+      list-style: none;
+    }
+
+    .job-bullets li {
+      position: relative;
+      padding-left: 8.5px;
+      font-size: 7.5pt;
+      line-height: 1.3;
+      color: #334155;
+      margin-bottom: 2px;
+    }
+
+    .job-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: #94a3b8;
+      font-weight: 700;
+    }
+
+    .job-bullets li strong {
+      color: #090d16;
+      font-weight: 600;
+    }
+
+    /* Projects */
+    .proj-panel {
+      background: #fbfcfd;
+      border: 1px solid #e2e8f0;
+      border-radius: 3.5px;
+      padding: 4.5px 7px;
+      margin-bottom: 4px;
+    }
+
+    .proj-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .proj-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8.2pt;
+      font-weight: 700;
+      color: #090d16;
+    }
+
+    .proj-tag {
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: #e2e8f0;
+      color: #475569;
+      padding: 1px 4.5px;
+      border-radius: 2.5px;
+    }
+
+    .proj-tools {
+      font-size: 7.1pt;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 2.5px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 3.5px;
+      margin-top: 3px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 6.6pt;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Monolith Header -->
+  <header class="hero-header">
+    <div class="hero-top">
+      <div class="hero-name-wrap">
+        <h1 class="hero-name">Benny Joel Lakamana</h1>
+        <div class="hero-role">Visual Designer • 3D Technical Artist • Motion Systems</div>
+      </div>
+    </div>
+    <div class="hero-contacts">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        <span>Begumpet, Hyderabad, India</span>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>+91 9014133656</span>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>bennyofficial19@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 17.93c3.95-.49 7-3.85 7-7.93 0-.62-.08-1.21-.21-1.79L15 15v1c0 1.1-.9 2-2 2v1.93zm-3-1.87v-1.06c0-.55-.45-1-1-1H6.1c-.06-.32-.1-.66-.1-1 0-2.52 1.34-4.73 3.32-5.96L11 9c.55 0 1-.45 1-1V6.21C11.33 6.07 10.68 6 10 6 6.69 6 4 8.69 4 12c0 2.82 1.55 5.27 3.84 6.55l2.16-.49z"/></svg>
+        <span>bennyjoel.github.io/portfolio</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Body Content -->
+  <div class="body-wrapper">
+
+    <!-- Executive Summary -->
+    <div class="summary-box">
+      <strong>Fine Arts Graduate (BFA in Animation, JNAFAU)</strong> with comprehensive production leadership across <strong>feature film on-set VFX coordination (140+ shots)</strong>, <strong>3D previs sequences</strong>, <strong>Unreal Engine trailer-to-game environments</strong>, and <strong>code-driven motion systems</strong>. Specialized in sub-pixel camera tracking (SynthEyes, Mocha Pro), 3D asset modeling in Autodesk Maya, digital product UI, and node-based diffusion workflows. Proven track record managing multidisciplinary artist teams under strict theatrical delivery milestones, enforcing visual brand continuity and zero-defect execution.
+    </div>
+
+    <!-- Content Grid -->
+    <div class="content-grid">
+
+      <!-- Left Column -->
+      <aside class="col-left">
+
+        <!-- Technical Skills -->
+        <section>
+          <h2 class="section-head">Technical Toolkit</h2>
+
+          <div class="skill-block">
+            <div class="skill-cat">3D & Game Engines</div>
+            <div class="chip-wrap">
+              <span class="chip dark">Unreal Engine 5</span>
+              <span class="chip dark">Autodesk Maya</span>
+              <span class="chip cyan">Trailer-to-Game</span>
+              <span class="chip">Nanite</span>
+              <span class="chip">Lumen</span>
+              <span class="chip">Sequencer</span>
+              <span class="chip">Virtual Camera</span>
+              <span class="chip">Topology & UVs</span>
+            </div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-cat">Tracking & Compositing</div>
+            <div class="chip-wrap">
+              <span class="chip dark">SynthEyes (3D)</span>
+              <span class="chip dark">Mocha Pro</span>
+              <span class="chip">The Foundry Nuke</span>
+              <span class="chip">Sub-Pixel Solves</span>
+              <span class="chip">Lens Distortion</span>
+              <span class="chip">Clean Plate Prep</span>
+            </div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-cat">Motion Design & Digital UI</div>
+            <div class="chip-wrap">
+              <span class="chip dark">Adobe After Effects</span>
+              <span class="chip dark">Adobe Photoshop</span>
+              <span class="chip">60fps Motion</span>
+              <span class="chip">Design Tokens</span>
+              <span class="chip">8px Layout Grid</span>
+              <span class="chip">WCAG AAA</span>
+            </div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-cat">AI & Workflow Automation</div>
+            <div class="chip-wrap">
+              <span class="chip dark">ComfyUI (Nodes)</span>
+              <span class="chip">Google Antigravity</span>
+              <span class="chip">Claude</span>
+              <span class="chip">Prompt Engineering</span>
+              <span class="chip">Git Version Control</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+          <h2 class="section-head">Academic Credentials</h2>
+
+          <div class="edu-unit">
+            <div class="edu-title">Bachelor of Fine Arts (BFA)</div>
+            <div class="edu-place">JNAFAU (Jawaharlal Nehru Architecture & Fine Arts University)</div>
+            <div class="edu-row">
+              <span>Hyderabad, India</span>
+              <span>4-Year Degree • 2026</span>
+            </div>
+            <div class="honor-badge">★ Ranked in Top 10% of Class</div>
+            <div class="edu-subnote">Anatomy, 3D CGI Modeling, Cinematography, Previs</div>
+          </div>
+
+          <div class="edu-unit">
+            <div class="edu-title">Advanced Diploma in 3D Animation & VFX</div>
+            <div class="edu-place">Arena Animation</div>
+            <div class="edu-row">
+              <span>Hyderabad, India</span>
+              <span style="font-weight:600; color:#0369a1;">Studio Diploma</span>
+            </div>
+            <div class="edu-subnote">3D pipeline, lighting, shading & digital compositing</div>
+          </div>
+        </section>
+
+        <!-- Core Disciplines -->
+        <section>
+          <h2 class="section-head">Core Competencies</h2>
+          <ul class="comp-unit">
+            <li class="comp-item"><span class="comp-dot"></span><span>3D Previs Sequences & Camera Staging</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>On-Set VFX Data Acquisition (Macbeth/HDRI)</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Trailer-to-Game Real-Time Level Design</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Sub-Pixel 3D Matchmoving & Wire Removal</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Design Token Architecture & Kinetic UI</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Multidisciplinary Artist Team Supervision</span></li>
+          </ul>
+        </section>
+
+        <!-- Languages -->
+        <section>
+          <h2 class="section-head">Languages</h2>
+          <div class="lang-row">
+            <span class="name">English</span>
+            <span class="level">Professional Working</span>
+          </div>
+          <div class="lang-row">
+            <span class="name">Telugu</span>
+            <span class="level">Native Proficiency</span>
+          </div>
+          <div class="lang-row">
+            <span class="name">Hindi</span>
+            <span class="level">Conversational</span>
+          </div>
+        </section>
+
+      </aside>
+
+      <!-- Right Column -->
+      <main class="col-right">
+
+        <!-- Experience -->
+        <section>
+          <h2 class="section-head">Production Experience</h2>
+          <div class="timeline">
+
+            <div class="job-entry">
+              <div class="job-head">
+                <span class="job-role">Assistant VFX Supervisor & Visual Designer</span>
+                <span class="job-date">2026 – Present</span>
+              </div>
+              <div class="job-company">
+                <span>Technical Artist VFX</span>
+                <span>Hyderabad, India</span>
+              </div>
+              <ul class="job-bullets">
+                <li><strong>Artist Supervision & Quality Assurance:</strong> Supervised a multidisciplinary team of 3D and visual artists, conducting daily review sessions, enforcing strict visual quality benchmarks, and ensuring zero-defect deliverables.</li>
+                <li><strong>3D Previs & Storyboard Translation:</strong> Translated narrative briefs and conceptual storyboards into polished 3D previsualization sequences, camera blocking, and background plate handoffs.</li>
+                <li><strong>Pipeline & Milestone Execution:</strong> Managed day-to-day shot throughput using studio tracking software, eliminating cross-departmental bottlenecks and maintaining 100% on-time milestone delivery.</li>
+              </ul>
+            </div>
+
+            <div class="job-entry">
+              <div class="job-head">
+                <span class="job-role">VFX Production Coordinator & Visual Media Lead</span>
+                <span class="job-date">2026</span>
+              </div>
+              <div class="job-company">
+                <span>MSR Creations • Feature Film: <em>TAKSHAKA</em></span>
+                <span>Hyderabad, India</span>
+              </div>
+              <ul class="job-bullets">
+                <li><strong>On-Set Technical Coordination:</strong> Directed on-set data acquisition across principal photography: Macbeth color chart registration, 360° HDRI lighting brackets, and Arri/RED raw camera metadata logging across 140+ feature film VFX shots.</li>
+                <li><strong>3D Camera Tracking & Plate Prep:</strong> Supervised SynthEyes sub-pixel 3D camera recovery, lens distortion profiling, and high-fidelity plate cleanup for live-action integration.</li>
+                <li><strong>Maya CG Environment Integration:</strong> Coordinated 3D set extensions in Autodesk Maya and Unreal Engine, matching photorealistic lighting, shaders, and geometry to theatrical camera rushes.</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+          <h2 class="section-head">Key Technical Projects</h2>
+
+          <div class="proj-panel">
+            <div class="proj-head">
+              <span class="proj-name">Crucible & Aarav: 3D Previs Sequences & Pitch Decks</span>
+              <span class="proj-tag">Previs Showcase</span>
+            </div>
+            <div class="proj-tools">3D Previs Sequences • Visual Storyboards • Camera Choreography • Character Silhouettes</div>
+            <ul class="job-bullets">
+              <li>Authored complete technical defense pitch decks detailing 3D previsualization sequences, dramatic key lighting setups, and camera staging.</li>
+              <li>Engineered high-stress facial silhouettes and anatomical character studies for real-time digital production pipelines.</li>
+            </ul>
+          </div>
+
+          <div class="proj-panel">
+            <div class="proj-head">
+              <span class="proj-name">Unreal Engine 5: Trailer-to-Game Environments & Sets</span>
+              <span class="proj-tag">Real-Time 3D</span>
+            </div>
+            <div class="proj-tools">Unreal Engine 5 • Nanite Geometry • Lumen Dynamic GI • Virtual Camera • Sequencer</div>
+            <ul class="job-bullets">
+              <li>Assembled real-time interactive levels (Worldbreaker, Subterranean Cathedral Vault, River Gorge) engineered for seamless camera traversal and gameplay testing.</li>
+              <li>Designed atmospheric volumetrics, physical material displacement, and dynamic sun-angled lighting passes rendered at master fidelity.</li>
+            </ul>
+          </div>
+
+          <div class="proj-panel">
+            <div class="proj-head">
+              <span class="proj-name">Dominator Systems: Product UI & Kinetic Motion Systems</span>
+              <span class="proj-tag">Interface Design</span>
+            </div>
+            <div class="proj-tools">Adobe Photoshop • After Effects • Design Tokens • 8px Layout Grid • 60fps Motion</div>
+            <ul class="job-bullets">
+              <li>Architected high-conversion digital product storefronts with strict typographic balance, 8px layout grids, and WCAG AAA compliance.</li>
+              <li>Engineered programmatic 60fps motion graphics and broadcast video packages with audio-reactive waveforms and fluid transitions.</li>
+            </ul>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Benny Joel Lakamana — Curriculum Vitae</span>
+      <span>Professional Portfolio Edition</span>
+      <span>Page 1 of 1</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
