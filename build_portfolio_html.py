@@ -1459,8 +1459,8 @@ html_code = """<!DOCTYPE html>
         <!-- REEL 1: APEX MOTION (CLEAN SINGLE-VOICE AUDIO) -->
         <div class="motion-card">
           <div class="video-viewport">
-            <video controls poster="assets/images/thumb_apex_motion.jpg" preload="metadata">
-              <source src="assets/videos/apex_motion_reel.mp4" type="video/mp4">
+            <video controls poster="assets/images/thumb_apex_motion.jpg?v=20261021b" preload="metadata">
+              <source src="assets/videos/apex_motion_reel.mp4?v=20261021b" type="video/mp4">
               Your browser does not support HTML5 video.
             </video>
           </div>
