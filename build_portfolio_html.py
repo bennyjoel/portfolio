@@ -5,8 +5,8 @@ html_code = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Benny Joel | Visual Design, 3D & Motion</title>
-  <meta name="description" content="Portfolio of Benny Joel — Visual Design, Feature Film VFX Coordination, Unreal Engine 5 Real-Time 3D Environments, and Motion Systems.">
+  <title>Benny Joel Lakamana | Visual Design, 3D & Motion</title>
+  <meta name="description" content="Portfolio of Benny Joel Lakamana — Visual Design, Feature Film VFX Coordination, Unreal Engine 5 Real-Time 3D Environments, and Motion Systems.">
 
   <!-- Inter & JetBrains Mono Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +157,7 @@ html_code = """<!DOCTYPE html>
     }
 
     /* ==========================================================================
-       HERO (BOLD, MINIMAL, AESTHETIC MATTE NAME)
+       HERO (BOLD, MINIMAL, AESTHETIC MATTE FULL NAME)
        ========================================================================== */
     .hero-section {
       padding: 96px 0 64px 0;
@@ -165,7 +165,7 @@ html_code = """<!DOCTYPE html>
     }
 
     .hero-name {
-      font-size: clamp(3.4rem, 8vw, 6.4rem);
+      font-size: clamp(3.2rem, 7.5vw, 6.2rem);
       font-weight: 900;
       letter-spacing: -0.04em;
       line-height: 1.02;
@@ -324,12 +324,12 @@ html_code = """<!DOCTYPE html>
     }
 
     /* ==========================================================================
-       SECTION 1: PITCH DECKS
+       SECTION 1: PITCH DECKS (3 COLUMNS)
        ========================================================================== */
     .deck-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
     .deck-card {
@@ -350,14 +350,14 @@ html_code = """<!DOCTYPE html>
 
     .deck-preview-carousel {
       background: #040608;
-      padding: 16px;
+      padding: 14px;
       border-bottom: 1px solid var(--border-matte);
     }
 
     .carousel-track {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
 
     .slide-thumb {
@@ -382,7 +382,7 @@ html_code = """<!DOCTYPE html>
     }
 
     .deck-body {
-      padding: 24px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -390,16 +390,16 @@ html_code = """<!DOCTYPE html>
 
     .deck-tag-row {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .deck-tag {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-family: var(--font-mono);
       font-weight: 600;
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 4px;
       background: rgba(255, 255, 255, 0.05);
       color: var(--text-secondary);
@@ -413,18 +413,18 @@ html_code = """<!DOCTYPE html>
     }
 
     .deck-title {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-pure);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: -0.01em;
     }
 
     .deck-summary {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
       line-height: 1.6;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       flex: 1;
     }
 
@@ -433,14 +433,14 @@ html_code = """<!DOCTYPE html>
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid var(--border-matte);
-      padding-top: 16px;
+      padding-top: 14px;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .deck-meta {
       font-family: var(--font-mono);
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
     }
 
@@ -596,7 +596,7 @@ html_code = """<!DOCTYPE html>
     }
 
     /* ==========================================================================
-       SECTION 3: MOTION GRAPHICS & REELS
+       SECTION 3: KINETIC MOTION (ABOVE 3D DEPARTMENT)
        ========================================================================== */
     .motion-grid {
       display: grid;
@@ -701,7 +701,7 @@ html_code = """<!DOCTYPE html>
     }
 
     /* ==========================================================================
-       SECTION 4: 3D ENVIRONMENTS & VIRTUAL SETS
+       SECTION 4: 3D ENVIRONMENTS & CAMERA TRACKING
        ========================================================================== */
     .spatial-grid {
       display: grid;
@@ -753,7 +753,7 @@ html_code = """<!DOCTYPE html>
     }
 
     /* ==========================================================================
-       SECTION 5: CREDENTIALS & PRODUCTION DOSSIER
+       SECTION 5: CREDENTIALS & SMOOTH ACADEMIC CARDS
        ========================================================================== */
     .dossier-grid {
       display: grid;
@@ -822,46 +822,120 @@ html_code = """<!DOCTYPE html>
       padding: 24px;
     }
 
+    .cred-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-matte);
+      padding-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
     .credential-box-title {
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text-pure);
-      margin-bottom: 18px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .edu-item {
-      margin-bottom: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border-matte);
+    .cred-sub-badge {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
     }
 
-    .edu-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
+    /* Smooth Academic Cards */
+    .edu-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    .edu-deg {
-      font-size: 0.95rem;
+    .edu-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-matte);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      transition: all 0.2s ease;
+    }
+
+    .edu-card:hover {
+      border-color: var(--border-highlight);
+    }
+
+    .edu-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .edu-badge {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .edu-badge.university {
+      background: var(--accent-green-subtle);
+      color: #A3E635;
+      border: 1px solid rgba(134, 188, 37, 0.3);
+    }
+
+    .edu-badge.studio {
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 229, 255, 0.28);
+    }
+
+    .edu-location {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .edu-deg-title {
+      font-size: 1.02rem;
       font-weight: 700;
       color: var(--text-pure);
       margin-bottom: 4px;
     }
 
-    .edu-inst {
+    .edu-institution {
       font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
       font-family: var(--font-mono);
     }
 
-    .edu-note {
+    .edu-summary-text {
       font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .edu-focus-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .edu-pill {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      background: rgba(255, 255, 255, 0.04);
       color: var(--text-secondary);
-      line-height: 1.5;
+      border: 1px solid var(--border-matte);
+      padding: 2px 7px;
+      border-radius: 4px;
     }
 
     .avail-row {
@@ -1015,7 +1089,7 @@ html_code = """<!DOCTYPE html>
     }
 
     @media (max-width: 640px) {
-      .spatial-grid, .dossier-grid, .ui-case-grid, .dual-credentials-row {
+      .spatial-grid, .dossier-grid, .ui-case-grid, .dual-credentials-row, .deck-grid {
         grid-template-columns: 1fr;
       }
       .hero-stats-row {
@@ -1025,7 +1099,7 @@ html_code = """<!DOCTYPE html>
         display: none;
       }
       .hero-name {
-        font-size: 2.8rem;
+        font-size: 2.6rem;
       }
     }
   </style>
@@ -1037,14 +1111,14 @@ html_code = """<!DOCTYPE html>
     <div class="container nav-inner">
       <a href="#" class="brand-logo">
         <span class="brand-mark"></span>
-        <span>Benny Joel</span>
+        <span>Benny Joel Lakamana</span>
       </a>
 
       <ul class="nav-links">
         <li><a href="#pitch-decks" class="nav-link">Pitch Decks</a></li>
         <li><a href="#product-ui" class="nav-link">Product UI</a></li>
-        <li><a href="#3d-sets" class="nav-link">3D Sets</a></li>
         <li><a href="#motion" class="nav-link">Motion</a></li>
+        <li><a href="#3d-sets" class="nav-link">3D Sets</a></li>
         <li><a href="#credentials" class="nav-link">Credentials</a></li>
       </ul>
 
@@ -1057,7 +1131,7 @@ html_code = """<!DOCTYPE html>
   <!-- HERO SECTION -->
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-name">Benny Joel</h1>
+      <h1 class="hero-name">Benny Joel Lakamana</h1>
 
       <div class="hero-role">
         <span>Visual Designer</span>
@@ -1079,10 +1153,6 @@ html_code = """<!DOCTYPE html>
         <a href="https://dominator-ops.pages.dev" target="_blank" class="btn btn-green">
           <span style="display:inline-block; width:6px; height:6px; background:#A3E635; border-radius:50%;"></span>
           <span>View Dominator Systems Live ↗</span>
-        </a>
-        <a href="https://github.com/bennyjoel/portfolio" target="_blank" class="btn btn-matte">
-          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          <span>GitHub</span>
         </a>
       </div>
 
@@ -1107,14 +1177,14 @@ html_code = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- SECTION 1: PITCH DECKS -->
+  <!-- SECTION 1: PITCH DECKS (3 MASTER DECKS) -->
   <section class="section" id="pitch-decks">
     <div class="container">
       <div class="section-header">
         <span class="section-eyebrow">01 / Technical Presentations</span>
         <h2 class="section-title">Pitch Decks & Production Specifications</h2>
         <p class="section-desc">
-          Technical presentation decks authored for theatrical feature film VFX supervisor defense and animated short film virtual production in Unreal Engine 5.
+          Technical presentation decks authored for theatrical feature film VFX supervisor defense, real-time cinematic world-building, and animated short film production in Unreal Engine 5.
         </p>
       </div>
 
@@ -1179,6 +1249,39 @@ html_code = """<!DOCTYPE html>
             <div class="deck-footer">
               <span class="deck-meta">1920x1080 MASTER PDF</span>
               <a href="assets/decks/Crucible_3D_Cinematic_Pitch_Deck.pdf" target="_blank" class="btn btn-matte" style="padding: 6px 14px; font-size: 0.78rem;">
+                <span>View Full PDF ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DECK 3: AARAV (RO) -->
+        <div class="deck-card">
+          <div class="deck-preview-carousel">
+            <div class="carousel-track">
+              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_01.png', 'Aarav: Title & Universe Presentation', 'Title slide for Aarav, establishing the war drama universe and cinematic narrative direction.')">
+                <img src="assets/images/aarav_slide_01.png" alt="Aarav Slide 1">
+              </div>
+              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_02.png', 'Aarav: Synopsis & Real-Time Unreal Pipeline', 'Breakdown of thematic tragedy, CGI look development, and real-time Unreal Engine cinematic execution.')">
+                <img src="assets/images/aarav_slide_02.png" alt="Aarav Slide 2">
+              </div>
+              <div class="slide-thumb" onclick="openModal('assets/images/aarav_slide_04.png', 'Aarav: Visual Mood & Character Concept', 'Cinematic concept lighting, dramatic atmosphere, and real-time scene look development.')">
+                <img src="assets/images/aarav_slide_04.png" alt="Aarav Slide 4">
+              </div>
+            </div>
+          </div>
+          <div class="deck-body">
+            <div class="deck-tag-row">
+              <span class="deck-tag primary">WAR DRAMA CINEMATIC</span>
+              <span class="deck-tag">UNREAL ENGINE REAL-TIME</span>
+            </div>
+            <h3 class="deck-title">Aarav: Cinematic Short Film Pitch Deck</h3>
+            <p class="deck-summary">
+              High-end CGI cinematic world-building and character direction for an emotional war drama. Covers emotional narrative arcs, dramatic lighting, and real-time Unreal Engine execution.
+            </p>
+            <div class="deck-footer">
+              <span class="deck-meta">1920x1080 MASTER PDF</span>
+              <a href="assets/decks/Aarav_Cinematic_Pitch_Deck.pdf" target="_blank" class="btn btn-matte" style="padding: 6px 14px; font-size: 0.78rem;">
                 <span>View Full PDF ↗</span>
               </a>
             </div>
@@ -1295,110 +1398,11 @@ html_code = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- SECTION 3: 3D ENVIRONMENTS & VIRTUAL SETS -->
-  <section class="section" id="3d-sets">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">03 / Real-Time 3D & Tracking</span>
-        <h2 class="section-title">3D Environments & Camera Tracking</h2>
-        <p class="section-desc">
-          Real-time 3D environments, virtual background plates, and theatrical camera tracking authored in Unreal Engine 5, Autodesk Maya, and Syntheyes. High-resolution captures from project archives.
-        </p>
-      </div>
-
-      <div class="spatial-grid">
-        <!-- ENV 1: INSTAGRAM FEATURED RIVER GORGE & WATER SHADERS -->
-        <div class="spatial-card">
-          <div class="spatial-img-box" onclick="openModal('assets/images/env_instagram_river_gorge.jpg', 'Unreal Engine 5: Mountain River Gorge & Water Shaders', 'Cinematic high-resolution mountain river gorge featuring real-time translucent water shaders, mossy riverbed displacement, and lush pine forest canopy. Featured on Instagram (@primitive-based project archive).')">
-            <img src="assets/images/env_instagram_river_gorge.jpg" alt="UE5 Mountain River Gorge">
-          </div>
-          <div class="spatial-body">
-            <span class="motion-badge">Unreal Engine 5 • Instagram Featured (@primitive)</span>
-            <h3 class="motion-title">Mountain River Gorge & Water Shaders</h3>
-            <p class="motion-desc">
-              Real-time translucent water shading, dynamic riverbed moss displacement, and procedural foliage scattering authored in Unreal Engine 5. Rendered at 6.6K master fidelity.
-            </p>
-          </div>
-        </div>
-
-        <!-- ENV 2: DAY TEMPLE COLONNADE -->
-        <div class="spatial-card">
-          <div class="spatial-img-box" onclick="openModal('assets/images/env_day_temple_arch.jpg', 'Unreal Engine 5: Grand Temple Colonnade (Daylight)', 'Expansive daylight architectural set extension with sun-angled cast shadows, physical stone displacement, and aerial perspective depth.')">
-            <img src="assets/images/env_day_temple_arch.jpg" alt="UE5 Day Temple Arch">
-          </div>
-          <div class="spatial-body">
-            <span class="motion-badge">Unreal Engine 5 • Daylight Illumination</span>
-            <h3 class="motion-title">Grand Temple Colonnade</h3>
-            <p class="motion-desc">
-              Monumental architectural environment built with Nanite geometry, real-time sun illumination, and calibrated camera focal depth.
-            </p>
-          </div>
-        </div>
-
-        <!-- ENV 3: CATHEDRAL VAULT RUINS -->
-        <div class="spatial-card">
-          <div class="spatial-img-box" onclick="openModal('assets/images/env_night_cathedral_ruins.jpg', 'Unreal Engine 5: Subterranean Cathedral Vault', 'High-vaulted structural hall with directional god-rays, physical materials, and camera depth-of-field calibration.')">
-            <img src="assets/images/env_night_cathedral_ruins.jpg" alt="UE5 Cathedral Ruins">
-          </div>
-          <div class="spatial-body">
-            <span class="motion-badge">Atmospheric Volumetrics • Shading</span>
-            <h3 class="motion-title">Subterranean Cathedral Vault</h3>
-            <p class="motion-desc">
-              Cathedral-scale interior environment testing dramatic upward focal perspectives, roughness variation, and high-dynamic-range illumination.
-            </p>
-          </div>
-        </div>
-
-        <!-- ENV 4: WORLDBREAKER GAME LEVEL -->
-        <div class="spatial-card">
-          <div class="spatial-img-box" onclick="openModal('assets/images/env_worldbreaker_cinematic.jpg', 'Unreal Engine 5: Worldbreaker Game Level & Terrain', 'High-scale real-time environment built for gameplay traversal, Nanite geometry streaming, and cinematic camera choreography in Worldbreaker.')">
-            <img src="assets/images/env_worldbreaker_cinematic.jpg" alt="Worldbreaker Environment">
-          </div>
-          <div class="spatial-body">
-            <span class="motion-badge">Level Design • World Partition</span>
-            <h3 class="motion-title">Worldbreaker Game Level & Terrain</h3>
-            <p class="motion-desc">
-              Expansive real-time level built in Unreal Engine for Worldbreaker, engineered for seamless camera traversal and multi-layered atmospheric lighting.
-            </p>
-          </div>
-        </div>
-
-        <!-- ENV 5: SYNTHEYES CAMERA TRACKING -->
-        <div class="spatial-card">
-          <div class="spatial-img-box" onclick="openModal('assets/images/test_syntheyes_track.png', 'Syntheyes 3D Camera Tracking & Solve', 'Solving real-world optical distortion, sensor dimensions, and nodal camera rotations from theatrical rushes with sub-pixel precision (0.34px).')">
-            <img src="assets/images/test_syntheyes_track.png" alt="Syntheyes 3D Tracking">
-          </div>
-          <div class="spatial-body">
-            <span class="motion-badge">Matchmoving & Spatial Survey</span>
-            <h3 class="motion-title">Syntheyes 3D Camera Matchmove</h3>
-            <p class="motion-desc">
-              Solving real-world optical distortion, sensor dimensions, and nodal camera rotations from theatrical rushes with sub-pixel precision (<0.5px).
-            </p>
-          </div>
-        </div>
-
-        <!-- ENV 6: FEATURE FILM PLATE PREP -->
-        <div class="spatial-card">
-          <div class="spatial-img-box" onclick="openModal('assets/images/shot_150s_clean.png', 'Theatrical Plate Extraction & Matte Cleanup', 'Digital clean-plate generation, rig extraction, and background extension preparation ensuring seamless CGI integration.')">
-            <img src="assets/images/shot_150s_clean.png" alt="Theatrical Plate Extraction">
-          </div>
-          <div class="spatial-body">
-            <span class="motion-badge">Feature Film VFX • 140+ Shots</span>
-            <h3 class="motion-title">Theatrical Plate Prep & Wire Removal</h3>
-            <p class="motion-desc">
-              On-set Macbeth chart extraction, dynamic rig/wire extraction, and high-fidelity clean plate reconstruction for VFX compositor handoff.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 4: MOTION GRAPHICS -->
+  <!-- SECTION 3: KINETIC MOTION (PLACED ABOVE 3D DEPARTMENT) -->
   <section class="section" id="motion">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">04 / Kinetic Motion</span>
+        <span class="section-eyebrow">03 / Kinetic Motion</span>
         <h2 class="section-title">Broadcast Motion Graphics & Kinetic Typography</h2>
         <p class="section-desc">
           Dynamic typography, dark luxury UI motion, and real-time audio-reactive rendering engineered programmatically at 1080x1920 60fps.
@@ -1497,6 +1501,105 @@ html_code = """<!DOCTYPE html>
     </div>
   </section>
 
+  <!-- SECTION 4: 3D ENVIRONMENTS & CAMERA TRACKING -->
+  <section class="section" id="3d-sets">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">04 / Real-Time 3D & Tracking</span>
+        <h2 class="section-title">3D Environments & Camera Tracking</h2>
+        <p class="section-desc">
+          Real-time 3D environments, virtual background plates, and theatrical camera tracking authored in Unreal Engine 5, Autodesk Maya, and Syntheyes. High-resolution captures from project archives.
+        </p>
+      </div>
+
+      <div class="spatial-grid">
+        <!-- ENV 1: INSTAGRAM FEATURED RIVER GORGE & WATER SHADERS -->
+        <div class="spatial-card">
+          <div class="spatial-img-box" onclick="openModal('assets/images/env_instagram_river_gorge.jpg', 'Unreal Engine 5: Mountain River Gorge & Water Shaders', 'Cinematic high-resolution mountain river gorge featuring real-time translucent water shaders, mossy riverbed displacement, and lush pine forest canopy. Featured on Instagram (@primitive-based project archive).')">
+            <img src="assets/images/env_instagram_river_gorge.jpg" alt="UE5 Mountain River Gorge">
+          </div>
+          <div class="spatial-body">
+            <span class="motion-badge">Unreal Engine 5 • Instagram Featured (@primitive)</span>
+            <h3 class="motion-title">Mountain River Gorge & Water Shaders</h3>
+            <p class="motion-desc">
+              Real-time translucent water shading, dynamic riverbed moss displacement, and procedural foliage scattering authored in Unreal Engine 5. Rendered at 6.6K master fidelity.
+            </p>
+          </div>
+        </div>
+
+        <!-- ENV 2: DAY TEMPLE COLONNADE -->
+        <div class="spatial-card">
+          <div class="spatial-img-box" onclick="openModal('assets/images/env_day_temple_arch.jpg', 'Unreal Engine 5: Grand Temple Colonnade (Daylight)', 'Expansive daylight architectural set extension with sun-angled cast shadows, physical stone displacement, and aerial perspective depth.')">
+            <img src="assets/images/env_day_temple_arch.jpg" alt="UE5 Day Temple Arch">
+          </div>
+          <div class="spatial-body">
+            <span class="motion-badge">Unreal Engine 5 • Daylight Illumination</span>
+            <h3 class="motion-title">Grand Temple Colonnade</h3>
+            <p class="motion-desc">
+              Monumental architectural environment built with Nanite geometry, real-time sun illumination, and calibrated camera focal depth.
+            </p>
+          </div>
+        </div>
+
+        <!-- ENV 3: CATHEDRAL VAULT RUINS -->
+        <div class="spatial-card">
+          <div class="spatial-img-box" onclick="openModal('assets/images/env_night_cathedral_ruins.jpg', 'Unreal Engine 5: Subterranean Cathedral Vault', 'High-vaulted structural hall with directional god-rays, physical materials, and camera depth-of-field calibration.')">
+            <img src="assets/images/env_night_cathedral_ruins.jpg" alt="UE5 Cathedral Ruins">
+          </div>
+          <div class="spatial-body">
+            <span class="motion-badge">Atmospheric Volumetrics • Shading</span>
+            <h3 class="motion-title">Subterranean Cathedral Vault</h3>
+            <p class="motion-desc">
+              Cathedral-scale interior environment testing dramatic upward focal perspectives, roughness variation, and high-dynamic-range illumination.
+            </p>
+          </div>
+        </div>
+
+        <!-- ENV 4: WORLDBREAKER GAME LEVEL -->
+        <div class="spatial-card">
+          <div class="spatial-img-box" onclick="openModal('assets/images/env_worldbreaker_cinematic.jpg', 'Unreal Engine 5: Worldbreaker Game Level & Terrain', 'High-scale real-time environment built for gameplay traversal, Nanite geometry streaming, and cinematic camera choreography in Worldbreaker.')">
+            <img src="assets/images/env_worldbreaker_cinematic.jpg" alt="Worldbreaker Environment">
+          </div>
+          <div class="spatial-body">
+            <span class="motion-badge">Level Design • World Partition</span>
+            <h3 class="motion-title">Worldbreaker Game Level & Terrain</h3>
+            <p class="motion-desc">
+              Expansive real-time level built in Unreal Engine for Worldbreaker, engineered for seamless camera traversal and multi-layered atmospheric lighting.
+            </p>
+          </div>
+        </div>
+
+        <!-- ENV 5: SYNTHEYES CAMERA TRACKING -->
+        <div class="spatial-card">
+          <div class="spatial-img-box" onclick="openModal('assets/images/test_syntheyes_track.png', 'Syntheyes 3D Camera Tracking & Solve', 'Solving real-world optical distortion, sensor dimensions, and nodal camera rotations from theatrical rushes with sub-pixel precision (0.34px).')">
+            <img src="assets/images/test_syntheyes_track.png" alt="Syntheyes 3D Tracking">
+          </div>
+          <div class="spatial-body">
+            <span class="motion-badge">Matchmoving & Spatial Survey</span>
+            <h3 class="motion-title">Syntheyes 3D Camera Matchmove</h3>
+            <p class="motion-desc">
+              Solving real-world optical distortion, sensor dimensions, and nodal camera rotations from theatrical rushes with sub-pixel precision (<0.5px).
+            </p>
+          </div>
+        </div>
+
+        <!-- ENV 6: FEATURE FILM PLATE PREP -->
+        <div class="spatial-card">
+          <div class="spatial-img-box" onclick="openModal('assets/images/shot_150s_clean.png', 'Theatrical Plate Extraction & Matte Cleanup', 'Digital clean-plate generation, rig extraction, and background extension preparation ensuring seamless CGI integration.')">
+            <img src="assets/images/shot_150s_clean.png" alt="Theatrical Plate Extraction">
+          </div>
+          <div class="spatial-body">
+            <span class="motion-badge">Feature Film VFX • 140+ Shots</span>
+            <h3 class="motion-title">Theatrical Plate Prep & Wire Removal</h3>
+            <p class="motion-desc">
+              On-set Macbeth chart extraction, dynamic rig/wire extraction, and high-fidelity clean plate reconstruction for VFX compositor handoff.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SECTION 5: CREDENTIALS & EXPERIENCE -->
   <section class="section" id="credentials">
     <div class="container">
@@ -1558,36 +1661,66 @@ html_code = """<!DOCTYPE html>
 
       <!-- DUAL EDUCATION & AVAILABILITY ROW -->
       <div class="dual-credentials-row">
-        <!-- Academic Qualifications -->
+        <!-- Academic Qualifications (Smooth, Visual, Structured) -->
         <div class="credential-box">
-          <h4 class="credential-box-title">
-            <svg width="18" height="18" fill="none" stroke="var(--accent-green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-            <span>Academic Qualifications</span>
-          </h4>
-
-          <div class="edu-item">
-            <div class="edu-deg">Bachelor of Fine Arts (BFA) in Digital Animation</div>
-            <div class="edu-inst">JNAFAU (Jawaharlal Nehru Architecture & Fine Arts University) • Hyderabad</div>
-            <div class="edu-note">
-              4-Year comprehensive university degree covering classical art anatomy, 3D CGI modeling, cinematography, and spatial digital painting.
-            </div>
+          <div class="cred-header-row">
+            <h4 class="credential-box-title">
+              <svg width="18" height="18" fill="none" stroke="var(--accent-green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              <span>Academic Qualifications</span>
+            </h4>
+            <span class="cred-sub-badge">FORMAL DEGREE & STUDIO ACCREDITATION</span>
           </div>
 
-          <div class="edu-item">
-            <div class="edu-deg">Advanced Diploma in 3D Animation & VFX</div>
-            <div class="edu-inst">Arena Animation • Hyderabad, India</div>
-            <div class="edu-note">
-              Studio training in 3D pipeline asset authoring, dynamic lighting setups, and digital compositing.
+          <div class="edu-card-list">
+            <!-- EDU 1: JNAFAU BFA -->
+            <div class="edu-card">
+              <div class="edu-card-top">
+                <span class="edu-badge university">4-YEAR UNIVERSITY DEGREE</span>
+                <span class="edu-location">Hyderabad, India</span>
+              </div>
+              <h5 class="edu-deg-title">Bachelor of Fine Arts (BFA) in Digital Animation</h5>
+              <div class="edu-institution">JNAFAU (Jawaharlal Nehru Architecture & Fine Arts University)</div>
+              <p class="edu-summary-text">
+                Four years of full-time academic studio rigor covering classical human anatomy, 3D CGI modeling, spatial cinematography, lighting theory, and narrative digital previsualization.
+              </p>
+              <div class="edu-focus-pills">
+                <span class="edu-pill">Anatomy & Figure Drawing</span>
+                <span class="edu-pill">3D CGI Modeling</span>
+                <span class="edu-pill">Cinematography Theory</span>
+                <span class="edu-pill">Digital Previs</span>
+              </div>
+            </div>
+
+            <!-- EDU 2: ARENA ANIMATION DIPLOMA (STRICTLY NO DATES/YEARS) -->
+            <div class="edu-card">
+              <div class="edu-card-top">
+                <span class="edu-badge studio">INTENSIVE STUDIO DIPLOMA</span>
+                <span class="edu-location">Hyderabad, India</span>
+              </div>
+              <h5 class="edu-deg-title">Advanced Diploma in 3D Animation & VFX</h5>
+              <div class="edu-institution">Arena Animation</div>
+              <p class="edu-summary-text">
+                Hands-on practical studio training in end-to-end 3D production pipelines, dynamic character rigging, lighting integration, and digital multi-pass compositing.
+              </p>
+              <div class="edu-focus-pills">
+                <span class="edu-pill">3D Pipeline Production</span>
+                <span class="edu-pill">Lighting & Shading</span>
+                <span class="edu-pill">Digital Compositing</span>
+                <span class="edu-pill">VFX LookDev</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Professional Availability -->
         <div class="credential-box">
-          <h4 class="credential-box-title">
-            <svg width="18" height="18" fill="none" stroke="#A3E635" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <span>Professional Availability & Location</span>
-          </h4>
+          <div class="cred-header-row">
+            <h4 class="credential-box-title">
+              <svg width="18" height="18" fill="none" stroke="#A3E635" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Professional Availability & Location</span>
+            </h4>
+            <span class="cred-sub-badge">IMMEDIATE ENGAGEMENT</span>
+          </div>
 
           <div class="avail-row">
             <span class="avail-label">Location:</span>
@@ -1632,14 +1765,14 @@ html_code = """<!DOCTYPE html>
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-info">
-        <strong style="color: var(--text-pure);">Benny Joel</strong> • Visual Designer & 3D Artist • Hyderabad, India
+        <strong style="color: var(--text-pure);">Benny Joel Lakamana</strong> • Visual Designer & 3D Artist • Hyderabad, India
       </div>
       <div class="footer-links">
         <a href="assets/docs/Benny_Joel_Lakamana_Resume_Deloitte.pdf" target="_blank" class="nav-link">Resume</a>
         <a href="https://dominator-ops.pages.dev" target="_blank" class="nav-link">Dominator Site</a>
         <a href="assets/decks/Takshaka_VFX_Master_Pitch_Deck.pdf" target="_blank" class="nav-link">Takshaka Deck</a>
         <a href="assets/decks/Crucible_3D_Cinematic_Pitch_Deck.pdf" target="_blank" class="nav-link">Crucible Deck</a>
-        <a href="https://github.com/bennyjoel/portfolio" target="_blank" class="nav-link">GitHub</a>
+        <a href="assets/decks/Aarav_Cinematic_Pitch_Deck.pdf" target="_blank" class="nav-link">Aarav Deck</a>
       </div>
     </div>
   </footer>
