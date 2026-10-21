@@ -1208,7 +1208,7 @@ html_code = """<!DOCTYPE html>
           <div class="hero-stat-label">Storefront UI & Design System</div>
         </div>
         <div class="hero-stat-card">
-          <div class="hero-stat-num" style="color: #CBD5E1;">BFA in Animation</div>
+          <div class="hero-stat-num" style="color: #CBD5E1;">BFA in Animation & VFX</div>
           <div class="hero-stat-label">4-Year Degree • JNAFAU</div>
         </div>
       </div>
@@ -1726,13 +1726,14 @@ html_code = """<!DOCTYPE html>
                   Hyderabad, India
                 </span>
               </div>
-              <h5 class="edu-deg-title">Bachelor of Fine Arts (BFA) in Digital Animation</h5>
+              <h5 class="edu-deg-title">Bachelor of Fine Arts (BFA) in Animation and VFX</h5>
               <div class="edu-institution">JNAFAU (Jawaharlal Nehru Architecture & Fine Arts University)</div>
               <p class="edu-summary-text">
-                Four years of full-time academic studio rigor covering classical human anatomy, 3D CGI modeling, spatial cinematography, lighting physics, and narrative previsualization.
+                Four years of comprehensive full-time studio rigor covering classical human anatomy, 3D CGI modeling, spatial cinematography, lighting physics, and narrative previsualization.
               </p>
             </div>
             <div class="edu-focus-pills">
+              <span class="edu-pill">Animation and VFX</span>
               <span class="edu-pill">Anatomy & Figure Drawing</span>
               <span class="edu-pill">3D CGI Modeling</span>
               <span class="edu-pill">Cinematography Theory</span>
@@ -1740,23 +1741,24 @@ html_code = """<!DOCTYPE html>
             </div>
           </div>
 
-          <!-- EDU 2: ARENA ANIMATION DIPLOMA (STRICTLY NO DATES/YEARS) -->
+          <!-- EDU 2: ARENA ANIMATION VFX PRIME (3-YEAR COURSE) -->
           <div class="edu-card">
             <div>
               <div class="edu-card-top">
-                <span class="edu-badge studio">INTENSIVE STUDIO DIPLOMA</span>
+                <span class="edu-badge studio">3-YEAR PROFESSIONAL COURSE</span>
                 <span class="edu-location">
                   <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                   Hyderabad, India
                 </span>
               </div>
-              <h5 class="edu-deg-title">Advanced Diploma in 3D Animation & VFX</h5>
+              <h5 class="edu-deg-title">Animation VFX Prime</h5>
               <div class="edu-institution">Arena Animation</div>
               <p class="edu-summary-text">
-                Hands-on practical studio training in end-to-end 3D production pipelines, dynamic character rigging, lighting integration, and digital multi-pass compositing.
+                Three-year comprehensive studio coursework in end-to-end 3D production pipelines, dynamic character rigging, cinematic lighting integration, and digital multi-pass VFX compositing.
               </p>
             </div>
             <div class="edu-focus-pills">
+              <span class="edu-pill">Animation and VFX</span>
               <span class="edu-pill">3D Pipeline Production</span>
               <span class="edu-pill">Lighting & Shading</span>
               <span class="edu-pill">Digital Compositing</span>
