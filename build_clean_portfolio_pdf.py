@@ -66,6 +66,28 @@ def build_print_html():
         -webkit-background-clip: initial !important;
         -webkit-text-fill-color: #FFFFFF !important;
         color: #FFFFFF !important;
+        font-size: 3.4rem !important;
+        margin-bottom: 12px !important;
+      }
+
+      .hero-section {
+        padding: 8px 0 16px 0 !important;
+        border-bottom: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .hero-bio {
+        margin-bottom: 18px !important;
+      }
+
+      .hero-actions {
+        margin-bottom: 20px !important;
+      }
+
+      .portfolio-experience-banner {
+        margin: 6px auto 14px auto !important;
+        padding: 10px 16px !important;
       }
 
       /* Eliminate sticky header in print so it stays neatly at the top of page 1 */
@@ -326,7 +348,7 @@ def build_print_html():
     # 2. Inject Experience Banner right after site-nav
     banner_html = """
   <!-- RECRUITER PORTFOLIO ACCESS BANNER -->
-  <div class="container" style="padding-top: 16px;">
+  <div class="container" style="padding-top: 6px;">
     <div class="portfolio-experience-banner">
       <div class="banner-info">
         <div class="banner-pill">
