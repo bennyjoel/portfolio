@@ -3,39 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>BENNY JOEL LAKAMANA | Feature Film Matchmove & 3D Tracking Artist</title>
-  <meta name="description" content="Official feature film matchmove, camera tracking, and 3D layout showreel of Benny Joel Lakamana. Featuring 12 production shots from Takshaka, 3DEqualizer sub-pixel solves, and Maya pipeline handoffs.">
+  <title>BENNY JOEL LAKAMANA | Feature Film 3D Matchmove & Camera Tracking</title>
+  <meta name="description" content="Award-winning 3D matchmove, camera tracking, and layout portfolio of Benny Joel Lakamana. Featuring 10 verified Maya render shots from feature film Takshaka, 3DEqualizer sub-pixel solves, and an interactive 3D WebGL spatial camera trajectory engine.">
 
-  <!-- Typography: Syne, Plus Jakarta Sans, JetBrains Mono -->
+  <!-- Typography: Syne (Headings), Space Grotesk (UI), Plus Jakarta Sans (Body), JetBrains Mono (Telemetry) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Three.js & OrbitControls for Studio 3D Camera Rig -->
+  <!-- Three.js for Luxury 3D Spatial Trajectory & Point Cloud -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
   <style>
     /* ==========================================================================
-       OBSIDIAN CINEMA DESIGN SYSTEM (AWWWARDS / FWA STUDIO GRADE)
+       LUXURY 3D OBSIDIAN CINEMA DESIGN SYSTEM
        ========================================================================== */
     :root {
-      --bg-void: #050608;
-      --bg-surface: #0a0c10;
-      --bg-panel: #10131a;
-      --bg-panel-elevated: #161a24;
-      --bg-glass: rgba(16, 19, 26, 0.75);
+      --bg-void: #040507;
+      --bg-surface: #090b10;
+      --bg-panel: rgba(14, 17, 24, 0.78);
+      --bg-panel-elevated: rgba(22, 27, 38, 0.88);
+      --bg-glass: rgba(10, 13, 18, 0.82);
       
-      --border-subtle: rgba(255, 255, 255, 0.07);
-      --border-medium: rgba(255, 255, 255, 0.14);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.16);
       --border-glow: rgba(245, 158, 11, 0.45);
       
       --gold-primary: #f59e0b;
       --gold-bright: #fbbf24;
-      --gold-glow: rgba(245, 158, 11, 0.25);
+      --gold-glow: rgba(245, 158, 11, 0.3);
       
       --cyan-neon: #00f0ff;
-      --cyan-glow: rgba(0, 240, 255, 0.2);
+      --cyan-glow: rgba(0, 240, 255, 0.25);
       --emerald-live: #10b981;
       
       --text-white: #ffffff;
@@ -70,11 +69,16 @@
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 10% 40%, rgba(0, 240, 255, 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 60%);
-      background-attachment: fixed;
+    }
+
+    /* Fullscreen 3D Spatial WebGL Canvas */
+    #webglCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: auto;
     }
 
     /* Subtle Analog Film Grain Overlay */
@@ -84,9 +88,20 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 1;
       opacity: 0.035;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Content Foreground Layer */
+    .content-layer {
+      position: relative;
+      z-index: 2;
+      pointer-events: none; /* Let 3D canvas receive clicks where empty */
+    }
+
+    .interactive-element {
+      pointer-events: auto;
     }
 
     /* Container */
@@ -114,7 +129,7 @@
       height: 64px;
       z-index: 100;
       background: var(--bg-glass);
-      backdrop-filter: blur(24px) saturate(190%);
+      backdrop-filter: blur(28px) saturate(190%);
       border: 1px solid var(--border-medium);
       border-radius: 9999px;
       display: flex;
@@ -122,7 +137,7 @@
       justify-content: space-between;
       padding: 0 1.75rem;
       transition: all 0.3s var(--ease-cinema);
-      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7), 0 0 30px -10px var(--gold-glow);
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.8), 0 0 30px -10px var(--gold-glow);
     }
 
     .nav-brand {
@@ -178,9 +193,7 @@
     }
 
     @media (max-width: 900px) {
-      .nav-links {
-        display: none;
-      }
+      .nav-links { display: none; }
     }
 
     .nav-link {
@@ -188,8 +201,8 @@
       text-decoration: none;
       font-family: var(--font-ui);
       font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 0.5rem 0.75rem;
       border-radius: 6px;
@@ -198,7 +211,7 @@
 
     .nav-link:hover {
       color: var(--text-white);
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .nav-actions {
@@ -263,7 +276,7 @@
     }
 
     /* ==========================================================================
-       HERO CINEMA SCREENING ROOM
+       HERO CINEMA SCREENING ROOM & 3D HUD
        ========================================================================== */
     .hero-screening-room {
       padding-top: 130px;
@@ -349,6 +362,7 @@
       display: flex;
       gap: 2.5rem;
       background: var(--bg-panel);
+      backdrop-filter: blur(20px);
       padding: 1.25rem 2rem;
       border-radius: 16px;
       border: 1px solid var(--border-subtle);
@@ -400,7 +414,7 @@
 
     @media (max-width: 768px) {
       .video-viewport-wrapper {
-        padding-top: 56.25%; /* 16:9 on mobile */
+        padding-top: 56.25%;
       }
     }
 
@@ -461,39 +475,14 @@
       pointer-events: none;
     }
 
-    .crosshair-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 24px;
-      height: 24px;
-      pointer-events: none;
-      opacity: 0.3;
-    }
-
-    .crosshair-center::before, .crosshair-center::after {
-      content: "";
-      position: absolute;
-      background: rgba(255, 255, 255, 0.8);
-    }
-
-    .crosshair-center::before {
-      top: 11px; left: 0; width: 24px; height: 2px;
-    }
-
-    .crosshair-center::after {
-      top: 0; left: 11px; width: 2px; height: 24px;
-    }
-
-    /* Floating Cinema Controller Dock */
+    /* Floating Cinema Control Dock */
     .cinema-control-dock {
       position: absolute;
       bottom: 1.25rem;
       left: 50%;
       transform: translateX(-50%);
       width: min(880px, calc(100% - 2.5rem));
-      background: rgba(10, 12, 16, 0.85);
+      background: rgba(10, 12, 16, 0.88);
       backdrop-filter: blur(20px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 14px;
@@ -604,6 +593,40 @@
       fill: currentColor;
     }
 
+    /* 3D SPATIAL TELEMETRY FLOATING HUD */
+    .spatial-telemetry-pill {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      z-index: 50;
+      background: rgba(10, 13, 18, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-medium);
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      pointer-events: auto;
+    }
+
+    @media (max-width: 768px) {
+      .spatial-telemetry-pill { display: none; }
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .telemetry-row .label { color: var(--text-dim); }
+    .telemetry-row .value { color: var(--cyan-neon); font-weight: 600; }
+    .telemetry-row .value.gold { color: var(--gold-primary); }
+
     /* ==========================================================================
        SECTION HEADERS & EDITORIAL TITLES
        ========================================================================== */
@@ -651,44 +674,8 @@
       font-weight: 300;
     }
 
-    /* Filter Pill Strip */
-    .filter-pills-strip {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-
-    .filter-pill {
-      background: var(--bg-panel);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      font-family: var(--font-ui);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.6rem 1.25rem;
-      border-radius: 9999px;
-      cursor: pointer;
-      transition: all 0.2s var(--ease-cinema);
-    }
-
-    .filter-pill:hover {
-      color: var(--text-white);
-      border-color: var(--border-medium);
-      background: var(--bg-panel-elevated);
-    }
-
-    .filter-pill.active {
-      background: var(--gold-primary);
-      color: #050608;
-      border-color: var(--gold-primary);
-      box-shadow: 0 4px 15px var(--gold-glow);
-    }
-
     /* ==========================================================================
-       12 MAYA RENDER SHOTS - CINEMATIC VIDEO GRID
+       10 PURE CAMERA TRACKING MAYA SHOTS - CINEMATIC VIDEO GRID
        ========================================================================== */
     .shots-grid-layout {
       display: grid;
@@ -710,6 +697,7 @@
 
     .cinema-shot-card {
       background: var(--bg-panel);
+      backdrop-filter: blur(20px);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       overflow: hidden;
@@ -718,7 +706,6 @@
       cursor: pointer;
       transition: all 0.35s var(--ease-cinema);
       position: relative;
-      group: card;
     }
 
     .cinema-shot-card:hover {
@@ -770,7 +757,7 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: rgba(16, 19, 26, 0.8);
+      background: rgba(16, 19, 26, 0.85);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       display: flex;
@@ -798,7 +785,7 @@
       position: absolute;
       top: 0.85rem;
       left: 0.85rem;
-      background: rgba(5, 6, 8, 0.8);
+      background: rgba(5, 6, 8, 0.85);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 0.25rem 0.65rem;
@@ -886,125 +873,12 @@
     }
 
     /* ==========================================================================
-       AWARD-WINNING INTERACTIVE 3D CAMERA RIG (THREE.JS STUDIO)
-       ========================================================================== */
-    .threejs-camera-showcase {
-      margin-top: 5rem;
-      background: var(--bg-panel);
-      border: 1px solid var(--border-medium);
-      border-radius: 24px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.85);
-    }
-
-    .threejs-header-bar {
-      padding: 1.5rem 2rem;
-      background: rgba(10, 12, 16, 0.9);
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .threejs-title-strip {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .threejs-h3 {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text-white);
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-
-    .threejs-sub {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--gold-primary);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .threejs-viewport-container {
-      position: relative;
-      width: 100%;
-      height: 520px;
-      background: #06070a;
-      cursor: grab;
-    }
-
-    .threejs-viewport-container:active {
-      cursor: grabbing;
-    }
-
-    #threejsCanvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* Live Telemetry HUD Overlaid on 3D Viewport */
-    .threejs-telemetry-hud {
-      position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
-      pointer-events: none;
-      background: rgba(6, 7, 10, 0.85);
-      backdrop-filter: blur(14px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-      min-width: 240px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-    }
-
-    .telemetry-row {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .telemetry-row .label { color: var(--text-dim); }
-    .telemetry-row .value { color: var(--cyan-neon); font-weight: 600; }
-    .telemetry-row .value.gold { color: var(--gold-primary); }
-
-    .threejs-orbit-hint {
-      position: absolute;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      pointer-events: none;
-      background: rgba(16, 19, 26, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-family: var(--font-ui);
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* ==========================================================================
-       DUAL COMPARATOR (RAW PLATE VS MAYA TRACK VS UE5)
+       DUAL COMPARATOR (MAYA 3D TRACK VS VIRTUAL PRODUCTION)
        ========================================================================== */
     .comparator-showcase-box {
       margin-top: 5rem;
       background: var(--bg-panel);
+      backdrop-filter: blur(24px);
       border: 1px solid var(--border-medium);
       border-radius: 24px;
       overflow: hidden;
@@ -1094,7 +968,7 @@
     }
 
     /* ==========================================================================
-       TECHNICAL PIPELINE ARSENAL (EYELINE SPECIFICATION)
+       TECHNICAL PIPELINE ARSENAL
        ========================================================================== */
     .pipeline-grid-four {
       display: grid;
@@ -1117,6 +991,7 @@
 
     .pipeline-card {
       background: var(--bg-panel);
+      backdrop-filter: blur(20px);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 1.75rem;
@@ -1170,7 +1045,8 @@
        ========================================================================== */
     .credentials-banner {
       margin-top: 5rem;
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(16, 19, 26, 0.9) 100%);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(16, 19, 26, 0.92) 100%);
+      backdrop-filter: blur(24px);
       border: 1px solid var(--border-glow);
       border-radius: 24px;
       padding: 3rem;
@@ -1280,6 +1156,7 @@
       width: min(1300px, 95vw);
       max-height: 94vh;
       background: var(--bg-panel);
+      backdrop-filter: blur(30px);
       border: 1px solid var(--border-medium);
       border-radius: 20px;
       overflow: hidden;
@@ -1348,7 +1225,7 @@
     /* Frame Step & Playback Speed Bar */
     .modal-jog-controls {
       padding: 0.75rem 1.5rem;
-      background: rgba(16, 19, 26, 0.9);
+      background: rgba(16, 19, 26, 0.92);
       border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
@@ -1514,611 +1391,537 @@
 </head>
 <body id="top">
 
-  <!-- Grain Overlay -->
+  <!-- Interactive Three.js WebGL Spatial Canvas (Full Background) -->
+  <canvas id="webglCanvas"></canvas>
+
+  <!-- Film Grain Overlay -->
   <div class="film-grain"></div>
 
   <!-- Toast -->
   <div id="toastPill" class="toast-pill">EMAIL COPIED TO CLIPBOARD</div>
 
-  <!-- Top Glass Dock Navigation -->
-  <header class="cinema-nav">
-    <a href="#top" class="nav-brand">
-      <div class="brand-mark">BJ</div>
-      <div class="brand-text">
-        <span class="brand-name">Benny Joel Lakamana</span>
-        <span class="brand-role">Eyeline Studios Target • Matchmove Artist</span>
-      </div>
-    </a>
+  <!-- 3D Spatial Telemetry Floating HUD -->
+  <div class="spatial-telemetry-pill">
+    <div class="telemetry-row">
+      <span class="label">3D ENGINE:</span>
+      <span class="value">THREE.JS SPATIAL WEBGL</span>
+    </div>
+    <div class="telemetry-row">
+      <span class="label">CAMERA SOLVE:</span>
+      <span class="value gold">BEZIER 3D TRAJECTORY</span>
+    </div>
+    <div class="telemetry-row">
+      <span class="label">LOCATOR DENSITY:</span>
+      <span class="value">2,500 SOLVED POINTS</span>
+    </div>
+    <div class="telemetry-row">
+      <span class="label">CAMERA QUAT (W,X,Y):</span>
+      <span class="value" id="spatialQuat">1.0, 0.0, 0.0</span>
+    </div>
+  </div>
 
-    <ul class="nav-links">
-      <li><a href="#master-reel" class="nav-link">Showreel</a></li>
-      <li><a href="#shots-grid" class="nav-link">12 Feature Shots</a></li>
-      <li><a href="#camera-rig-3d" class="nav-link">3D Studio Camera</a></li>
-      <li><a href="#comparator" class="nav-link">Comparator</a></li>
-      <li><a href="#pipeline" class="nav-link">Pipeline</a></li>
-      <li><a href="#credentials" class="nav-link">Credentials</a></li>
-    </ul>
+  <!-- Content Foreground Layer -->
+  <div class="content-layer">
 
-    <div class="nav-actions">
-      <div class="live-status-pill">
-        <div class="pulse-dot"></div>
-        <span>AVAILABLE NOW</span>
-      </div>
-      <a href="assets/docs/Benny_Joel_Lakamana_Eyeline_Matchmove_Resume.pdf" download class="btn-nav-cv">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>Download CV</span>
+    <!-- Top Glass Dock Navigation -->
+    <header class="cinema-nav interactive-element">
+      <a href="#top" class="nav-brand">
+        <div class="brand-mark">BJ</div>
+        <div class="brand-text">
+          <span class="brand-name">Benny Joel Lakamana</span>
+          <span class="brand-role">Feature Film 3D Matchmove & Camera Tracking</span>
+        </div>
       </a>
-    </div>
-  </header>
 
-  <!-- Main Container -->
-  <main class="cinema-container">
+      <ul class="nav-links">
+        <li><a href="#master-reel" class="nav-link">Showreel</a></li>
+        <li><a href="#shots-grid" class="nav-link">10 Maya Solves</a></li>
+        <li><a href="#comparator" class="nav-link">Comparator</a></li>
+        <li><a href="#pipeline" class="nav-link">Pipeline</a></li>
+        <li><a href="#credentials" class="nav-link">Credentials</a></li>
+      </ul>
 
-    <!-- HERO SECTION & MASTER SCREENING ROOM -->
-    <section class="hero-screening-room" id="master-reel">
-      <div class="hero-meta-kicker">
-        <div class="kicker-tag">Feature Film Visual Effects • Camera Tracking & Layout</div>
-        <div class="kicker-spec">
-          <span>TARGET: EYELINE STUDIOS</span>
-          <span>•</span>
-          <span>SOLVER: 3DEQUALIZER 4 / SYNTHEYES</span>
-          <span>•</span>
-          <span>RMS &lt; 0.35PX</span>
+      <div class="nav-actions">
+        <div class="live-status-pill">
+          <div class="pulse-dot"></div>
+          <span>AVAILABLE FOR PRODUCTION</span>
         </div>
+        <a href="assets/docs/Benny_Joel_Lakamana_Matchmove_Resume.pdf" download class="btn-nav-cv">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Download CV</span>
+        </a>
       </div>
+    </header>
 
-      <div class="hero-title-group">
-        <h1 class="hero-main-title">
-          SUB-PIXEL PRECISION.<br>
-          <span class="accent-gold">FEATURE FILM MATCHMOVE.</span>
-        </h1>
-        <div class="hero-description-row">
-          <p class="hero-description">
-            Production-grade 3D camera tracking, object rotomation, and layout handoff for live-action feature films. 
-            Calibrated on high-velocity action plates with complex camera translation, anamorphic lens distortion profiling, and Maya line-up geometry.
-          </p>
-          <div class="hero-stats-strip">
-            <div class="stat-item">
-              <span class="stat-val"><span class="gold">12</span></span>
-              <span class="stat-lbl">Playable Shots</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-val"><span class="cyan">0.28</span><span style="font-size:1rem;color:var(--text-dim);">px</span></span>
-              <span class="stat-lbl">Avg RMS Error</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-val">100<span class="gold">%</span></span>
-              <span class="stat-lbl">Maya Verified</span>
-            </div>
+    <!-- Main Container -->
+    <main class="cinema-container">
+
+      <!-- HERO SECTION & MASTER SCREENING ROOM -->
+      <section class="hero-screening-room" id="master-reel">
+        <div class="hero-meta-kicker">
+          <div class="kicker-tag">Feature Film Visual Effects • 3D Camera Tracking & Layout</div>
+          <div class="kicker-spec">
+            <span>PRODUCTION: TAKSHAKA</span>
+            <span>•</span>
+            <span>SOLVER: 3DEQUALIZER 4 / SYNTHEYES</span>
+            <span>•</span>
+            <span>RMS &lt; 0.35PX</span>
           </div>
         </div>
-      </div>
 
-      <!-- WIDESCREEN CINEMA HERO PLAYER -->
-      <div class="master-player-chassis">
-        <div class="video-viewport-wrapper">
-          <video id="heroShowreelVideo" class="master-hero-video" src="assets/videos/takshaka_master_showreel.mp4" poster="assets/images/shots/shot_081_thumb.jpg" playsinline loop muted autoplay></video>
-          
-          <!-- Viewfinder HUD -->
-          <div class="viewfinder-hud">
-            <div class="hud-top-bar">
-              <div class="hud-rec-indicator">
-                <div class="rec-red-dot"></div>
-                <span>LIVE REEL • TAKSHAKA MASTER (8-SHOT CUT)</span>
+        <div class="hero-title-group">
+          <h1 class="hero-main-title">
+            SUB-PIXEL PRECISION.<br>
+            <span class="accent-gold">FEATURE FILM MATCHMOVE.</span>
+          </h1>
+          <div class="hero-description-row">
+            <p class="hero-description">
+              Production-grade 3D camera tracking, coordinate normalization, and layout handoff for live-action feature films. 
+              Calibrated on high-velocity action plates with complex camera translation, anamorphic lens distortion profiling, and Maya line-up geometry.
+            </p>
+            <div class="hero-stats-strip interactive-element">
+              <div class="stat-item">
+                <span class="stat-val"><span class="gold">10</span></span>
+                <span class="stat-lbl">Maya Solves</span>
               </div>
-              <div>48.00 FPS • ARRI RAW / PRORES • SOLVE RMS 0.28px</div>
+              <div class="stat-item">
+                <span class="stat-val"><span class="cyan">0.26</span><span style="font-size:1rem;color:var(--text-dim);">px</span></span>
+                <span class="stat-lbl">Hero RMS Error</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-val">100<span class="gold">%</span></span>
+                <span class="stat-lbl">Maya Verified</span>
+              </div>
             </div>
-            <div class="hud-corner-crosshairs"></div>
-            <div class="crosshair-center"></div>
+          </div>
+        </div>
+
+        <!-- WIDESCREEN CINEMA HERO PLAYER -->
+        <div class="master-player-chassis interactive-element">
+          <div class="video-viewport-wrapper">
+            <video id="heroShowreelVideo" class="master-hero-video" src="assets/videos/takshaka_master_showreel.mp4" poster="assets/images/shots/shot_081_thumb.jpg" playsinline loop muted autoplay></video>
+            
+            <!-- Viewfinder HUD -->
+            <div class="viewfinder-hud">
+              <div class="hud-top-bar">
+                <div class="hud-rec-indicator">
+                  <div class="rec-red-dot"></div>
+                  <span>LIVE REEL • TAKSHAKA MASTER SHOWREEL</span>
+                </div>
+                <div>MAYA 3D CAMERA TRACKING • SOLVE RMS 0.28px • Y-UP WORLD</div>
+              </div>
+              <div class="hud-corner-crosshairs"></div>
+            </div>
+
+            <!-- Floating Cinema Control Dock -->
+            <div class="cinema-control-dock">
+              <button id="heroPlayBtn" class="btn-dock-play" onclick="toggleHeroPlay()" title="Play/Pause">
+                <svg id="heroPlayIcon" viewBox="0 0 24 24"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+              </button>
+              <div class="scrubber-group">
+                <div class="scrubber-track-bar" id="heroScrubberTrack" onclick="seekHeroVideo(event)">
+                  <div class="scrubber-fill-bar" id="heroScrubberFill"></div>
+                </div>
+                <div class="scrubber-meta-row">
+                  <span class="timecode-live" id="heroLiveTimecode">00:00:00:00</span>
+                  <span>TAKSHAKA SHOWREEL CUT</span>
+                  <span id="heroDurationTimecode">00:00:32:00</span>
+                </div>
+              </div>
+              <div class="dock-aux-controls">
+                <button id="heroMuteBtn" class="btn-dock-icon" onclick="toggleHeroMute()" title="Toggle Audio">
+                  <svg id="heroMuteIcon" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zm-8 5.77h-4v6h4l5 5v-16l-5 5z"/></svg>
+                </button>
+                <button class="btn-dock-icon" onclick="toggleHeroFullscreen()" title="Fullscreen">
+                  <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 PURE CAMERA TRACKING MAYA SHOTS GRID -->
+      <section id="shots-grid" style="scroll-margin-top: 100px;">
+        <div class="section-editorial-header">
+          <div class="section-eyebrow">Production Archive • D:\FLIM_VFX_TRACK_SYNTHEYES\RENDER</div>
+          <h2 class="section-h2">10 MAYA CAMERA TRACKING SOLVES</h2>
+          <p class="section-subtext">
+            Direct review renders output from Autodesk Maya showing solved 3D camera path, ground calibration grid, locators, and proxy geometry aligned over live-action plates. Hover to preview; click for full screening room modal with frame-by-frame controls.
+          </p>
+        </div>
+
+        <!-- Grid of 10 Pure Camera Solves -->
+        <div class="shots-grid-layout interactive-element" id="shotsGridContainer">
+
+          <!-- HERO SHOT 081 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_081.mp4', 'Shot 081: Climax Battle 3D Ground Solve (Hero)', 'Plate 04221', '0.26 px', '35mm Prime', 'Super 35', 'Hero sequence from feature film Takshaka. Sub-pixel 0.26px RMS tracking across 80+ frames with custom Maya line-up geometry and Nuke ST-Map lens grid.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating" style="background:var(--gold-primary);color:#000;">HERO SHOT 081</span>
+              <span class="card-rms-floating" style="background:rgba(16,185,129,0.2);color:var(--emerald-live);">RMS 0.26px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_081.mp4" poster="assets/images/shots/shot_081_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 081: Climax Battle Ground Solve</h3>
+              </div>
+              <p class="card-shot-desc">Benchmark feature film solve. Certified 0.26px RMS error with full Maya coordinate grid handoff.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4 Rel 7</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">35mm Cooke S4</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--emerald-live);">0.26 px (Hero Pass)</span></div>
+              </div>
+            </div>
           </div>
 
-          <!-- Floating Cinema Control Dock -->
-          <div class="cinema-control-dock">
-            <button id="heroPlayBtn" class="btn-dock-play" onclick="toggleHeroPlay()" title="Play/Pause">
-              <svg id="heroPlayIcon" viewBox="0 0 24 24"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+          <!-- SHOT 002 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_002.mp4', 'Shot 002: Head Camera Solve & Line-Up', 'Plate 00234', '0.28 px', '35mm Prime', 'Super 35', 'Sub-pixel 3D camera solve with coordinate normalization. Proxy cylinder and line-up geometry aligned in Maya for live-action green-screen integration.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 002</span>
+              <span class="card-rms-floating">RMS 0.28px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_002.mp4" poster="assets/images/shots/shot_002_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 002: Head Camera Solve</h3>
+              </div>
+              <p class="card-shot-desc">Head camera tracking solve with ground coordinate alignment and Maya proxy line-up geometry.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer / Maya</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">35mm Prime</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.28 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOT 010 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_010.mp4', 'Shot 010: Mid-Range Dolly Solve & Ground Proxy', 'Plate 00911', '0.34 px', '50mm Lens', 'Full Aperture', 'Precise tracking on rapid dolly-in motion with focal length estimation. Solved camera exported to Maya with world-scale locators and Nuke composite scripts.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 010</span>
+              <span class="card-rms-floating">RMS 0.34px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_010.mp4" poster="assets/images/shots/shot_010_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 010: Mid-Range Dolly Track</h3>
+              </div>
+              <p class="card-shot-desc">Rapid dolly motion with optical center calibration and Maya world-scale coordinate export.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">50mm Standard</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.34 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOT 011 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_011.mp4', 'Shot 011: High-Velocity Action Track', 'Plate 00987', '0.39 px', '32mm Anamorphic', 'Super 35', 'Tracked high-motion action sequence, compensating for motion blur and rolling shutter distortion. Verified against Maya ground grid and locator points.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 011</span>
+              <span class="card-rms-floating">RMS 0.39px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_011.mp4" poster="assets/images/shots/shot_011_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 011: High-Velocity Action Track</h3>
+              </div>
+              <p class="card-shot-desc">Complex high-motion sequence with rolling shutter correction and rigid body track integration.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">32mm Anamorphic</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.39 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOT 033 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_033.mp4', 'Shot 033: Pedestal Pan & Axis Alignment', 'Plate 01420', '0.31 px', '40mm Prime', 'Full Frame', 'Smooth pedestal crane motion tracking with zero slip. Ground orientation established with survey markers.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 033</span>
+              <span class="card-rms-floating">RMS 0.31px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_033.mp4" poster="assets/images/shots/shot_033_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 033: Pedestal Pan Solve</h3>
+              </div>
+              <p class="card-shot-desc">Smooth pedestal boom motion with survey point alignment and orientation stability.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">SynthEyes / Maya</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">40mm Prime</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.31 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOT 047 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_047.mp4', 'Shot 047: Dynamic Arc Tracking & Lineup', 'Plate 02041', '0.29 px', '28mm Wide', 'Super 35', 'Curved trajectory camera track solving wide-angle perspective shifts. Locator points mapped to architectural set geometry.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 047</span>
+              <span class="card-rms-floating">RMS 0.29px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_047.mp4" poster="assets/images/shots/shot_047_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 047: Dynamic Arc Tracking</h3>
+              </div>
+              <p class="card-shot-desc">Curved trajectory arc solving wide-angle barrel distortion and architectural line-up.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">28mm Wide</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.29 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOT 048 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_048.mp4', 'Shot 048: Reverse Dolly Tracking', 'Plate 02115', '0.33 px', '35mm Prime', 'Super 35', 'Fast reverse dolly track with vanishing point lock. Camera curve smoothed for animation and layout team handoff.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 048</span>
+              <span class="card-rms-floating">RMS 0.33px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_048.mp4" poster="assets/images/shots/shot_048_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 048: Reverse Dolly Track</h3>
+              </div>
+              <p class="card-shot-desc">Fast reverse dolly with vanishing point convergence and curve smoothing for Maya layout.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">35mm Prime</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.33 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOT 073 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_073.mp4', 'Shot 073: Parallax Whip & Translation Track', 'Plate 03102', '0.36 px', '50mm Prime', 'Full Frame', 'Extreme foreground-to-background parallax solve. Depth layers separated cleanly in Maya for stereoscopic / VFX layout.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 073</span>
+              <span class="card-rms-floating">RMS 0.36px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_073.mp4" poster="assets/images/shots/shot_073_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 073: Parallax Whip Solve</h3>
+              </div>
+              <p class="card-shot-desc">Multi-depth parallax separation with clean layer separation and 3D locator cloud delivery.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer / Maya</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">50mm Prime</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.36 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOT 128 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_128.mp4', 'Shot 128: Push-In Dolly & Lens Distortion Solve', 'Plate 05610', '0.31 px', '40mm Prime', 'Super 35', 'Linear push-in track with lens radial distortion profiling. Undistorted plate rendered with Nuke ST-Map nodes.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 128</span>
+              <span class="card-rms-floating">RMS 0.31px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_128.mp4" poster="assets/images/shots/shot_128_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 128: Push-In Dolly & ST-Map</h3>
+              </div>
+              <p class="card-shot-desc">Linear camera track with radial lens distortion correction and Nuke undistort workflow.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
+                <div class="spec-cell"><span class="spec-key">LENS GRID</span><span class="spec-val">Radial Model 3</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.31 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOT 185 -->
+          <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_185.mp4', 'Shot 185: Rapid Crane Reveal Solve', 'Plate 08920', '0.35 px', '24mm Ultra Wide', 'Super 35', 'Fast vertical boom crane move. Calibrated extreme perspective distortion and wide field-of-view.')">
+            <div class="card-video-container">
+              <span class="card-badge-floating">SHOT 185</span>
+              <span class="card-rms-floating">RMS 0.35px</span>
+              <video class="card-video-element" src="assets/videos/shots/shot_185.mp4" poster="assets/images/shots/shot_185_thumb.jpg" muted loop playsinline preload="metadata"></video>
+              <div class="card-hover-overlay">
+                <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+            </div>
+            <div class="card-content-area">
+              <div class="card-shot-header">
+                <h3 class="card-shot-title">Shot 185: Rapid Crane Reveal</h3>
+              </div>
+              <p class="card-shot-desc">Vertical crane ascension track with ultra-wide angle edge distortion compensation.</p>
+              <div class="card-specs-matrix">
+                <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer / Maya</span></div>
+                <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">24mm Ultra-Wide</span></div>
+                <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
+                <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.35 px (Pass)</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- DUAL COMPARATOR SECTION -->
+      <section id="comparator" style="scroll-margin-top: 100px;">
+        <div class="section-editorial-header">
+          <div class="section-eyebrow">Visual Quality Assurance • Multi-Track Comparator</div>
+          <h2 class="section-h2">SOLVE COMPARATOR & PIPELINE VERIFICATION</h2>
+          <p class="section-subtext">
+            Toggle seamlessly between Maya 3D ground solve wireframe renders and real-time virtual production layout to inspect tracking lock and geometry registration.
+          </p>
+        </div>
+
+        <div class="comparator-showcase-box interactive-element">
+          <div class="comparator-tabs-header">
+            <div>
+              <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:#fff;">MULTI-STREAM INSPECTION</h3>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--gold-primary);">SELECT COMPARISON FEED</span>
+            </div>
+            <div class="comp-buttons-strip">
+              <button class="comp-tab-btn active" onclick="switchCompMode('solve', this)">Maya 3D Solve (Shot 081)</button>
+              <button class="comp-tab-btn" onclick="switchCompMode('ue5', this)">Unreal Engine 5 Layout</button>
+            </div>
+          </div>
+
+          <div class="comp-video-viewport">
+            <video id="comparatorMainVideo" src="assets/videos/shots/shot_081.mp4" controls autoplay muted loop playsinline></video>
+            <div class="comp-hud-badge" id="compHudTag">
+              MODE: MAYA 3D SOLVE (SHOT 081) • RMS 0.26px • .MA VERIFIED
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNICAL PIPELINE ARSENAL -->
+      <section id="pipeline" style="scroll-margin-top: 100px;">
+        <div class="section-editorial-header">
+          <div class="section-eyebrow">Studio Production Standards • Feature Film Pipeline</div>
+          <h2 class="section-h2">END-TO-END CAMERA TRACKING ARSENAL</h2>
+          <p class="section-subtext">
+            Engineered to rigorous high-end VFX parameters: sub-pixel 3DEqualizer 4 solving, lens distortion profiling, Maya layout integration, and clean stereo/Nuke handoff.
+          </p>
+        </div>
+
+        <div class="pipeline-grid-four interactive-element">
+          <div class="pipeline-card">
+            <span class="pipe-step-num">PHASE 01 • INGESTION</span>
+            <h3 class="pipe-title">Lens Grid & ST-Maps</h3>
+            <p class="pipe-desc">
+              Calibration of checkerboard and dot grids. Calculation of radial, anamorphic, and asymmetric lens distortion coefficients. ST-Map generation for accurate plate undistortion in Nuke and Maya.
+            </p>
+            <span class="pipe-tools-tag">TOOLS: 3DEqualizer 4 • Nuke 15</span>
+          </div>
+
+          <div class="pipeline-card">
+            <span class="pipe-step-num">PHASE 02 • SOLVING</span>
+            <h3 class="pipe-title">Sub-Pixel 3D Tracking</h3>
+            <p class="pipe-desc">
+              Supervised feature point extraction across high-velocity action plates. Survey coordinate alignment, vanishing point estimation, and multi-frame bundle adjustment maintaining RMS error &lt; 0.35px.
+            </p>
+            <span class="pipe-tools-tag">TOOLS: 3DEqualizer • SynthEyes</span>
+          </div>
+
+          <div class="pipeline-card">
+            <span class="pipe-step-num">PHASE 03 • HANDOFF</span>
+            <h3 class="pipe-title">Maya Scene & Proxy Alignment</h3>
+            <p class="pipe-desc">
+              Export to Autodesk Maya (.ma/.fbx) with world-scale orientation, film back normalization, locator point clouds, and proxy line-up geometry for lighting, FX, and layout departments.
+            </p>
+            <span class="pipe-tools-tag">TOOLS: Maya 2024 • Python • Mel</span>
+          </div>
+
+          <div class="pipeline-card">
+            <span class="pipe-step-num">PHASE 04 • VALIDATION</span>
+            <h3 class="pipe-title">Line-Up & Quality Gate</h3>
+            <p class="pipe-desc">
+              Frame-by-frame wireframe render review over original photography. Verification of zero sliding, locked ground contact, line-up mesh alignment, and stereo disparity continuity.
+            </p>
+            <span class="pipe-tools-tag">TOOLS: Maya Hardware 2.0 • Nuke</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CREDENTIALS & RESUME DOWNLOAD HUB -->
+      <section id="credentials" style="scroll-margin-top: 100px;">
+        <div class="credentials-banner interactive-element">
+          <div class="cred-info">
+            <h2 class="cred-title">AVAILABLE FOR FEATURE FILM CONTRACTS</h2>
+            <p class="cred-text">
+              Specialized in live-action feature film camera tracking, lens distortion profiling, and Maya layout handoff. 
+              Review the complete 3D Matchmove Artist resume with production credits and verified technical parameters.
+            </p>
+          </div>
+          <div class="cred-action-buttons">
+            <a href="assets/docs/Benny_Joel_Lakamana_Matchmove_Resume.pdf" download class="btn-cred-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download Matchmove CV (PDF)</span>
+            </a>
+            <a href="assets/docs/Benny_Joel_Lakamana_Matchmove_Resume.html" target="_blank" class="btn-cred-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span>View Interactive Web CV</span>
+            </a>
+            <button onclick="copyEmailToClipboard()" class="btn-cred-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy Contact Email</span>
             </button>
-            <div class="scrubber-group">
-              <div class="scrubber-track-bar" id="heroScrubberTrack" onclick="seekHeroVideo(event)">
-                <div class="scrubber-fill-bar" id="heroScrubberFill"></div>
-              </div>
-              <div class="scrubber-meta-row">
-                <span class="timecode-live" id="heroLiveTimecode">00:00:00:00</span>
-                <span>TAKSHAKA SHOWREEL CONCATENATION</span>
-                <span id="heroDurationTimecode">00:00:32:00</span>
-              </div>
-            </div>
-            <div class="dock-aux-controls">
-              <button id="heroMuteBtn" class="btn-dock-icon" onclick="toggleHeroMute()" title="Toggle Audio">
-                <svg id="heroMuteIcon" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zm-8 5.77h-4v6h4l5 5v-16l-5 5z"/></svg>
-              </button>
-              <button class="btn-dock-icon" onclick="toggleHeroFullscreen()" title="Fullscreen">
-                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-              </button>
-            </div>
           </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="cinema-footer">
+      <div class="cinema-container footer-inner interactive-element">
+        <div class="footer-left">
+          <span class="footer-brand">Benny Joel Lakamana • Feature Film Matchmove Reel</span>
+          <span class="footer-rights">Feature Film 3D Camera Tracking • All 10 Maya Render Shots Property of Production</span>
+        </div>
+        <div class="footer-links">
+          <a href="#top" class="footer-link">Back to Top ↑</a>
+          <a href="https://github.com/bennyjoel/portfolio" target="_blank" class="footer-link">GitHub Repository</a>
+          <a href="assets/docs/Benny_Joel_Lakamana_Matchmove_Resume.pdf" download class="footer-link">Resume PDF</a>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <!-- 12 FEATURE FILM MAYA SHOTS GRID -->
-    <section id="shots-grid" style="scroll-margin-top: 100px;">
-      <div class="section-editorial-header">
-        <div class="section-eyebrow">Playable Production Archive • D:\FLIM_VFX_TRACK_SYNTHEYES\RENDER</div>
-        <h2 class="section-h2">12 FEATURE FILM MAYA SHOTS</h2>
-        <p class="section-subtext">
-          Direct review renders output from Autodesk Maya showing solved 3D camera path, ground calibration grid, locators, and proxy geometry aligned over live-action plates. Hover to preview; click for full screening room modal with frame-by-frame controls.
-        </p>
-      </div>
-
-      <!-- Category Filter Pills -->
-      <div class="filter-pills-strip">
-        <button class="filter-pill active" onclick="filterShots('all', this)">All 12 Shots (12)</button>
-        <button class="filter-pill" onclick="filterShots('camera', this)">Camera Tracking (7)</button>
-        <button class="filter-pill" onclick="filterShots('object', this)">Object & Rotomation (3)</button>
-        <button class="filter-pill" onclick="filterShots('raw', this)">Raw Ingestion Plates (2)</button>
-      </div>
-
-      <!-- Grid -->
-      <div class="shots-grid-layout" id="shotsGridContainer">
-
-        <!-- SHOT 002 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_002.mp4', 'Shot 002: Head Camera Solve & Line-Up', 'Plate 00234', '0.28 px', '35mm Prime', 'Super 35', 'Sub-pixel 3D camera solve with coordinate normalization. Proxy cylinder and line-up geometry aligned in Maya for live-action green-screen integration.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 002</span>
-            <span class="card-rms-floating">RMS 0.28px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_002.mp4" poster="assets/images/shots/shot_002_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 002: Head Camera Solve</h3>
-            </div>
-            <p class="card-shot-desc">Head camera tracking solve with ground coordinate alignment and Maya proxy line-up geometry.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer / Maya</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">35mm Prime</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.28 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 010 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_010.mp4', 'Shot 010: Mid-Range Dolly Solve & Ground Proxy', 'Plate 00911', '0.34 px', '50mm Lens', 'Full Aperture', 'Precise tracking on rapid dolly-in motion with focal length estimation. Solved camera exported to Maya with world-scale locators and Nuke composite scripts.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 010</span>
-            <span class="card-rms-floating">RMS 0.34px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_010.mp4" poster="assets/images/shots/shot_010_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 010: Mid-Range Dolly Track</h3>
-            </div>
-            <p class="card-shot-desc">Rapid dolly motion with optical center calibration and Maya world-scale coordinate export.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">50mm Standard</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.34 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 011 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_011.mp4', 'Shot 011: High-Velocity Action Track', 'Plate 00987', '0.39 px', '32mm Anamorphic', 'Super 35', 'Tracked high-motion action sequence, compensating for motion blur and rolling shutter distortion. Verified against Maya ground grid and locator points.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 011</span>
-            <span class="card-rms-floating">RMS 0.39px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_011.mp4" poster="assets/images/shots/shot_011_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 011: High-Velocity Action Track</h3>
-            </div>
-            <p class="card-shot-desc">Complex high-motion sequence with rolling shutter correction and rigid body track integration.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">32mm Anamorphic</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.39 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 033 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_033.mp4', 'Shot 033: Pedestal Pan & Axis Alignment', 'Plate 01420', '0.31 px', '40mm Prime', 'Full Frame', 'Smooth pedestal crane motion tracking with zero slip. Ground orientation established with survey markers.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 033</span>
-            <span class="card-rms-floating">RMS 0.31px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_033.mp4" poster="assets/images/shots/shot_033_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 033: Pedestal Pan Solve</h3>
-            </div>
-            <p class="card-shot-desc">Smooth pedestal boom motion with survey point alignment and orientation stability.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">SynthEyes / Maya</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">40mm Prime</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.31 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 047 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_047.mp4', 'Shot 047: Dynamic Arc Tracking & Lineup', 'Plate 02041', '0.29 px', '28mm Wide', 'Super 35', 'Curved trajectory camera track solving wide-angle perspective shifts. Locator points mapped to architectural set geometry.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 047</span>
-            <span class="card-rms-floating">RMS 0.29px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_047.mp4" poster="assets/images/shots/shot_047_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 047: Dynamic Arc Tracking</h3>
-            </div>
-            <p class="card-shot-desc">Curved trajectory arc solving wide-angle barrel distortion and architectural line-up.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">28mm Wide</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.29 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 048 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_048.mp4', 'Shot 048: Reverse Dolly Tracking', 'Plate 02115', '0.33 px', '35mm Prime', 'Super 35', 'Fast reverse dolly track with vanishing point lock. Camera curve smoothed for animation and layout team handoff.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 048</span>
-            <span class="card-rms-floating">RMS 0.33px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_048.mp4" poster="assets/images/shots/shot_048_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 048: Reverse Dolly Track</h3>
-            </div>
-            <p class="card-shot-desc">Fast reverse dolly with vanishing point convergence and curve smoothing for Maya layout.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">35mm Prime</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.33 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 073 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_073.mp4', 'Shot 073: Parallax Whip & Translation Track', 'Plate 03102', '0.36 px', '50mm Prime', 'Full Frame', 'Extreme foreground-to-background parallax solve. Depth layers separated cleanly in Maya for stereoscopic / VFX layout.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 073</span>
-            <span class="card-rms-floating">RMS 0.36px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_073.mp4" poster="assets/images/shots/shot_073_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 073: Parallax Whip Solve</h3>
-            </div>
-            <p class="card-shot-desc">Multi-depth parallax separation with clean layer separation and 3D locator cloud delivery.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer / Maya</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">50mm Prime</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.36 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 081 (HERO CLIMAX) -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_081.mp4', 'Shot 081: Climax Battle 3D Ground Solve (Hero)', 'Plate 04221', '0.26 px', '35mm Prime', 'Super 35', 'Hero sequence from feature film Takshaka. Sub-pixel 0.26px RMS tracking across 80+ frames with custom Maya line-up geometry and Nuke ST-Map lens grid.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating" style="background:var(--gold-primary);color:#000;">HERO SHOT 081</span>
-            <span class="card-rms-floating" style="background:rgba(16,185,129,0.2);color:var(--emerald-live);">RMS 0.26px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_081.mp4" poster="assets/images/shots/shot_081_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 081: Climax Battle Ground Solve</h3>
-            </div>
-            <p class="card-shot-desc">Benchmark feature film solve. Certified 0.26px RMS error with full Maya coordinate grid handoff.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4 Rel 7</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">35mm Cooke S4</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--emerald-live);">0.26 px (Hero Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 082 (ROTOMATION / MASKML) -->
-        <div class="cinema-shot-card" data-category="object" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_082.mp4', 'Shot 082: Climax Character Rotomation & MaskML', 'MSR_CLIMAX_082', '0.24 px', '35mm Prime', 'Super 35', 'Character rotomation track with machine-learning assisted matte extraction. Multi-joint geometry fitted to actor movement in Maya.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 082</span>
-            <span class="card-rms-floating">ROTOMATION</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_082.mp4" poster="assets/images/shots/shot_082_thumb.png" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 082: Rotomation & Mask ML</h3>
-            </div>
-            <p class="card-shot-desc">Actor rotomation tracking and silhouette matte verification for CG integration in Maya.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">TYPE</span><span class="spec-val">Object Track / Roto</span></div>
-              <div class="spec-cell"><span class="spec-key">GEOMETRY</span><span class="spec-val">Rigged Mesh Match</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x720 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">ACCURACY</span><span class="spec-val" style="color:var(--gold-bright);">Frame-Accurate</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 128 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_128.mp4', 'Shot 128: Push-In Dolly & Lens Distortion Solve', 'Plate 05610', '0.31 px', '40mm Prime', 'Super 35', 'Linear push-in track with lens radial distortion profiling. Undistorted plate rendered with Nuke ST-Map nodes.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 128</span>
-            <span class="card-rms-floating">RMS 0.31px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_128.mp4" poster="assets/images/shots/shot_128_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 128: Push-In Dolly & ST-Map</h3>
-            </div>
-            <p class="card-shot-desc">Linear camera track with radial lens distortion correction and Nuke undistort workflow.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer 4</span></div>
-              <div class="spec-cell"><span class="spec-key">LENS GRID</span><span class="spec-val">Radial Model 3</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.31 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT 185 -->
-        <div class="cinema-shot-card" data-category="camera" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_185.mp4', 'Shot 185: Rapid Crane Reveal Solve', 'Plate 08920', '0.35 px', '24mm Ultra Wide', 'Super 35', 'Fast vertical boom crane move. Calibrated extreme perspective distortion and wide field-of-view.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">SHOT 185</span>
-            <span class="card-rms-floating">RMS 0.35px</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_185.mp4" poster="assets/images/shots/shot_185_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Shot 185: Rapid Crane Reveal</h3>
-            </div>
-            <p class="card-shot-desc">Vertical crane ascension track with ultra-wide angle edge distortion compensation.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOLVER</span><span class="spec-val">3DEqualizer / Maya</span></div>
-              <div class="spec-cell"><span class="spec-key">FOCAL LEN</span><span class="spec-val">24mm Ultra-Wide</span></div>
-              <div class="spec-cell"><span class="spec-key">RES / FPS</span><span class="spec-val">1280x676 • 24 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">RMS DEVIATION</span><span class="spec-val" style="color:var(--cyan-neon);">0.35 px (Pass)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHOT RAW C024 (RAW INGESTION) -->
-        <div class="cinema-shot-card" data-category="raw" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_raw_c024.mp4', 'Raw Plate C024: 48 FPS Live Action Input', 'C024_A001_RAW', 'Source Plate', '35mm Master Prime', '4K Ingest', 'Uncompressed live-action production plate shot at 48 frames per second. Baseline ground truth for tracking point selection and motion analysis.')">
-          <div class="card-video-container">
-            <span class="card-badge-floating">RAW PLATE C024</span>
-            <span class="card-rms-floating" style="background:rgba(255,255,255,0.1);color:#fff;">48 FPS INGEST</span>
-            <video class="card-video-element" src="assets/videos/shots/shot_raw_c024.mp4" poster="assets/images/shots/shot_084_thumb.jpg" muted loop playsinline preload="metadata"></video>
-            <div class="card-hover-overlay">
-              <div class="hover-play-glyph"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-          </div>
-          <div class="card-content-area">
-            <div class="card-shot-header">
-              <h3 class="card-shot-title">Raw Plate C024: 48 FPS Ingest</h3>
-            </div>
-            <p class="card-shot-desc">High-framerate original photography plate analyzed for feature point tracking and grain profiling.</p>
-            <div class="card-specs-matrix">
-              <div class="spec-cell"><span class="spec-key">SOURCE</span><span class="spec-val">ARRI RAW / HEVC</span></div>
-              <div class="spec-cell"><span class="spec-key">FRAME RATE</span><span class="spec-val">48.00 FPS</span></div>
-              <div class="spec-cell"><span class="spec-key">FILE SIZE</span><span class="spec-val">17.78 MB (Web Opt)</span></div>
-              <div class="spec-cell"><span class="spec-key">INGEST STATUS</span><span class="spec-val" style="color:var(--gold-bright);">Calibrated</span></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- AWARD-WINNING 3D STUDIO CAMERA RIG -->
-    <section id="camera-rig-3d" style="scroll-margin-top: 100px;">
-      <div class="section-editorial-header">
-        <div class="section-eyebrow">Real-Time WebGL Engine • Hardware-Accelerated 3D Viewport</div>
-        <h2 class="section-h2">INTERACTIVE 3D CAMERA RIG & POINT CLOUD</h2>
-        <p class="section-subtext">
-          Interactive WebGL viewport rendering a digital cinema camera assembly (matte carbon body, optical element group, anodized gold focus rings, active viewfinder frustum) and 3D matchmove locator point cloud. Drag to orbit, scroll to zoom, right-click to pan.
-        </p>
-      </div>
-
-      <div class="threejs-camera-showcase">
-        <div class="threejs-header-bar">
-          <div class="threejs-title-strip">
-            <span class="threejs-h3">ARRI ALEXA MINI LF MATCHMOVE RIG</span>
-            <span class="threejs-sub">Coordinate System: Maya Y-Up • Sub-Pixel Optical Center</span>
-          </div>
-          <div style="display:flex;gap:0.75rem;">
-            <button class="filter-pill active" onclick="resetThreeCamera()">Reset View</button>
-            <button class="filter-pill" onclick="toggleFrustumAnimation()">Toggle Frustum Sweep</button>
-          </div>
-        </div>
-
-        <div class="threejs-viewport-container" id="threejsViewport">
-          <canvas id="threejsCanvas"></canvas>
-          
-          <!-- Telemetry HUD -->
-          <div class="threejs-telemetry-hud">
-            <div class="telemetry-row"><span class="label">FOCAL LENGTH:</span><span class="value" id="hudFocal">35.00 mm</span></div>
-            <div class="telemetry-row"><span class="label">HORIZONTAL FOV:</span><span class="value" id="hudFov">54.43°</span></div>
-            <div class="telemetry-row"><span class="label">SENSOR APERTURE:</span><span class="value">36.70 x 25.54 mm</span></div>
-            <div class="telemetry-row"><span class="label">CAMERA QUAT (W,X,Y,Z):</span><span class="value gold" id="hudQuat">1.0, 0.0, 0.0, 0.0</span></div>
-            <div class="telemetry-row"><span class="label">LOCATOR DENSITY:</span><span class="value">1,240 Solved Points</span></div>
-            <div class="telemetry-row"><span class="label">SUB-PIXEL CONFIDENCE:</span><span class="value" style="color:var(--emerald-live);">99.4%</span></div>
-          </div>
-
-          <div class="threejs-orbit-hint">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-            <span>Click & Drag to Orbit 3D Camera</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DUAL COMPARATOR SECTION -->
-    <section id="comparator" style="scroll-margin-top: 100px;">
-      <div class="section-editorial-header">
-        <div class="section-eyebrow">Visual Quality Assurance • Multi-Track Comparator</div>
-        <h2 class="section-h2">SOLVE COMPARATOR & PIPELINE VERIFICATION</h2>
-        <p class="section-subtext">
-          Toggle seamlessly between raw live-action plates, Maya 3D ground solve renders, and real-time virtual production layout to inspect tracking lock and geometry registration.
-        </p>
-      </div>
-
-      <div class="comparator-showcase-box">
-        <div class="comparator-tabs-header">
-          <div>
-            <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:#fff;">MULTI-STREAM INSPECTION</h3>
-            <span style="font-family:var(--font-mono);font-size:11px;color:var(--gold-primary);">SELECT COMPARISON FEED</span>
-          </div>
-          <div class="comp-buttons-strip">
-            <button class="comp-tab-btn active" onclick="switchCompMode('solve', this)">Maya 3D Solve (Shot 081)</button>
-            <button class="comp-tab-btn" onclick="switchCompMode('plate', this)">Raw Plate (C024 48fps)</button>
-            <button class="comp-tab-btn" onclick="switchCompMode('ue5', this)">Unreal Engine 5 Layout</button>
-          </div>
-        </div>
-
-        <div class="comp-video-viewport">
-          <video id="comparatorMainVideo" src="assets/videos/shots/shot_081.mp4" controls autoplay muted loop playsinline></video>
-          <div class="comp-hud-badge" id="compHudTag">
-            MODE: MAYA 3D SOLVE (SHOT 081) • RMS 0.26px • .MA VERIFIED
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TECHNICAL PIPELINE ARSENAL -->
-    <section id="pipeline" style="scroll-margin-top: 100px;">
-      <div class="section-editorial-header">
-        <div class="section-eyebrow">Studio Standards • Eyeline Matchmove Requirements</div>
-        <h2 class="section-h2">END-TO-END MATCHMOVE ARSENAL</h2>
-        <p class="section-subtext">
-          Engineered to satisfy Eyeline Studios' production parameters: sub-pixel 3DEqualizer 4 solving, lens distortion profiling, Maya layout integration, and clean stereo/Nuke handoff.
-        </p>
-      </div>
-
-      <div class="pipeline-grid-four">
-        <div class="pipeline-card">
-          <span class="pipe-step-num">PHASE 01 • INGESTION</span>
-          <h3 class="pipe-title">Lens Grid & ST-Maps</h3>
-          <p class="pipe-desc">
-            Calibration of checkerboard and dot grids. Calculation of radial, anamorphic, and asymmetric lens distortion coefficients. ST-Map generation for accurate plate undistortion in Nuke and Maya.
-          </p>
-          <span class="pipe-tools-tag">TOOLS: 3DEqualizer 4 • Nuke 15</span>
-        </div>
-
-        <div class="pipeline-card">
-          <span class="pipe-step-num">PHASE 02 • SOLVING</span>
-          <h3 class="pipe-title">Sub-Pixel 3D Tracking</h3>
-          <p class="pipe-desc">
-            Supervised feature point extraction across high-velocity action plates. Survey coordinate alignment, vanishing point estimation, and multi-frame bundle adjustment maintaining RMS error &lt; 0.35px.
-          </p>
-          <span class="pipe-tools-tag">TOOLS: 3DEqualizer • SynthEyes</span>
-        </div>
-
-        <div class="pipeline-card">
-          <span class="pipe-step-num">PHASE 03 • HANDOFF</span>
-          <h3 class="pipe-title">Maya Scene & Proxy Alignment</h3>
-          <p class="pipe-desc">
-            Export to Autodesk Maya (.ma/.fbx) with world-scale orientation, film back normalization, locator point clouds, and proxy line-up geometry for lighting, FX, and layout departments.
-          </p>
-          <span class="pipe-tools-tag">TOOLS: Maya 2024 • Python • Mel</span>
-        </div>
-
-        <div class="pipeline-card">
-          <span class="pipe-step-num">PHASE 04 • VALIDATION</span>
-          <h3 class="pipe-title">Line-Up & Quality Gate</h3>
-          <p class="pipe-desc">
-            Frame-by-frame wireframe render review over original photography. Verification of zero sliding, locked ground contact, rotomation silhouette alignment, and stereo disparity continuity.
-          </p>
-          <span class="pipe-tools-tag">TOOLS: Maya Hardware 2.0 • Nuke</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- CREDENTIALS & RESUME DOWNLOAD HUB -->
-    <section id="credentials" style="scroll-margin-top: 100px;">
-      <div class="credentials-banner">
-        <div class="cred-info">
-          <h2 class="cred-title">READY FOR IMMEDIATE EYELINE DEPLOYMENT</h2>
-          <p class="cred-text">
-            Specialized in live-action feature film camera tracking, lens profiling, and Maya layout handoff. 
-            Review the tailored Matchmove Artist resume specifically structured for Eyeline Studios (Hyderabad, India).
-          </p>
-        </div>
-        <div class="cred-action-buttons">
-          <a href="assets/docs/Benny_Joel_Lakamana_Eyeline_Matchmove_Resume.pdf" download class="btn-cred-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span>Download Eyeline CV (PDF)</span>
-          </a>
-          <a href="assets/docs/Benny_Joel_Lakamana_Eyeline_Matchmove_Resume.html" target="_blank" class="btn-cred-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            <span>View Interactive Web CV</span>
-          </a>
-          <button onclick="copyEmailToClipboard()" class="btn-cred-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <span>Copy Contact Email</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="cinema-footer">
-    <div class="cinema-container footer-inner">
-      <div class="footer-left">
-        <span class="footer-brand">Benny Joel Lakamana • Feature Film Matchmove Reel</span>
-        <span class="footer-rights">Eyeline Studios Target Application • All 12 Maya Render Shots Property of Production</span>
-      </div>
-      <div class="footer-links">
-        <a href="#top" class="footer-link">Back to Top ↑</a>
-        <a href="https://github.com/bennyjoel/portfolio" target="_blank" class="footer-link">GitHub Repository</a>
-        <a href="assets/docs/Benny_Joel_Lakamana_Eyeline_Matchmove_Resume.pdf" download class="footer-link">Resume PDF</a>
-      </div>
-    </div>
-  </footer>
+  </div>
 
   <!-- SCREENING ROOM LIGHTBOX MODAL (THEATER MODE) -->
   <div id="screeningRoomModal" class="theater-lightbox-modal" onclick="onModalBackdropClick(event)">
@@ -2180,10 +1983,192 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT CINEMA CONTROLLER -->
+  <!-- JAVASCRIPT CONTROLLERS -->
   <script>
     // ==========================================================================
-    // 1. HERO VIDEO SCRUBBER & TIME-CODE
+    // 1. THREE.JS LUXURY 3D SPATIAL TRAJECTORY & POINT CLOUD SCENE
+    // ==========================================================================
+    let spatialScene, spatialCamera, spatialRenderer;
+    let cameraTrajectoryLine, frustumGroup, pointCloud, gridMesh;
+    let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+
+    function initSpatial3D() {
+      const canvas = document.getElementById('webglCanvas');
+      if (!canvas) return;
+
+      spatialScene = new THREE.Scene();
+      spatialScene.background = new THREE.Color(0x040507);
+      spatialScene.fog = new THREE.FogExp2(0x040507, 0.035);
+
+      spatialCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+      spatialCamera.position.set(0, 2.5, 9);
+
+      spatialRenderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
+      spatialRenderer.setSize(window.innerWidth, window.innerHeight);
+      spatialRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      spatialScene.add(ambientLight);
+
+      const goldLight = new THREE.PointLight(0xf59e0b, 2.2, 25);
+      goldLight.position.set(5, 6, 4);
+      spatialScene.add(goldLight);
+
+      const cyanLight = new THREE.PointLight(0x00f0ff, 2.5, 30);
+      cyanLight.position.set(-6, 3, -2);
+      spatialScene.add(cyanLight);
+
+      // 1. Perspective 3D Maya Ground Grid
+      gridMesh = new THREE.GridHelper(30, 40, 0xf59e0b, 0x181e2b);
+      gridMesh.position.y = -1.2;
+      spatialScene.add(gridMesh);
+
+      // 2. 3D Camera Trajectory Path (Continuous 3D Spline)
+      const curvePoints = [
+        new THREE.Vector3(-8, 3.5, -6),
+        new THREE.Vector3(-4, 1.2, -2),
+        new THREE.Vector3(-1, 0.6, 1),
+        new THREE.Vector3(2, 2.2, 3),
+        new THREE.Vector3(5, 1.5, 0),
+        new THREE.Vector3(8, 3.8, -4),
+        new THREE.Vector3(4, 2.0, -8),
+        new THREE.Vector3(-2, 3.0, -7),
+        new THREE.Vector3(-8, 3.5, -6)
+      ];
+      const trajectoryCurve = new THREE.CatmullRomCurve3(curvePoints);
+      const curveGeo = new THREE.TubeGeometry(trajectoryCurve, 120, 0.04, 8, false);
+      const curveMat = new THREE.MeshBasicMaterial({
+        color: 0xf59e0b,
+        transparent: true,
+        opacity: 0.85
+      });
+      cameraTrajectoryLine = new THREE.Mesh(curveGeo, curveMat);
+      spatialScene.add(cameraTrajectoryLine);
+
+      // 3. Camera Frustums along trajectory
+      frustumGroup = new THREE.Group();
+      for (let t = 0; t <= 1; t += 0.12) {
+        const pt = trajectoryCurve.getPoint(t);
+        const tangent = trajectoryCurve.getTangent(t);
+
+        const frustumPoints = [
+          new THREE.Vector3(0, 0, 0),
+          new THREE.Vector3(-0.4, -0.25, 0.8),
+          new THREE.Vector3(0.4, -0.25, 0.8),
+          new THREE.Vector3(0.4, 0.25, 0.8),
+          new THREE.Vector3(-0.4, 0.25, 0.8),
+          new THREE.Vector3(0, 0, 0)
+        ];
+        const fGeo = new THREE.BufferGeometry().setFromPoints(frustumPoints);
+        const fMat = new THREE.LineBasicMaterial({
+          color: (t === 0 || t >= 0.95) ? 0xf59e0b : 0x00f0ff,
+          transparent: true,
+          opacity: 0.7
+        });
+        const fLine = new THREE.Line(fGeo, fMat);
+        fLine.position.copy(pt);
+        fLine.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), tangent);
+        frustumGroup.add(fLine);
+      }
+      spatialScene.add(frustumGroup);
+
+      // 4. 2,500 Sub-Pixel Locator Point Cloud
+      const pointCount = 2500;
+      const pointGeo = new THREE.BufferGeometry();
+      const positions = new Float32Array(pointCount * 3);
+      const colors = new Float32Array(pointCount * 3);
+
+      for (let i = 0; i < pointCount; i++) {
+        const x = (Math.random() - 0.5) * 22.0;
+        const y = (Math.random() - 0.2) * 8.0;
+        const z = (Math.random() - 0.5) * 20.0;
+        positions[i * 3] = x;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = z;
+
+        if (Math.random() > 0.65) {
+          colors[i * 3] = 0.96; colors[i * 3 + 1] = 0.62; colors[i * 3 + 2] = 0.04; // gold
+        } else {
+          colors[i * 3] = 0.0; colors[i * 3 + 1] = 0.94; colors[i * 3 + 2] = 1.0; // cyan
+        }
+      }
+
+      pointGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      pointGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const pointMat = new THREE.PointsMaterial({
+        size: 0.04,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.65
+      });
+      pointCloud = new THREE.Points(pointGeo, pointMat);
+      spatialScene.add(pointCloud);
+
+      // Listeners
+      window.addEventListener('resize', onSpatialResize);
+      window.addEventListener('mousemove', onDocumentMouseMove);
+      window.addEventListener('scroll', onDocumentScroll);
+
+      animateSpatial();
+    }
+
+    function onSpatialResize() {
+      if (!spatialCamera || !spatialRenderer) return;
+      spatialCamera.aspect = window.innerWidth / window.innerHeight;
+      spatialCamera.updateProjectionMatrix();
+      spatialRenderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function onDocumentMouseMove(e) {
+      mouseX = (e.clientX - windowHalfX) * 0.0012;
+      mouseY = (e.clientY - windowHalfY) * 0.0012;
+    }
+
+    let scrollYOffset = 0;
+    function onDocumentScroll() {
+      scrollYOffset = window.scrollY * 0.0025;
+    }
+
+    let spatialClock = new THREE.Clock();
+
+    function animateSpatial() {
+      requestAnimationFrame(animateSpatial);
+      const delta = spatialClock.getElapsedTime();
+
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+
+      if (spatialCamera) {
+        spatialCamera.position.x = targetX * 3.5;
+        spatialCamera.position.y = 2.5 - (targetY * 2.0) - (scrollYOffset * 0.5);
+        spatialCamera.lookAt(0, 1.0 - (scrollYOffset * 0.4), 0);
+
+        const quat = spatialCamera.quaternion;
+        const hudQuat = document.getElementById('spatialQuat');
+        if (hudQuat) {
+          hudQuat.textContent = `${quat.w.toFixed(2)}, ${quat.x.toFixed(2)}, ${quat.y.toFixed(2)}`;
+        }
+      }
+
+      if (cameraTrajectoryLine) {
+        cameraTrajectoryLine.rotation.y = delta * 0.04;
+      }
+      if (frustumGroup) {
+        frustumGroup.rotation.y = delta * 0.04;
+      }
+      if (pointCloud) {
+        pointCloud.rotation.y = delta * 0.02;
+      }
+
+      spatialRenderer.render(spatialScene, spatialCamera);
+    }
+
+    // ==========================================================================
+    // 2. HERO VIDEO SCRUBBER & TIMECODE
     // ==========================================================================
     const heroVid = document.getElementById('heroShowreelVideo');
     const heroPlayBtn = document.getElementById('heroPlayBtn');
@@ -2259,7 +2244,7 @@
     }
 
     // ==========================================================================
-    // 2. SHOT CARD HOVER-TO-PLAY CONTROLS
+    // 3. SHOT CARD HOVER-TO-PLAY CONTROLS
     // ==========================================================================
     function playCardVid(card) {
       const vid = card.querySelector('video');
@@ -2279,23 +2264,8 @@
       }
     }
 
-    // Filter Buttons
-    function filterShots(cat, btn) {
-      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const cards = document.querySelectorAll('.cinema-shot-card');
-      cards.forEach(card => {
-        if (cat === 'all' || card.getAttribute('data-category') === cat) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
     // ==========================================================================
-    // 3. SCREENING ROOM LIGHTBOX MODAL
+    // 4. SCREENING ROOM LIGHTBOX MODAL
     // ==========================================================================
     const modal = document.getElementById('screeningRoomModal');
     const modalVideo = document.getElementById('modalActiveVideo');
@@ -2368,7 +2338,7 @@
     });
 
     // ==========================================================================
-    // 4. COMPARATOR FEED SWITCHER
+    // 5. COMPARATOR FEED SWITCHER
     // ==========================================================================
     function switchCompMode(feed, btn) {
       document.querySelectorAll('.comp-tab-btn').forEach(b => b.classList.remove('active'));
@@ -2380,9 +2350,6 @@
       if (feed === 'solve') {
         compVid.src = 'assets/videos/shots/shot_081.mp4';
         compHud.textContent = 'MODE: MAYA 3D SOLVE (SHOT 081) • RMS 0.26px • .MA VERIFIED';
-      } else if (feed === 'plate') {
-        compVid.src = 'assets/videos/shots/shot_raw_c024.mp4';
-        compHud.textContent = 'MODE: RAW PLATE C024 • 48.00 FPS • ARRI RAW / HEVC';
       } else if (feed === 'ue5') {
         compVid.src = 'assets/videos/env_river_cinematic_reel.mp4';
         compHud.textContent = 'MODE: UNREAL ENGINE 5 REAL-TIME VIRTUAL PRODUCTION';
@@ -2391,7 +2358,7 @@
     }
 
     // ==========================================================================
-    // 5. TOAST EMAIL CLIPBOARD
+    // 6. TOAST EMAIL CLIPBOARD
     // ==========================================================================
     function copyEmailToClipboard() {
       navigator.clipboard.writeText('bennyofficial19@gmail.com').then(() => {
@@ -2401,262 +2368,12 @@
       });
     }
 
-    // ==========================================================================
-    // 6. THREE.JS AWARD-WINNING 3D CAMERA RIG VIEWPORT
-    // ==========================================================================
-    let scene, camera, renderer, controls, cameraRigGroup, locatorPointCloud;
-    let frustumLines, sweepAnimActive = true;
-
-    function initThreeJS() {
-      const container = document.getElementById('threejsViewport');
-      const canvas = document.getElementById('threejsCanvas');
-      if (!container || !canvas) return;
-
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-
-      // Scene
-      scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x06070a);
-      scene.fog = new THREE.FogExp2(0x06070a, 0.04);
-
-      // Camera
-      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-      camera.position.set(3.5, 2.2, 4.2);
-
-      // Renderer
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.2;
-
-      // OrbitControls
-      controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.05;
-      controls.maxPolarAngle = Math.PI / 2 + 0.05; // Don't go below floor
-      controls.minDistance = 1.5;
-      controls.maxDistance = 12.0;
-
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-      scene.add(ambientLight);
-
-      const keyLight = new THREE.DirectionalLight(0xfff1db, 1.8);
-      keyLight.position.set(4, 6, 3);
-      scene.add(keyLight);
-
-      const rimLight = new THREE.DirectionalLight(0x00f0ff, 2.0);
-      rimLight.position.set(-4, 3, -3);
-      scene.add(rimLight);
-
-      const goldFill = new THREE.PointLight(0xf59e0b, 1.5, 10);
-      goldFill.position.set(0, 1.5, 2);
-      scene.add(goldFill);
-
-      // Floor Grid (Subtle Studio Ground)
-      const gridHelper = new THREE.GridHelper(16, 32, 0xf59e0b, 0x1e2433);
-      gridHelper.position.y = -0.01;
-      scene.add(gridHelper);
-
-      // Build High-End Digital Cinema Camera Assembly
-      cameraRigGroup = new THREE.Group();
-
-      // Materials
-      const matteCarbon = new THREE.MeshStandardMaterial({
-        color: 0x111317,
-        roughness: 0.35,
-        metalness: 0.8
-      });
-      const anodizedGold = new THREE.MeshStandardMaterial({
-        color: 0xf59e0b,
-        roughness: 0.25,
-        metalness: 0.95
-      });
-      const opticalGlass = new THREE.MeshPhysicalMaterial({
-        color: 0x00f0ff,
-        metalness: 0.1,
-        roughness: 0.05,
-        transmission: 0.9,
-        transparent: true,
-        opacity: 0.85
-      });
-      const tallyRed = new THREE.MeshBasicMaterial({ color: 0xef4444 });
-
-      // 1. Camera Main Body
-      const bodyGeo = new THREE.BoxGeometry(0.9, 0.7, 1.1);
-      const cameraBody = new THREE.Mesh(bodyGeo, matteCarbon);
-      cameraBody.position.set(0, 0.65, 0);
-      cameraRigGroup.add(cameraBody);
-
-      // 2. Battery Back / V-Mount
-      const batGeo = new THREE.BoxGeometry(0.75, 0.55, 0.35);
-      const battery = new THREE.Mesh(batGeo, matteCarbon);
-      battery.position.set(0, 0.65, -0.65);
-      cameraRigGroup.add(battery);
-
-      // 3. Cinema Lens Barrel
-      const barrelGeo = new THREE.CylinderGeometry(0.28, 0.32, 0.9, 32);
-      barrelGeo.rotateX(Math.PI / 2);
-      const lensBarrel = new THREE.Mesh(barrelGeo, matteCarbon);
-      lensBarrel.position.set(0, 0.65, 0.95);
-      cameraRigGroup.add(lensBarrel);
-
-      // 4. Anodized Gold Focus & Aperture Rings
-      const ringGeo1 = new THREE.TorusGeometry(0.31, 0.02, 16, 32);
-      const ring1 = new THREE.Mesh(ringGeo1, anodizedGold);
-      ring1.position.set(0, 0.65, 0.75);
-      cameraRigGroup.add(ring1);
-
-      const ringGeo2 = new THREE.TorusGeometry(0.32, 0.02, 16, 32);
-      const ring2 = new THREE.Mesh(ringGeo2, anodizedGold);
-      ring2.position.set(0, 0.65, 1.15);
-      cameraRigGroup.add(ring2);
-
-      // 5. Front Optical Glass Element
-      const glassGeo = new THREE.SphereGeometry(0.27, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
-      glassGeo.rotateX(-Math.PI / 2);
-      const frontGlass = new THREE.Mesh(glassGeo, opticalGlass);
-      frontGlass.position.set(0, 0.65, 1.38);
-      cameraRigGroup.add(frontGlass);
-
-      // 6. Viewfinder Eyepiece & Top Handle
-      const handleGeo = new THREE.BoxGeometry(0.18, 0.12, 0.85);
-      const handle = new THREE.Mesh(handleGeo, matteCarbon);
-      handle.position.set(0, 1.06, 0.05);
-      cameraRigGroup.add(handle);
-
-      const evfGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.45, 16);
-      evfGeo.rotateZ(Math.PI / 2);
-      const evf = new THREE.Mesh(evfGeo, matteCarbon);
-      evf.position.set(0.55, 0.85, 0.2);
-      cameraRigGroup.add(evf);
-
-      // 7. Tally Recording Light
-      const tallyGeo = new THREE.SphereGeometry(0.04, 16, 16);
-      const tally = new THREE.Mesh(tallyGeo, tallyRed);
-      tally.position.set(-0.35, 0.92, 0.56);
-      cameraRigGroup.add(tally);
-
-      // 8. Laser Frustum Cone (Tracking Viewfinder Projection)
-      const frustumPoints = [
-        new THREE.Vector3(0, 0.65, 1.4),
-        new THREE.Vector3(-1.4, -0.2, 4.5),
-        new THREE.Vector3(1.4, -0.2, 4.5),
-        new THREE.Vector3(1.4, 1.5, 4.5),
-        new THREE.Vector3(-1.4, 1.5, 4.5),
-        new THREE.Vector3(0, 0.65, 1.4) // loop back
-      ];
-      const frustumGeo = new THREE.BufferGeometry().setFromPoints(frustumPoints);
-      const frustumMat = new THREE.LineBasicMaterial({
-        color: 0x00f0ff,
-        transparent: true,
-        opacity: 0.65
-      });
-      frustumLines = new THREE.Line(frustumGeo, frustumMat);
-      cameraRigGroup.add(frustumLines);
-
-      scene.add(cameraRigGroup);
-
-      // Build 3D Locator Point Cloud (1240 Matchmove Points)
-      const pointCount = 1240;
-      const pointGeo = new THREE.BufferGeometry();
-      const positions = new Float32Array(pointCount * 3);
-      const colors = new Float32Array(pointCount * 3);
-
-      for (let i = 0; i < pointCount; i++) {
-        const x = (Math.random() - 0.5) * 8.0;
-        const y = Math.random() * 2.8;
-        const z = (Math.random() - 0.5) * 8.0;
-        positions[i * 3] = x;
-        positions[i * 3 + 1] = y;
-        positions[i * 3 + 2] = z;
-
-        if (Math.random() > 0.6) {
-          colors[i * 3] = 0.96; colors[i * 3 + 1] = 0.62; colors[i * 3 + 2] = 0.04; // gold
-        } else {
-          colors[i * 3] = 0.0; colors[i * 3 + 1] = 0.94; colors[i * 3 + 2] = 1.0; // cyan
-        }
-      }
-
-      pointGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      pointGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-      const pointMat = new THREE.PointsMaterial({
-        size: 0.035,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.75
-      });
-      locatorPointCloud = new THREE.Points(pointGeo, pointMat);
-      scene.add(locatorPointCloud);
-
-      // Resize Listener
-      window.addEventListener('resize', onThreeResize);
-
-      // Animation Loop
-      animateThree();
-    }
-
-    function onThreeResize() {
-      const container = document.getElementById('threejsViewport');
-      if (!container || !renderer || !camera) return;
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    }
-
-    let clock = new THREE.Clock();
-
-    function animateThree() {
-      requestAnimationFrame(animateThree);
-      const elapsedTime = clock.getElapsedTime();
-
-      // Camera Frustum Sweep
-      if (sweepAnimActive && cameraRigGroup) {
-        cameraRigGroup.rotation.y = Math.sin(elapsedTime * 0.4) * 0.2;
-        cameraRigGroup.position.y = Math.sin(elapsedTime * 0.8) * 0.04;
-      }
-
-      // Update Telemetry HUD
-      if (controls && camera) {
-        controls.update();
-        const quat = camera.quaternion;
-        const hudQuat = document.getElementById('hudQuat');
-        if (hudQuat) {
-          hudQuat.textContent = `${quat.w.toFixed(2)}, ${quat.x.toFixed(2)}, ${quat.y.toFixed(2)}, ${quat.z.toFixed(2)}`;
-        }
-      }
-
-      renderer.render(scene, camera);
-    }
-
-    function resetThreeCamera() {
-      if (camera && controls) {
-        camera.position.set(3.5, 2.2, 4.2);
-        controls.target.set(0, 0.65, 0.5);
-        controls.update();
-      }
-    }
-
-    function toggleFrustumAnimation() {
-      sweepAnimActive = !sweepAnimActive;
-      if (!sweepAnimActive && cameraRigGroup) {
-        cameraRigGroup.rotation.y = 0;
-        cameraRigGroup.position.y = 0;
-      }
-    }
-
-    // Initialize 3D Scene when DOM is loaded
+    // Initialize 3D Spatial Scene
     document.addEventListener('DOMContentLoaded', () => {
-      initThreeJS();
+      initSpatial3D();
     });
-    // Fallback if already loaded
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      setTimeout(initThreeJS, 100);
+      setTimeout(initSpatial3D, 50);
     }
   </script>
 

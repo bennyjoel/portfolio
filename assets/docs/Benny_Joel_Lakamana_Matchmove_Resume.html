@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Benny Joel Lakamana - Eyeline Matchmove Artist</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      background: #ffffff;
+      color: #1e293b;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      overflow: hidden;
+    }
+
+    body {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hero Monolith Header */
+    .hero-header {
+      background: #090d16;
+      color: #ffffff;
+      padding: 9.5mm 14mm 7.5mm 14mm;
+      border-bottom: 2.5px solid #334155;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 5px;
+    }
+
+    .hero-name-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 21.5pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .hero-role {
+      font-size: 9.5pt;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 7.9pt;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 6px;
+      margin-top: 4px;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-item svg {
+      width: 11px;
+      height: 11px;
+      fill: #cbd5e1;
+    }
+
+    /* Body Wrapper */
+    .body-wrapper {
+      padding: 6.5mm 14mm 5.5mm 14mm;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Summary Card */
+    .summary-box {
+      background: #f8fafc;
+      border-left: 3px solid #090d16;
+      border-radius: 0 4px 4px 0;
+      padding: 6px 12px;
+      font-size: 8.2pt;
+      line-height: 1.38;
+      color: #334155;
+      margin-bottom: 7px;
+    }
+
+    .summary-box strong {
+      color: #090d16;
+      font-weight: 600;
+    }
+
+    /* Main Grid */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 31% 66.5%;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .col-left, .col-right {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    /* Headings */
+    .section-head {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8.4pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #090d16;
+      border-bottom: 1.5px solid #090d16;
+      padding-bottom: 2px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-head::after {
+      content: '';
+      width: 12px;
+      height: 1.5px;
+      background: #94a3b8;
+    }
+
+    /* Left Column Content */
+    .skill-unit {
+      margin-bottom: 4.5px;
+    }
+
+    .skill-cat {
+      font-size: 7.7pt;
+      font-weight: 700;
+      color: #090d16;
+      text-transform: uppercase;
+      letter-spacing: 0.35px;
+      margin-bottom: 1px;
+    }
+
+    .skill-sub {
+      font-size: 7.4pt;
+      color: #475569;
+      line-height: 1.25;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5px;
+      margin-top: 2px;
+    }
+
+    .chip {
+      font-size: 6.8pt;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #1e293b;
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .chip.dark {
+      background: #090d16;
+      color: #ffffff;
+      border-color: #090d16;
+    }
+
+    /* Education */
+    .edu-unit {
+      margin-bottom: 4.5px;
+    }
+
+    .edu-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #090d16;
+      line-height: 1.2;
+    }
+
+    .edu-place {
+      font-size: 7.5pt;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.1pt;
+      color: #64748b;
+      margin-bottom: 1px;
+    }
+
+    .honor-badge {
+      display: inline-block;
+      font-size: 6.8pt;
+      font-weight: 700;
+      color: #090d16;
+      background: #e2e8f0;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin: 1px 0;
+    }
+
+    .edu-subnote {
+      font-size: 7pt;
+      color: #64748b;
+      line-height: 1.22;
+    }
+
+    /* Competencies */
+    .comp-unit {
+      list-style: none;
+    }
+
+    .comp-item {
+      font-size: 7.5pt;
+      color: #334155;
+      font-weight: 500;
+      margin-bottom: 2.5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+      line-height: 1.2;
+    }
+
+    .comp-dot {
+      width: 4px;
+      height: 4px;
+      background: #090d16;
+      border-radius: 50%;
+      margin-top: 4.5px;
+      flex-shrink: 0;
+    }
+
+    /* Languages */
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.5pt;
+      padding: 1.5px 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .lang-row:last-child { border-bottom: none; }
+    .lang-row .name { color: #090d16; font-weight: 600; }
+    .lang-row .level { color: #64748b; }
+
+    /* Experience */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 6.5px;
+    }
+
+    .job-entry {
+      position: relative;
+      padding-left: 17px;
+    }
+
+    .job-entry::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      bottom: -13px;
+      width: 1.5px;
+      background: #cbd5e1;
+      z-index: 1;
+    }
+    
+    .job-entry:last-child::before {
+      display: none;
+    }
+
+    .job-entry::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 3.5px;
+      width: 9.5px;
+      height: 9.5px;
+      border-radius: 50%;
+      background: #090d16;
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 0 0 1px #090d16;
+      z-index: 2;
+    }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .job-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8.9pt;
+      font-weight: 700;
+      color: #090d16;
+    }
+
+    .job-date {
+      font-size: 7.3pt;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .job-company {
+      font-size: 7.7pt;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+
+    .job-bullets {
+      list-style: none;
+    }
+
+    .job-bullets li {
+      position: relative;
+      padding-left: 9px;
+      font-size: 7.7pt;
+      line-height: 1.3;
+      color: #334155;
+      margin-bottom: 2.2px;
+    }
+
+    .job-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: #94a3b8;
+      font-weight: 700;
+    }
+
+    .job-bullets li strong {
+      color: #090d16;
+      font-weight: 600;
+    }
+
+    /* Projects */
+    .proj-panel {
+      background: #fbfcfd;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 5px 8px;
+      margin-bottom: 4px;
+    }
+
+    .proj-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .proj-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8.4pt;
+      font-weight: 700;
+      color: #090d16;
+    }
+
+    .proj-tag {
+      font-size: 6.7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: #e2e8f0;
+      color: #475569;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .proj-tools {
+      font-size: 7.3pt;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 2.5px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 4px;
+      margin-top: 3px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 6.7pt;
+      color: #94a3b8;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Monolith Header -->
+  <header class="hero-header">
+    <div class="hero-top">
+      <div class="hero-name-wrap">
+        <h1 class="hero-name">Benny Joel Lakamana</h1>
+        <div class="hero-role">Matchmove Artist | 3D Camera & Object Tracking</div>
+      </div>
+    </div>
+    <div class="hero-contacts">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        <span>Begumpet, Hyderabad, India</span>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>+91 9014133656</span>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>bennyofficial19@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 17.93c3.95-.49 7-3.85 7-7.93 0-.62-.08-1.21-.21-1.79L15 15v1c0 1.1-.9 2-2 2v1.93zm-3-1.87v-1.06c0-.55-.45-1-1-1H6.1c-.06-.32-.1-.66-.1-1 0-2.52 1.34-4.73 3.32-5.96L11 9c.55 0 1-.45 1-1V6.21C11.33 6.07 10.68 6 10 6 6.69 6 4 8.69 4 12c0 2.82 1.55 5.27 3.84 6.55l2.16-.49z"/></svg>
+        <span>Matchmove Breakdown Reel Available Upon Request</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Body Content -->
+  <div class="body-wrapper">
+
+    <!-- Executive Summary -->
+    <div class="summary-box">
+      <strong>Feature Film Matchmove Artist</strong> with proven production experience in 3D camera tracking, rigid/deforming object tracking, and CG integration for live-action feature film plates. Core proficiency in <strong>3DEqualizer (Intermediate)</strong>, <strong>Autodesk Maya (Intermediate)</strong>, and <strong>Foundry Nuke (Basic)</strong>. Extensive background in lens distortion profiling (grid calibration, undistort/redistort workflows), focal length and sensor/film-back matching, and rolling shutter compensation. Proven feature film track record on <strong>Takshaka</strong>, delivering pixel-accurate solves and ensuring seamless multi-shot spatial continuity for downstream Layout and Compositing departments under tight production deadlines.
+    </div>
+
+    <!-- Grid -->
+    <div class="content-grid">
+
+      <!-- Left Column -->
+      <aside class="col-left">
+
+        <!-- Technical Skills -->
+        <section>
+          <h2 class="section-head">Technical Skills</h2>
+          <div class="skill-unit">
+            <div class="skill-cat">Tracking & Camera Solving</div>
+            <div class="skill-sub">3DEqualizer (Intermediate) • SynthEyes • Mocha Pro</div>
+            <div class="chip-wrap">
+              <span class="chip dark">3D Camera Solves</span>
+              <span class="chip dark">Object Tracking</span>
+              <span class="chip">Survey Point Solves</span>
+              <span class="chip">Focal Length Est.</span>
+              <span class="chip">Point Clouds</span>
+            </div>
+          </div>
+          <div class="skill-unit">
+            <div class="skill-cat">Optical & Plate Calibration</div>
+            <div class="skill-sub">Foundry Nuke (Basic) • 3DEqualizer</div>
+            <div class="chip-wrap">
+              <span class="chip dark">Lens Distortion Grids</span>
+              <span class="chip dark">Undistort / Redistort</span>
+              <span class="chip">Rolling Shutter</span>
+              <span class="chip">Film Back Matching</span>
+            </div>
+          </div>
+          <div class="skill-unit">
+            <div class="skill-cat">3D, Layout & Pipeline</div>
+            <div class="skill-sub">Autodesk Maya (Intermediate) • UE5 • 3ds Max</div>
+            <div class="chip-wrap">
+              <span class="chip dark">Maya Layout Handoff</span>
+              <span class="chip">Scene Scale Normalization</span>
+              <span class="chip">Proxy Geometry</span>
+              <span class="chip">Shot Continuity</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+          <h2 class="section-head">Education</h2>
+
+          <div class="edu-unit">
+            <div class="edu-title">BFA in Animation</div>
+            <div class="edu-place">JNAFAU (Jawaharlal Nehru Architecture & Fine Arts University)</div>
+            <div class="edu-row">
+              <span>Hyderabad, India</span>
+              <span>2022 – 2026</span>
+            </div>
+            <div class="honor-badge">★ Ranked in Top 10% of Class</div>
+            <div class="edu-subnote">Specialization in 3D tracking, photogrammetry & live-action VFX</div>
+          </div>
+
+          <div class="edu-unit">
+            <div class="edu-title">Diploma in Animation & VFX Prime</div>
+            <div class="edu-place">Arena Animation</div>
+            <div class="edu-row">
+              <span>Hyderabad, India</span>
+              <span>2021 – 2025</span>
+            </div>
+            <div class="edu-subnote">Feature film VFX pipelines, camera math, and matchmove mastery</div>
+          </div>
+        </section>
+
+        <!-- Competencies -->
+        <section>
+          <h2 class="section-head">Core Competencies</h2>
+          <ul class="comp-unit">
+            <li class="comp-item"><span class="comp-dot"></span><span>3D Camera & Object Solving (3DEqualizer)</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Lens Distortion & Grid Calibration (Nuke/3DE)</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Sensor/Film Back & Rolling Shutter Matching</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Maya Layout Delivery & Axis Alignment</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Multi-Shot Spatial & Sequence Continuity</span></li>
+            <li class="comp-item"><span class="comp-dot"></span><span>Production Schedule & Milestone Discipline</span></li>
+          </ul>
+        </section>
+
+        <!-- Languages -->
+        <section>
+          <h2 class="section-head">Languages</h2>
+          <div class="lang-row">
+            <span class="name">English</span>
+            <span class="level">Professional Working</span>
+          </div>
+          <div class="lang-row">
+            <span class="name">Telugu</span>
+            <span class="level">Native Proficiency</span>
+          </div>
+          <div class="lang-row">
+            <span class="name">Hindi</span>
+            <span class="level">Conversational</span>
+          </div>
+        </section>
+
+      </aside>
+
+      <!-- Right Column -->
+      <main class="col-right">
+
+        <!-- Experience -->
+        <section>
+          <h2 class="section-head">Professional Experience</h2>
+          <div class="timeline">
+
+            <div class="job-entry">
+              <div class="job-head">
+                <span class="job-role">Assistant VFX Supervisor</span>
+                <span class="job-date">2026 – Present</span>
+              </div>
+              <div class="job-company">
+                <span>Technical Artist VFX</span>
+                <span>Hyderabad, India</span>
+              </div>
+              <ul class="job-bullets">
+                <li><strong>Matchmove & Layout Quality Assurance:</strong> Supervised 3D camera tracking, rigid/deforming object tracks, and geometry alignment passes across multi-shot sequences, enforcing zero slip and pixel-accurate continuity.</li>
+                <li><strong>Optical Discrepancy Resolution:</strong> Solved complex plate anomalies including severe motion blur, featureless foregrounds, rolling shutter artifacts, and anamorphic lens distortion variations.</li>
+                <li><strong>Cross-Departmental Pipeline:</strong> Coordinated technical handoffs between matchmove, layout, and compositing leads to maintain strict feature film milestone schedules and eliminate downstream rework.</li>
+              </ul>
+            </div>
+
+            <div class="job-entry">
+              <div class="job-head">
+                <span class="job-role">VFX Production Coordinator & Matchmove Specialist</span>
+                <span class="job-date">2026</span>
+              </div>
+              <div class="job-company">
+                <span>MSR Creations • Feature Film: <em>TAKSHAKA</em></span>
+                <span>Hyderabad, India</span>
+              </div>
+              <ul class="job-bullets">
+                <li><strong>Camera & Object Tracking:</strong> Solved pixel-accurate 3D cameras and dynamic object tracks for live-action plates in 3DEqualizer and SynthEyes, strictly adhering to focal length and film back specifications.</li>
+                <li><strong>Lens Distortion & Grid Calibration:</strong> Generated lens distortion profiles, grid calibrations, and ST-maps in 3DEqualizer and Nuke, eliminating distortion drift on complex CG environment extensions.</li>
+                <li><strong>Maya Scene Alignment & Layout Delivery:</strong> Aligned 3D scene geometry, camera scale, and coordinate systems in Autodesk Maya, ensuring seamless, error-free handoffs to Layout and Compositing.</li>
+                <li><strong>On-Set Data & Sequence Continuity:</strong> Managed on-set camera data sheets, lens calibration notes, and survey measurements, auditing multi-shot continuity to maintain consistency across sequences.</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+          <h2 class="section-head">Featured Projects & Technical Work</h2>
+          <div class="proj-panel">
+            <div class="proj-head"><span class="proj-name">Takshaka Feature Film: Camera Tracking & CG Integration</span><span class="proj-tag">Matchmove</span></div>
+            <div class="proj-tools">3DEqualizer • Autodesk Maya • Foundry Nuke • SynthEyes</div>
+            <ul class="job-bullets">
+              <li>Derived sub-pixel camera solves, object-tracking passes, and proxy geometry line-up for CG set extensions.</li>
+              <li>Generated wireframe projection passes and checkerboard alignment tests confirming zero-drift camera accuracy.</li>
+              <li>Normalized camera scale, focal length, and coordinate orientation for downstream Maya Layout integration.</li>
+            </ul>
+          </div>
+          <div class="proj-panel">
+            <div class="proj-head"><span class="proj-name">Feature Matchmove & Lens Calibration Breakdown Suite</span><span class="proj-tag">Production Reel</span></div>
+            <div class="proj-tools">3DEqualizer • Autodesk Maya • Nuke • Unreal Engine 5</div>
+            <ul class="job-bullets">
+              <li>Engineered 3DEqualizer tracking breakdowns featuring automated and survey point solves, focal estimation, and lens grid undistortion/redistortion pipelines.</li>
+              <li>Constructed real-time virtual camera sequences in Maya and UE5 to validate spatial fidelity and camera trajectory smoothness.</li>
+            </ul>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Benny Joel Lakamana — Curriculum Vitae</span>
+      <span>Eyeline Studios Hyderabad Edition</span>
+      <span>Page 1 of 1</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
