@@ -1873,18 +1873,18 @@
             <span class="pipe-step-num">PHASE 01 • INGESTION</span>
             <h3 class="pipe-title">Lens Grid & ST-Maps</h3>
             <p class="pipe-desc">
-              Calibration of checkerboard and dot grids. Calculation of radial, anamorphic, and asymmetric lens distortion coefficients. ST-Map generation for accurate plate undistortion in Nuke and Maya.
+              Calibration of checkerboard and dot grids. Calculation of radial, anamorphic, and asymmetric lens distortion coefficients. ST-Map generation for accurate plate undistortion in Nuke, 3DEqualizer, and Maya.
             </p>
-            <span class="pipe-tools-tag">TOOLS: 3DEqualizer 4 • Nuke 15</span>
+            <span class="pipe-tools-tag">TOOLS: 3DEqualizer 4 • Nuke 15 • SynthEyes</span>
           </div>
 
           <div class="pipeline-card">
             <span class="pipe-step-num">PHASE 02 • SOLVING</span>
-            <h3 class="pipe-title">Sub-Pixel 3D Tracking</h3>
+            <h3 class="pipe-title">Sub-Pixel Camera & Object Solving</h3>
             <p class="pipe-desc">
-              Supervised feature point extraction across high-velocity action plates. Survey coordinate alignment, vanishing point estimation, and multi-frame bundle adjustment maintaining RMS error &lt; 0.35px.
+              Supervised feature point extraction and dynamic object tracking across high-velocity action plates in 3DEqualizer 4 and SynthEyes. Survey coordinate alignment, vanishing point estimation, and multi-frame bundle adjustment maintaining RMS error &lt; 0.35px.
             </p>
-            <span class="pipe-tools-tag">TOOLS: 3DEqualizer • SynthEyes</span>
+            <span class="pipe-tools-tag">TOOLS: 3DEqualizer 4 • SynthEyes • Mocha Pro</span>
           </div>
 
           <div class="pipeline-card">
@@ -2059,66 +2059,113 @@
     checkAuthGate();
 
     // ==========================================================================
-    // 1. THREE.JS LUXURY 3D SPATIAL TRAJECTORY SCENE
+    // ==========================================================================
+    // 1. THREE.JS UPGRADED CINEMA-GRADE SPATIAL TRAJECTORY ENGINE
     // ==========================================================================
     let spatialScene, spatialCamera, spatialRenderer;
-    let cameraTrajectoryLine, frustumGroup, pointCloud, gridMesh;
+    let cameraTrajectoryLine, frustumGroup, pointCloud, gridGroup;
+    let heroCameraGroup, heroDropLine, heroFloorTarget;
     let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
     const windowHalfX = window.innerWidth / 2;
     const windowHalfY = window.innerHeight / 2;
+    let trajectoryCurve;
+
+    // Procedural Soft Cinema Bokeh Texture (Radial optical falloff)
+    function createBokehParticleTexture() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 64;
+      canvas.height = 64;
+      const ctx = canvas.getContext('2d');
+      const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+      grad.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
+      grad.addColorStop(0.3, 'rgba(255, 255, 255, 0.8)');
+      grad.addColorStop(0.65, 'rgba(255, 255, 255, 0.2)');
+      grad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 64, 64);
+      return new THREE.CanvasTexture(canvas);
+    }
 
     function initSpatial3D() {
       const canvas = document.getElementById('webglCanvas');
       if (!canvas) return;
 
       spatialScene = new THREE.Scene();
-      spatialScene.background = new THREE.Color(0x030406);
-      spatialScene.fog = new THREE.FogExp2(0x030406, 0.032);
+      spatialScene.background = new THREE.Color(0x020306);
+      spatialScene.fog = new THREE.FogExp2(0x020306, 0.032);
 
-      spatialCamera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 100);
-      spatialCamera.position.set(0, 2.6, 9.5);
+      spatialCamera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 100);
+      spatialCamera.position.set(0, 2.4, 9.2);
 
       spatialRenderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
       spatialRenderer.setSize(window.innerWidth, window.innerHeight);
       spatialRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       spatialRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-      spatialRenderer.toneMappingExposure = 1.35;
+      spatialRenderer.toneMappingExposure = 1.25;
 
-      // Volumetric Cinema Lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+      // Cinema Anamorphic 3-Point Lighting Rig
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
       spatialScene.add(ambientLight);
 
-      const goldLight = new THREE.PointLight(0xf59e0b, 3.0, 30);
-      goldLight.position.set(6, 8, 4);
-      spatialScene.add(goldLight);
+      const goldKey = new THREE.PointLight(0xf59e0b, 2.8, 35);
+      goldKey.position.set(6, 8, 4);
+      spatialScene.add(goldKey);
 
-      const cyanLight = new THREE.PointLight(0x00f0ff, 3.2, 35);
-      cyanLight.position.set(-7, 4, -2);
-      spatialScene.add(cyanLight);
+      const cyanRim = new THREE.PointLight(0x00f0ff, 3.0, 38);
+      cyanRim.position.set(-7, 4, -2);
+      spatialScene.add(cyanRim);
 
-      const violetFill = new THREE.PointLight(0x8b5cf6, 2.2, 28);
+      const violetFill = new THREE.PointLight(0x6366f1, 2.0, 28);
       violetFill.position.set(0, -2, -6);
       spatialScene.add(violetFill);
 
-      // 1. Perspective 3D Maya Dual-Tone Ground Grid
-      gridMesh = new THREE.GridHelper(36, 44, 0xf59e0b, 0x141a26);
-      gridMesh.position.y = -1.25;
-      spatialScene.add(gridMesh);
+      // =======================================================================
+      // UPGRADED 3D SURVEY COORDINATE GROUND GRID
+      // =======================================================================
+      gridGroup = new THREE.Group();
 
-      // 2. Animated Lidar Scanline Beam (Active Tracking Sweep)
-      const scanGeo = new THREE.PlaneGeometry(36, 0.6);
-      const scanMat = new THREE.MeshBasicMaterial({
-        color: 0x00f0ff,
-        transparent: true,
-        opacity: 0.35,
-        side: THREE.DoubleSide
+      // Major coordinate grid (2m units with amber center cross)
+      const majorGrid = new THREE.GridHelper(36, 18, 0xf59e0b, 0x1a2333);
+      majorGrid.position.y = -1.25;
+      gridGroup.add(majorGrid);
+
+      // Fine precision survey sub-grid (0.5m units in dark cyan)
+      const minorGrid = new THREE.GridHelper(36, 72, 0x00f0ff, 0x0d1522);
+      minorGrid.position.y = -1.252;
+      gridGroup.add(minorGrid);
+
+      // Concentric survey radar circles (Survey radii: 4m, 8m, 14m)
+      const ringRadii = [4, 8, 14];
+      ringRadii.forEach(r => {
+        const ringSegments = 96;
+        const ringPoints = [];
+        for (let i = 0; i <= ringSegments; i++) {
+          const theta = (i / ringSegments) * Math.PI * 2;
+          ringPoints.push(new THREE.Vector3(Math.cos(theta) * r, -1.248, Math.sin(theta) * r));
+        }
+        const rGeo = new THREE.BufferGeometry().setFromPoints(ringPoints);
+        const rMat = new THREE.LineBasicMaterial({
+          color: 0x00f0ff,
+          transparent: true,
+          opacity: 0.15
+        });
+        gridGroup.add(new THREE.Line(rGeo, rMat));
       });
-      window.lidarScanBeam = new THREE.Mesh(scanGeo, scanMat);
-      window.lidarScanBeam.rotation.x = Math.PI / 2;
-      window.lidarScanBeam.position.y = -1.24;
-      spatialScene.add(window.lidarScanBeam);
 
-      // 3. 3D Camera Trajectory Path (Continuous 3D Spline)
+      // Survey Origin Crosshair
+      const chPoints = [
+        new THREE.Vector3(-1.5, -1.246, 0), new THREE.Vector3(1.5, -1.246, 0),
+        new THREE.Vector3(0, -1.246, -1.5), new THREE.Vector3(0, -1.246, 1.5)
+      ];
+      const chGeo = new THREE.BufferGeometry().setFromPoints(chPoints);
+      const chMat = new THREE.LineBasicMaterial({ color: 0xf59e0b, transparent: true, opacity: 0.5 });
+      gridGroup.add(new THREE.LineSegments(chGeo, chMat));
+
+      spatialScene.add(gridGroup);
+
+      // =======================================================================
+      // UPGRADED 3D CAMERA TRAJECTORY (Sleek Luminous Spline)
+      // =======================================================================
       const curvePoints = [
         new THREE.Vector3(-9, 4.0, -7),
         new THREE.Vector3(-5, 1.5, -2),
@@ -2130,59 +2177,84 @@
         new THREE.Vector3(-3, 3.4, -8),
         new THREE.Vector3(-9, 4.0, -7)
       ];
-      const trajectoryCurve = new THREE.CatmullRomCurve3(curvePoints);
-      const curveGeo = new THREE.TubeGeometry(trajectoryCurve, 160, 0.05, 8, false);
-      const curveMat = new THREE.MeshBasicMaterial({
+      trajectoryCurve = new THREE.CatmullRomCurve3(curvePoints);
+
+      // 1. Sleek glowing path line
+      const splinePoints = trajectoryCurve.getPoints(240);
+      const splineGeo = new THREE.BufferGeometry().setFromPoints(splinePoints);
+      const splineMat = new THREE.LineBasicMaterial({
         color: 0xf59e0b,
         transparent: true,
-        opacity: 0.9
+        opacity: 0.9,
+        linewidth: 2
       });
-      cameraTrajectoryLine = new THREE.Mesh(curveGeo, curveMat);
+      cameraTrajectoryLine = new THREE.Line(splineGeo, splineMat);
       spatialScene.add(cameraTrajectoryLine);
 
-      // 4. Volumetric Camera Frustums with Semi-Transparent Light Cones
+      // 2. Micro luminous core tube (0.015 radius) for subtle specular sheen
+      const coreTubeGeo = new THREE.TubeGeometry(trajectoryCurve, 180, 0.015, 6, false);
+      const coreTubeMat = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.35
+      });
+      const coreTube = new THREE.Mesh(coreTubeGeo, coreTubeMat);
+      spatialScene.add(coreTube);
+
+      // =======================================================================
+      // HIGH-PRECISION WIREFRAME CAMERA FRUSTUMS & APEX BEADS (Zero Solid Cones)
+      // =======================================================================
       frustumGroup = new THREE.Group();
-      for (let t = 0; t <= 1; t += 0.1) {
+      const frustumPoints = [
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(-0.4, -0.25, 0.8),
+        new THREE.Vector3(0.4, -0.25, 0.8),
+        new THREE.Vector3(0.4, 0.25, 0.8),
+        new THREE.Vector3(-0.4, 0.25, 0.8),
+        new THREE.Vector3(-0.4, -0.25, 0.8),
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0.4, -0.25, 0.8),
+        new THREE.Vector3(0.4, 0.25, 0.8),
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(-0.4, 0.25, 0.8)
+      ];
+      const fBaseGeo = new THREE.BufferGeometry().setFromPoints(frustumPoints);
+      const beadGeo = new THREE.SphereGeometry(0.04, 12, 12);
+
+      for (let t = 0; t <= 1; t += 0.125) {
         const pt = trajectoryCurve.getPoint(t);
         const tangent = trajectoryCurve.getTangent(t);
 
         const subFrustum = new THREE.Group();
 
-        // Wireframe edges
-        const frustumPoints = [
-          new THREE.Vector3(0, 0, 0),
-          new THREE.Vector3(-0.45, -0.3, 0.95),
-          new THREE.Vector3(0.45, -0.3, 0.95),
-          new THREE.Vector3(0.45, 0.3, 0.95),
-          new THREE.Vector3(-0.45, 0.3, 0.95),
-          new THREE.Vector3(-0.45, -0.3, 0.95),
-          new THREE.Vector3(0, 0, 0),
-          new THREE.Vector3(0.45, -0.3, 0.95),
-          new THREE.Vector3(0.45, 0.3, 0.95),
-          new THREE.Vector3(0, 0, 0),
-          new THREE.Vector3(-0.45, 0.3, 0.95)
-        ];
-        const fGeo = new THREE.BufferGeometry().setFromPoints(frustumPoints);
+        // Crisp wireframe camera body
+        const isKey = (t === 0 || t >= 0.87);
         const fMat = new THREE.LineBasicMaterial({
-          color: (t === 0 || t >= 0.9) ? 0xf59e0b : 0x00f0ff,
+          color: isKey ? 0xf59e0b : 0x00f0ff,
           transparent: true,
-          opacity: 0.85
+          opacity: isKey ? 0.9 : 0.65
         });
-        const fLine = new THREE.Line(fGeo, fMat);
+        const fLine = new THREE.Line(fBaseGeo, fMat);
         subFrustum.add(fLine);
 
-        // Volumetric projection cone mesh
-        const coneGeo = new THREE.ConeGeometry(0.55, 0.95, 4, 1, true);
-        coneGeo.rotateX(-Math.PI / 2);
-        coneGeo.translate(0, 0, 0.48);
-        const coneMat = new THREE.MeshBasicMaterial({
-          color: (t === 0 || t >= 0.9) ? 0xf59e0b : 0x00f0ff,
+        // Optical center axis ray
+        const axisPoints = [new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, 1.2)];
+        const axisGeo = new THREE.BufferGeometry().setFromPoints(axisPoints);
+        const axisMat = new THREE.LineBasicMaterial({
+          color: isKey ? 0xf59e0b : 0x00f0ff,
           transparent: true,
-          opacity: 0.08,
-          side: THREE.DoubleSide
+          opacity: 0.35
         });
-        const coneMesh = new THREE.Mesh(coneGeo, coneMat);
-        subFrustum.add(coneMesh);
+        subFrustum.add(new THREE.Line(axisGeo, axisMat));
+
+        // Golden apex node bead
+        const beadMat = new THREE.MeshBasicMaterial({
+          color: isKey ? 0xffffff : 0xf59e0b,
+          transparent: true,
+          opacity: 0.9
+        });
+        const bead = new THREE.Mesh(beadGeo, beadMat);
+        subFrustum.add(bead);
 
         subFrustum.position.copy(pt);
         subFrustum.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), tangent);
@@ -2190,8 +2262,56 @@
       }
       spatialScene.add(frustumGroup);
 
-      // 5. 3,500 Sub-Pixel Locator Point Cloud with Spatial Gradient
-      const pointCount = 3500;
+      // =======================================================================
+      // ACTIVE SOLVED HERO CAMERA (Glides along spline with live ground drop-line)
+      // =======================================================================
+      heroCameraGroup = new THREE.Group();
+
+      // Hero wireframe camera
+      const heroFMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 1.0 });
+      const heroFLine = new THREE.Line(fBaseGeo, heroFMat);
+      heroCameraGroup.add(heroFLine);
+
+      // Hero gold apex bead
+      const heroBeadMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
+      const heroBead = new THREE.Mesh(new THREE.SphereGeometry(0.065, 16, 16), heroBeadMat);
+      heroCameraGroup.add(heroBead);
+
+      spatialScene.add(heroCameraGroup);
+
+      // Live vertical survey drop-line from hero camera to ground grid
+      const dropLineGeo = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, -5, 0)
+      ]);
+      const dropLineMat = new THREE.LineDashedMaterial({
+        color: 0x00f0ff,
+        dashSize: 0.15,
+        gapSize: 0.1,
+        transparent: true,
+        opacity: 0.5
+      });
+      heroDropLine = new THREE.Line(dropLineGeo, dropLineMat);
+      heroDropLine.computeLineDistances();
+      spatialScene.add(heroDropLine);
+
+      // Ground target reticle under hero camera
+      const floorTargetGeo = new THREE.RingGeometry(0.12, 0.18, 24);
+      floorTargetGeo.rotateX(-Math.PI / 2);
+      const floorTargetMat = new THREE.MeshBasicMaterial({
+        color: 0x00f0ff,
+        transparent: true,
+        opacity: 0.65,
+        side: THREE.DoubleSide
+      });
+      heroFloorTarget = new THREE.Mesh(floorTargetGeo, floorTargetMat);
+      heroFloorTarget.position.y = -1.246;
+      spatialScene.add(heroFloorTarget);
+
+      // =======================================================================
+      // 3,200 SOFT OPTICAL BOKEH TRACKING LOCATORS
+      // =======================================================================
+      const pointCount = 3200;
       const pointGeo = new THREE.BufferGeometry();
       const positions = new Float32Array(pointCount * 3);
       const colors = new Float32Array(pointCount * 3);
@@ -2218,17 +2338,20 @@
       pointGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
       const pointMat = new THREE.PointsMaterial({
-        size: 0.042,
+        size: 0.055,
+        map: createBokehParticleTexture(),
         vertexColors: true,
         transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
         opacity: 0.75
       });
       pointCloud = new THREE.Points(pointGeo, pointMat);
       spatialScene.add(pointCloud);
 
-      // Listeners
+      // Event Listeners
       window.addEventListener('resize', onSpatialResize);
-      window.addEventListener('mousemove', onDocumentMouseMove);
+      document.addEventListener('mousemove', onDocumentMouseMove);
       window.addEventListener('scroll', onDocumentScroll);
 
       animateSpatial();
@@ -2262,28 +2385,62 @@
 
       if (spatialCamera) {
         spatialCamera.position.x = targetX * 3.8;
-        spatialCamera.position.y = 2.6 - (targetY * 2.2) - (scrollYOffset * 0.5);
+        spatialCamera.position.y = 2.4 - (targetY * 2.2) - (scrollYOffset * 0.5);
         spatialCamera.lookAt(0, 1.0 - (scrollYOffset * 0.4), 0);
       }
 
-      // Smooth slow orbit & float
-      if (cameraTrajectoryLine) cameraTrajectoryLine.rotation.y = delta * 0.04;
-      if (frustumGroup) frustumGroup.rotation.y = delta * 0.04;
+      // Smooth slow orbit & floating animation
+      if (cameraTrajectoryLine) cameraTrajectoryLine.rotation.y = delta * 0.035;
+      if (frustumGroup) frustumGroup.rotation.y = delta * 0.035;
       if (pointCloud) {
-        pointCloud.rotation.y = delta * 0.02;
+        pointCloud.rotation.y = delta * 0.018;
         pointCloud.position.y = Math.sin(delta * 0.5) * 0.08;
       }
 
-      // Lidar ground sweep animation
-      if (window.lidarScanBeam) {
-        window.lidarScanBeam.position.z = Math.sin(delta * 0.8) * 12.0;
-        window.lidarScanBeam.material.opacity = 0.25 + Math.sin(delta * 2.0) * 0.15;
+      // Animate Hero Active Solved Camera along spline
+      if (trajectoryCurve && heroCameraGroup && heroDropLine && heroFloorTarget) {
+        const u = (delta * 0.035) % 1.0;
+        const heroPt = trajectoryCurve.getPoint(u);
+        const heroTangent = trajectoryCurve.getTangent(u);
+
+        // Apply same rotation as parent trajectory
+        const rotY = delta * 0.035;
+        const cosR = Math.cos(rotY);
+        const sinR = Math.sin(rotY);
+
+        const rotatedX = heroPt.x * cosR - heroPt.z * sinR;
+        const rotatedZ = heroPt.x * sinR + heroPt.z * cosR;
+        const rotatedPt = new THREE.Vector3(rotatedX, heroPt.y, rotatedZ);
+
+        heroCameraGroup.position.copy(rotatedPt);
+
+        const rotatedTangent = new THREE.Vector3(
+          heroTangent.x * cosR - heroTangent.z * sinR,
+          heroTangent.y,
+          heroTangent.x * sinR + heroTangent.z * cosR
+        );
+        heroCameraGroup.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), rotatedTangent);
+
+        // Update ground drop-line
+        const dropPositions = heroDropLine.geometry.attributes.position.array;
+        dropPositions[0] = rotatedPt.x;
+        dropPositions[1] = rotatedPt.y;
+        dropPositions[2] = rotatedPt.z;
+        dropPositions[3] = rotatedPt.x;
+        dropPositions[4] = -1.246;
+        dropPositions[5] = rotatedPt.z;
+        heroDropLine.geometry.attributes.position.needsUpdate = true;
+        heroDropLine.computeLineDistances();
+
+        // Update floor target reticle position
+        heroFloorTarget.position.x = rotatedPt.x;
+        heroFloorTarget.position.z = rotatedPt.z;
+        heroFloorTarget.rotation.z = delta * 2.0;
       }
 
       spatialRenderer.render(spatialScene, spatialCamera);
     }
 
-    // ==========================================================================
     // 2. HERO VIDEO SCRUBBER & TIMECODE
     // ==========================================================================
     const heroVid = document.getElementById('heroShowreelVideo');
