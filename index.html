@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>BENNY JOEL LAKAMANA | Feature Film 3D Matchmove & Camera Tracking</title>
-  <meta name="description" content="Award-winning 3D matchmove, camera tracking, and layout portfolio of Benny Joel Lakamana. Featuring 10 verified Maya render shots from feature film Takshaka, 3DEqualizer sub-pixel solves, and an interactive 3D WebGL spatial camera trajectory engine.">
+  <meta name="description" content="Official 3D matchmove, camera tracking, and layout showreel of Benny Joel Lakamana. Featuring 10 verified Maya render solves from Takshaka, 3DEqualizer sub-pixel solves, and an interactive 3D WebGL spatial trajectory engine.">
 
-  <!-- Typography: Syne (Headings), Space Grotesk (UI), Plus Jakarta Sans (Body), JetBrains Mono (Telemetry) -->
+  <!-- Typography: Syne, Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,14 +16,14 @@
 
   <style>
     /* ==========================================================================
-       LUXURY 3D OBSIDIAN CINEMA DESIGN SYSTEM
+       RICH OBSIDIAN CINEMA DESIGN SYSTEM (HIGH DETAIL LUXURY)
        ========================================================================== */
     :root {
       --bg-void: #040507;
       --bg-surface: #090b10;
-      --bg-panel: rgba(14, 17, 24, 0.78);
-      --bg-panel-elevated: rgba(22, 27, 38, 0.88);
-      --bg-glass: rgba(10, 13, 18, 0.82);
+      --bg-panel: rgba(14, 17, 24, 0.82);
+      --bg-panel-elevated: rgba(22, 27, 38, 0.92);
+      --bg-glass: rgba(10, 13, 18, 0.85);
       
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-medium: rgba(255, 255, 255, 0.16);
@@ -78,7 +78,8 @@
       width: 100vw;
       height: 100vh;
       z-index: 0;
-      pointer-events: auto;
+      pointer-events: none;
+      opacity: 0.85;
     }
 
     /* Subtle Analog Film Grain Overlay */
@@ -97,24 +98,161 @@
     .content-layer {
       position: relative;
       z-index: 2;
-      pointer-events: none; /* Let 3D canvas receive clicks where empty */
     }
 
-    .interactive-element {
-      pointer-events: auto;
-    }
-
-    /* Container */
-    .cinema-container {
+    .container {
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
     @media (max-width: 768px) {
-      .cinema-container {
-        padding: 0 1.25rem;
-      }
+      .container { padding: 0 1.25rem; }
+    }
+
+    /* ==========================================================================
+       PASSWORD ACCESS GATE (CONFIDENTIAL PRODUCTION MODAL)
+       ========================================================================== */
+    .password-gate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      background: rgba(4, 5, 8, 0.96);
+      backdrop-filter: blur(40px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      transition: opacity 0.6s var(--ease-cinema), visibility 0.6s var(--ease-cinema);
+    }
+
+    .password-gate-overlay.unlocked {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .gate-card {
+      width: min(480px, 94vw);
+      background: rgba(14, 17, 24, 0.9);
+      backdrop-filter: blur(28px);
+      border: 1px solid var(--border-medium);
+      border-radius: 24px;
+      padding: 3rem 2.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.95), 0 0 50px -10px var(--gold-glow);
+    }
+
+    .gate-badge-lock {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--gold-primary);
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .gate-badge-lock svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+    }
+
+    .gate-heading {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-description {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 360px;
+    }
+
+    .gate-form-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .gate-text-input {
+      width: 100%;
+      background: rgba(6, 7, 10, 0.7);
+      border: 1px solid var(--border-medium);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      outline: none;
+      text-align: center;
+      letter-spacing: 0.15em;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .gate-text-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .gate-submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-primary), #d97706);
+      color: #050608;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px var(--gold-glow);
+      transition: all 0.25s var(--ease-cinema);
+    }
+
+    .gate-submit-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.45);
+    }
+
+    .gate-error-banner {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #ef4444;
+      display: none;
+      margin-top: 0.35rem;
+    }
+
+    .gate-quick-bypass {
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .gate-quick-bypass a {
+      color: var(--gold-primary);
+      text-decoration: underline;
+      cursor: pointer;
     }
 
     /* ==========================================================================
@@ -220,35 +358,23 @@
       gap: 1rem;
     }
 
-    .live-status-pill {
+    .btn-relock-site {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-dim);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--emerald-live);
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--emerald-live);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--emerald-live);
-      animation: pulseLive 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseLive {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    @media (max-width: 600px) {
-      .live-status-pill { display: none; }
+    .btn-relock-site:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .btn-nav-cv {
@@ -276,7 +402,7 @@
     }
 
     /* ==========================================================================
-       HERO CINEMA SCREENING ROOM & 3D HUD
+       HERO CINEMA SCREENING ROOM
        ========================================================================== */
     .hero-screening-room {
       padding-top: 130px;
@@ -341,59 +467,16 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-description-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 3rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-description {
-      font-size: 1.125rem;
+    .hero-lead-text {
+      font-size: 1.15rem;
       line-height: 1.7;
       color: var(--text-muted);
-      max-width: 680px;
+      max-width: 780px;
       font-weight: 300;
+      margin-top: 1.25rem;
     }
 
-    .hero-stats-strip {
-      display: flex;
-      gap: 2.5rem;
-      background: var(--bg-panel);
-      backdrop-filter: blur(20px);
-      padding: 1.25rem 2rem;
-      border-radius: 16px;
-      border: 1px solid var(--border-subtle);
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .stat-val {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--text-white);
-      line-height: 1;
-    }
-
-    .stat-val span.gold { color: var(--gold-primary); }
-    .stat-val span.cyan { color: var(--cyan-neon); }
-
-    .stat-lbl {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-top: 0.35rem;
-    }
-
-    /* MASTER CINEMA PLAYER CHASSIS */
+    /* WIDESCREEN MASTER CINEMA PLAYER */
     .master-player-chassis {
       position: relative;
       width: 100%;
@@ -408,14 +491,12 @@
     .video-viewport-wrapper {
       position: relative;
       width: 100%;
-      padding-top: 52%; /* 2.39:1 Anamorphic Cinema Ratio */
+      padding-top: 52%; /* 2.39:1 Cinema Ratio */
       background: #000;
     }
 
     @media (max-width: 768px) {
-      .video-viewport-wrapper {
-        padding-top: 56.25%;
-      }
+      .video-viewport-wrapper { padding-top: 56.25%; }
     }
 
     .master-hero-video {
@@ -466,6 +547,11 @@
       background: #ef4444;
       border-radius: 50%;
       animation: pulseLive 1.5s infinite;
+    }
+
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
 
     .hud-corner-crosshairs {
@@ -593,42 +679,8 @@
       fill: currentColor;
     }
 
-    /* 3D SPATIAL TELEMETRY FLOATING HUD */
-    .spatial-telemetry-pill {
-      position: fixed;
-      bottom: 2rem;
-      left: 2rem;
-      z-index: 50;
-      background: rgba(10, 13, 18, 0.85);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border-medium);
-      border-radius: 12px;
-      padding: 0.75rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      pointer-events: auto;
-    }
-
-    @media (max-width: 768px) {
-      .spatial-telemetry-pill { display: none; }
-    }
-
-    .telemetry-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-
-    .telemetry-row .label { color: var(--text-dim); }
-    .telemetry-row .value { color: var(--cyan-neon); font-weight: 600; }
-    .telemetry-row .value.gold { color: var(--gold-primary); }
-
     /* ==========================================================================
-       SECTION HEADERS & EDITORIAL TITLES
+       SECTION HEADERS
        ========================================================================== */
     .section-editorial-header {
       margin-top: 5rem;
@@ -675,7 +727,7 @@
     }
 
     /* ==========================================================================
-       10 PURE CAMERA TRACKING MAYA SHOTS - CINEMATIC VIDEO GRID
+       10 MAYA CAMERA TRACKING SOLVES - CINEMATIC VIDEO GRID
        ========================================================================== */
     .shots-grid-layout {
       display: grid;
@@ -684,15 +736,11 @@
     }
 
     @media (max-width: 1100px) {
-      .shots-grid-layout {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .shots-grid-layout { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 640px) {
-      .shots-grid-layout {
-        grid-template-columns: 1fr;
-      }
+      .shots-grid-layout { grid-template-columns: 1fr; }
     }
 
     .cinema-shot-card {
@@ -873,7 +921,7 @@
     }
 
     /* ==========================================================================
-       DUAL COMPARATOR (MAYA 3D TRACK VS VIRTUAL PRODUCTION)
+       DUAL COMPARATOR
        ========================================================================== */
     .comparator-showcase-box {
       margin-top: 5rem;
@@ -887,9 +935,7 @@
     }
 
     @media (max-width: 768px) {
-      .comparator-showcase-box {
-        padding: 1.5rem;
-      }
+      .comparator-showcase-box { padding: 1.5rem; }
     }
 
     .comparator-tabs-header {
@@ -925,9 +971,7 @@
       transition: all 0.2s ease;
     }
 
-    .comp-tab-btn:hover {
-      color: var(--text-white);
-    }
+    .comp-tab-btn:hover { color: var(--text-white); }
 
     .comp-tab-btn.active {
       background: var(--gold-primary);
@@ -978,15 +1022,11 @@
     }
 
     @media (max-width: 1024px) {
-      .pipeline-grid-four {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .pipeline-grid-four { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 600px) {
-      .pipeline-grid-four {
-        grid-template-columns: 1fr;
-      }
+      .pipeline-grid-four { grid-template-columns: 1fr; }
     }
 
     .pipeline-card {
@@ -1041,7 +1081,7 @@
     }
 
     /* ==========================================================================
-       CREDENTIALS & RESUME DOWNLOAD HUB
+       CREDENTIALS & RESUME HUB
        ========================================================================== */
     .credentials-banner {
       margin-top: 5rem;
@@ -1058,9 +1098,7 @@
       box-shadow: 0 25px 60px -15px var(--gold-glow);
     }
 
-    .cred-info {
-      max-width: 650px;
-    }
+    .cred-info { max-width: 650px; }
 
     .cred-title {
       font-family: var(--font-display);
@@ -1148,9 +1186,7 @@
       padding: 2rem;
     }
 
-    .theater-lightbox-modal.active {
-      display: flex;
-    }
+    .theater-lightbox-modal.active { display: flex; }
 
     .modal-screening-box {
       width: min(1300px, 95vw);
@@ -1222,7 +1258,7 @@
       background: #000;
     }
 
-    /* Frame Step & Playback Speed Bar */
+    /* Frame Jog & Slo-Mo Controls */
     .modal-jog-controls {
       padding: 0.75rem 1.5rem;
       background: rgba(16, 19, 26, 0.92);
@@ -1275,9 +1311,7 @@
     }
 
     @media (max-width: 800px) {
-      .modal-specs-drawer {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .modal-specs-drawer { grid-template-columns: repeat(2, 1fr); }
     }
 
     .modal-spec-block {
@@ -1308,9 +1342,7 @@
       border-top: 1px solid var(--border-subtle);
     }
 
-    /* ==========================================================================
-       FOOTER
-       ========================================================================== */
+    /* FOOTER */
     .cinema-footer {
       margin-top: 6rem;
       padding: 3rem 0;
@@ -1361,11 +1393,9 @@
       transition: color 0.2s ease;
     }
 
-    .footer-link:hover {
-      color: var(--gold-primary);
-    }
+    .footer-link:hover { color: var(--gold-primary); }
 
-    /* Toast notification */
+    /* TOAST */
     .toast-pill {
       position: fixed;
       bottom: 2rem;
@@ -1391,7 +1421,31 @@
 </head>
 <body id="top">
 
-  <!-- Interactive Three.js WebGL Spatial Canvas (Full Background) -->
+  <!-- CONFIDENTIAL PASSWORD GATE -->
+  <div id="passwordGateOverlay" class="password-gate-overlay">
+    <div class="gate-card">
+      <div class="gate-badge-lock">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </div>
+      <h2 class="gate-heading">CONFIDENTIAL ACCESS</h2>
+      <p class="gate-description">Feature film production breakdown protected under NDA. Enter client passcode to view showreel & solves.</p>
+
+      <form class="gate-form-wrap" onsubmit="submitClientPasscode(event)">
+        <input type="password" id="clientPasscodeField" class="gate-text-input" placeholder="ENTER ACCESS KEY" autocomplete="off" autofocus />
+        <button type="submit" class="gate-submit-btn">UNLOCK BREAKDOWN</button>
+        <div id="gateErrorText" class="gate-error-banner">INCORRECT PASSCODE • TRY AGAIN</div>
+      </form>
+
+      <div class="gate-quick-bypass">
+        Direct recruiter key: <a onclick="unlockDirectly()">Click for Direct Unlock</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Three.js WebGL Spatial Canvas -->
   <canvas id="webglCanvas"></canvas>
 
   <!-- Film Grain Overlay -->
@@ -1400,31 +1454,11 @@
   <!-- Toast -->
   <div id="toastPill" class="toast-pill">EMAIL COPIED TO CLIPBOARD</div>
 
-  <!-- 3D Spatial Telemetry Floating HUD -->
-  <div class="spatial-telemetry-pill">
-    <div class="telemetry-row">
-      <span class="label">3D ENGINE:</span>
-      <span class="value">THREE.JS SPATIAL WEBGL</span>
-    </div>
-    <div class="telemetry-row">
-      <span class="label">CAMERA SOLVE:</span>
-      <span class="value gold">BEZIER 3D TRAJECTORY</span>
-    </div>
-    <div class="telemetry-row">
-      <span class="label">LOCATOR DENSITY:</span>
-      <span class="value">2,500 SOLVED POINTS</span>
-    </div>
-    <div class="telemetry-row">
-      <span class="label">CAMERA QUAT (W,X,Y):</span>
-      <span class="value" id="spatialQuat">1.0, 0.0, 0.0</span>
-    </div>
-  </div>
-
-  <!-- Content Foreground Layer -->
+  <!-- Content Layer -->
   <div class="content-layer">
 
     <!-- Top Glass Dock Navigation -->
-    <header class="cinema-nav interactive-element">
+    <header class="cinema-nav">
       <a href="#top" class="nav-brand">
         <div class="brand-mark">BJ</div>
         <div class="brand-text">
@@ -1442,10 +1476,9 @@
       </ul>
 
       <div class="nav-actions">
-        <div class="live-status-pill">
-          <div class="pulse-dot"></div>
-          <span>AVAILABLE FOR PRODUCTION</span>
-        </div>
+        <button onclick="lockPortfolio()" class="btn-relock-site" title="Lock Portfolio Under NDA">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </button>
         <a href="assets/docs/Benny_Joel_Lakamana_Matchmove_Resume.pdf" download class="btn-nav-cv">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span>Download CV</span>
@@ -1454,7 +1487,7 @@
     </header>
 
     <!-- Main Container -->
-    <main class="cinema-container">
+    <main class="container">
 
       <!-- HERO SECTION & MASTER SCREENING ROOM -->
       <section class="hero-screening-room" id="master-reel">
@@ -1474,30 +1507,14 @@
             SUB-PIXEL PRECISION.<br>
             <span class="accent-gold">FEATURE FILM MATCHMOVE.</span>
           </h1>
-          <div class="hero-description-row">
-            <p class="hero-description">
-              Production-grade 3D camera tracking, coordinate normalization, and layout handoff for live-action feature films. 
-              Calibrated on high-velocity action plates with complex camera translation, anamorphic lens distortion profiling, and Maya line-up geometry.
-            </p>
-            <div class="hero-stats-strip interactive-element">
-              <div class="stat-item">
-                <span class="stat-val"><span class="gold">10</span></span>
-                <span class="stat-lbl">Maya Solves</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-val"><span class="cyan">0.26</span><span style="font-size:1rem;color:var(--text-dim);">px</span></span>
-                <span class="stat-lbl">Hero RMS Error</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-val">100<span class="gold">%</span></span>
-                <span class="stat-lbl">Maya Verified</span>
-              </div>
-            </div>
-          </div>
+          <p class="hero-lead-text">
+            Production-grade 3D camera tracking, coordinate normalization, and layout handoff for live-action feature films. 
+            Calibrated on high-velocity action plates with complex camera translation, anamorphic lens distortion profiling, and Maya line-up geometry.
+          </p>
         </div>
 
         <!-- WIDESCREEN CINEMA HERO PLAYER -->
-        <div class="master-player-chassis interactive-element">
+        <div class="master-player-chassis">
           <div class="video-viewport-wrapper">
             <video id="heroShowreelVideo" class="master-hero-video" src="assets/videos/takshaka_master_showreel.mp4" poster="assets/images/shots/shot_081_thumb.jpg" playsinline loop muted autoplay></video>
             
@@ -1547,12 +1564,12 @@
           <div class="section-eyebrow">Production Archive • D:\FLIM_VFX_TRACK_SYNTHEYES\RENDER</div>
           <h2 class="section-h2">10 MAYA CAMERA TRACKING SOLVES</h2>
           <p class="section-subtext">
-            Direct review renders output from Autodesk Maya showing solved 3D camera path, ground calibration grid, locators, and proxy geometry aligned over live-action plates. Hover to preview; click for full screening room modal with frame-by-frame controls.
+            Direct review renders output from Autodesk Maya showing solved 3D camera trajectory, ground calibration grid, locators, and proxy geometry aligned over live-action plates. Hover to preview; click for full screening room modal with frame-by-frame controls.
           </p>
         </div>
 
         <!-- Grid of 10 Pure Camera Solves -->
-        <div class="shots-grid-layout interactive-element" id="shotsGridContainer">
+        <div class="shots-grid-layout" id="shotsGridContainer">
 
           <!-- HERO SHOT 081 -->
           <div class="cinema-shot-card" onmouseenter="playCardVid(this)" onmouseleave="pauseCardVid(this)" onclick="openScreeningModal('assets/videos/shots/shot_081.mp4', 'Shot 081: Climax Battle 3D Ground Solve (Hero)', 'Plate 04221', '0.26 px', '35mm Prime', 'Super 35', 'Hero sequence from feature film Takshaka. Sub-pixel 0.26px RMS tracking across 80+ frames with custom Maya line-up geometry and Nuke ST-Map lens grid.')">
@@ -1807,7 +1824,7 @@
           </p>
         </div>
 
-        <div class="comparator-showcase-box interactive-element">
+        <div class="comparator-showcase-box">
           <div class="comparator-tabs-header">
             <div>
               <h3 style="font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:#fff;">MULTI-STREAM INSPECTION</h3>
@@ -1838,7 +1855,7 @@
           </p>
         </div>
 
-        <div class="pipeline-grid-four interactive-element">
+        <div class="pipeline-grid-four">
           <div class="pipeline-card">
             <span class="pipe-step-num">PHASE 01 • INGESTION</span>
             <h3 class="pipe-title">Lens Grid & ST-Maps</h3>
@@ -1879,7 +1896,7 @@
 
       <!-- CREDENTIALS & RESUME DOWNLOAD HUB -->
       <section id="credentials" style="scroll-margin-top: 100px;">
-        <div class="credentials-banner interactive-element">
+        <div class="credentials-banner">
           <div class="cred-info">
             <h2 class="cred-title">AVAILABLE FOR FEATURE FILM CONTRACTS</h2>
             <p class="cred-text">
@@ -1908,7 +1925,7 @@
 
     <!-- FOOTER -->
     <footer class="cinema-footer">
-      <div class="cinema-container footer-inner interactive-element">
+      <div class="container footer-inner">
         <div class="footer-left">
           <span class="footer-brand">Benny Joel Lakamana • Feature Film Matchmove Reel</span>
           <span class="footer-rights">Feature Film 3D Camera Tracking • All 10 Maya Render Shots Property of Production</span>
@@ -1986,7 +2003,50 @@
   <!-- JAVASCRIPT CONTROLLERS -->
   <script>
     // ==========================================================================
-    // 1. THREE.JS LUXURY 3D SPATIAL TRAJECTORY & POINT CLOUD SCENE
+    // 0. PASSWORD GATE SYSTEM (CONFIDENTIAL PRODUCTION ACCESS)
+    // ==========================================================================
+    const VALID_PASSCODES = ["takshaka", "vfx2026", "matchmove", "camera2026", "bennyjoel", "vfx"];
+
+    function checkAuthGate() {
+      if (sessionStorage.getItem('cinema_auth_status') === 'unlocked') {
+        document.getElementById('passwordGateOverlay').classList.add('unlocked');
+      }
+    }
+
+    function submitClientPasscode(e) {
+      e.preventDefault();
+      const input = document.getElementById('clientPasscodeField');
+      const err = document.getElementById('gateErrorText');
+      const code = input.value.trim().toLowerCase();
+
+      if (VALID_PASSCODES.includes(code) || code === "open" || code === "reel") {
+        sessionStorage.setItem('cinema_auth_status', 'unlocked');
+        document.getElementById('passwordGateOverlay').classList.add('unlocked');
+        err.style.display = 'none';
+      } else {
+        err.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    }
+
+    function unlockDirectly() {
+      sessionStorage.setItem('cinema_auth_status', 'unlocked');
+      document.getElementById('passwordGateOverlay').classList.add('unlocked');
+    }
+
+    function lockPortfolio() {
+      sessionStorage.removeItem('cinema_auth_status');
+      document.getElementById('passwordGateOverlay').classList.remove('unlocked');
+      const input = document.getElementById('clientPasscodeField');
+      input.value = '';
+      input.focus();
+    }
+
+    checkAuthGate();
+
+    // ==========================================================================
+    // 1. THREE.JS LUXURY 3D SPATIAL TRAJECTORY SCENE
     // ==========================================================================
     let spatialScene, spatialCamera, spatialRenderer;
     let cameraTrajectoryLine, frustumGroup, pointCloud, gridMesh;
@@ -2026,7 +2086,7 @@
       gridMesh.position.y = -1.2;
       spatialScene.add(gridMesh);
 
-      // 2. 3D Camera Trajectory Path (Continuous 3D Spline)
+      // 2. 3D Camera Trajectory Path
       const curvePoints = [
         new THREE.Vector3(-8, 3.5, -6),
         new THREE.Vector3(-4, 1.2, -2),
@@ -2090,9 +2150,9 @@
         positions[i * 3 + 2] = z;
 
         if (Math.random() > 0.65) {
-          colors[i * 3] = 0.96; colors[i * 3 + 1] = 0.62; colors[i * 3 + 2] = 0.04; // gold
+          colors[i * 3] = 0.96; colors[i * 3 + 1] = 0.62; colors[i * 3 + 2] = 0.04;
         } else {
-          colors[i * 3] = 0.0; colors[i * 3 + 1] = 0.94; colors[i * 3 + 2] = 1.0; // cyan
+          colors[i * 3] = 0.0; colors[i * 3 + 1] = 0.94; colors[i * 3 + 2] = 1.0;
         }
       }
 
@@ -2146,23 +2206,11 @@
         spatialCamera.position.x = targetX * 3.5;
         spatialCamera.position.y = 2.5 - (targetY * 2.0) - (scrollYOffset * 0.5);
         spatialCamera.lookAt(0, 1.0 - (scrollYOffset * 0.4), 0);
-
-        const quat = spatialCamera.quaternion;
-        const hudQuat = document.getElementById('spatialQuat');
-        if (hudQuat) {
-          hudQuat.textContent = `${quat.w.toFixed(2)}, ${quat.x.toFixed(2)}, ${quat.y.toFixed(2)}`;
-        }
       }
 
-      if (cameraTrajectoryLine) {
-        cameraTrajectoryLine.rotation.y = delta * 0.04;
-      }
-      if (frustumGroup) {
-        frustumGroup.rotation.y = delta * 0.04;
-      }
-      if (pointCloud) {
-        pointCloud.rotation.y = delta * 0.02;
-      }
+      if (cameraTrajectoryLine) cameraTrajectoryLine.rotation.y = delta * 0.04;
+      if (frustumGroup) frustumGroup.rotation.y = delta * 0.04;
+      if (pointCloud) pointCloud.rotation.y = delta * 0.02;
 
       spatialRenderer.render(spatialScene, spatialCamera);
     }
