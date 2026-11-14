@@ -79,7 +79,7 @@
       height: 100vh;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.85;
+      opacity: 1.0;
     }
 
     /* Subtle Analog Film Grain Overlay */
@@ -2092,7 +2092,7 @@
 
       spatialScene = new THREE.Scene();
       spatialScene.background = new THREE.Color(0x020306);
-      spatialScene.fog = new THREE.FogExp2(0x020306, 0.032);
+      spatialScene.fog = new THREE.FogExp2(0x020306, 0.024);
 
       spatialCamera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 100);
       spatialCamera.position.set(0, 2.4, 9.2);
@@ -2101,7 +2101,7 @@
       spatialRenderer.setSize(window.innerWidth, window.innerHeight);
       spatialRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       spatialRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-      spatialRenderer.toneMappingExposure = 1.25;
+      spatialRenderer.toneMappingExposure = 1.42;
 
       // Cinema Anamorphic 3-Point Lighting Rig
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
@@ -2179,40 +2179,44 @@
       ];
       trajectoryCurve = new THREE.CatmullRomCurve3(curvePoints);
 
-      // 1. Vibrant Bright Orange Thread (Continuous 3D Optical Trajectory Tube)
+      // 1. Vibrant Bold Bright Orange Optical Thread (Substantive 3D Trajectory Ribbon)
       cameraTrajectoryLine = new THREE.Group();
 
-      // Primary Bright Neon Orange Thread Body
-      const threadGeo = new THREE.TubeGeometry(trajectoryCurve, 220, 0.044, 10, false);
+      // Bold Primary Neon Orange Thread Body (Gauge 0.082)
+      const threadGeo = new THREE.TubeGeometry(trajectoryCurve, 260, 0.082, 12, false);
       const threadMat = new THREE.MeshBasicMaterial({
-        color: 0xff6600, // Vibrant bright neon optical orange
+        color: 0xff5500, // Punchy electric neon orange
         transparent: true,
-        opacity: 0.96
+        opacity: 0.98
       });
       const threadMesh = new THREE.Mesh(threadGeo, threadMat);
       cameraTrajectoryLine.add(threadMesh);
 
-      // High-Luminance Radiant Yellow Core (Energized optical fiber sheen)
-      const coreGeo = new THREE.TubeGeometry(trajectoryCurve, 220, 0.018, 8, false);
+      // Super-Luminous Radiant Core Fiber (Gauge 0.036 - Hot Center Sheen)
+      const coreGeo = new THREE.TubeGeometry(trajectoryCurve, 260, 0.036, 10, false);
       const coreMat = new THREE.MeshBasicMaterial({
-        color: 0xffdf55, // Glowing radiant yellow-gold core
+        color: 0xffea66, // Hot incandescent golden-yellow core
         transparent: true,
-        opacity: 0.88
+        opacity: 0.95
       });
       const coreMesh = new THREE.Mesh(coreGeo, coreMat);
       cameraTrajectoryLine.add(coreMesh);
 
-      // Atmospheric Outer Orange Glow Halo
-      const glowGeo = new THREE.TubeGeometry(trajectoryCurve, 140, 0.078, 8, false);
+      // Deep Radiant Atmospheric Glow Sheath (Gauge 0.165 - Volumetric Orange Aura)
+      const glowGeo = new THREE.TubeGeometry(trajectoryCurve, 160, 0.165, 10, false);
       const glowMat = new THREE.MeshBasicMaterial({
-        color: 0xff3700,
+        color: 0xff3b00,
         transparent: true,
-        opacity: 0.22,
+        opacity: 0.28,
         blending: THREE.AdditiveBlending,
         side: THREE.BackSide
       });
       const glowMesh = new THREE.Mesh(glowGeo, glowMat);
       cameraTrajectoryLine.add(glowMesh);
+
+      // Traveling Orange Laser Pulse Light (Casts live dynamic orange sheen onto ground & locators)
+      window.trajectoryPulseLight = new THREE.PointLight(0xff6600, 4.5, 20);
+      spatialScene.add(window.trajectoryPulseLight);
 
       spatialScene.add(cameraTrajectoryLine);
 
@@ -2222,19 +2226,19 @@
       frustumGroup = new THREE.Group();
       const frustumPoints = [
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(-0.4, -0.25, 0.8),
-        new THREE.Vector3(0.4, -0.25, 0.8),
-        new THREE.Vector3(0.4, 0.25, 0.8),
-        new THREE.Vector3(-0.4, 0.25, 0.8),
-        new THREE.Vector3(-0.4, -0.25, 0.8),
+        new THREE.Vector3(-0.52, -0.32, 1.05),
+        new THREE.Vector3(0.52, -0.32, 1.05),
+        new THREE.Vector3(0.52, 0.32, 1.05),
+        new THREE.Vector3(-0.52, 0.32, 1.05),
+        new THREE.Vector3(-0.52, -0.32, 1.05),
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(0.4, -0.25, 0.8),
-        new THREE.Vector3(0.4, 0.25, 0.8),
+        new THREE.Vector3(0.52, -0.32, 1.05),
+        new THREE.Vector3(0.52, 0.32, 1.05),
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(-0.4, 0.25, 0.8)
+        new THREE.Vector3(-0.52, 0.32, 1.05)
       ];
       const fBaseGeo = new THREE.BufferGeometry().setFromPoints(frustumPoints);
-      const beadGeo = new THREE.SphereGeometry(0.055, 12, 12);
+      const beadGeo = new THREE.SphereGeometry(0.082, 14, 14);
 
       for (let t = 0; t <= 1; t += 0.125) {
         const pt = trajectoryCurve.getPoint(t);
@@ -2289,7 +2293,7 @@
 
       // Hero gold apex bead
       const heroBeadMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
-      const heroBead = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 16), heroBeadMat);
+      const heroBead = new THREE.Mesh(new THREE.SphereGeometry(0.105, 16, 16), heroBeadMat);
       heroCameraGroup.add(heroBead);
 
       spatialScene.add(heroCameraGroup);
@@ -2353,13 +2357,13 @@
       pointGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
       const pointMat = new THREE.PointsMaterial({
-        size: 0.055,
+        size: 0.075,
         map: createBokehParticleTexture(),
         vertexColors: true,
         transparent: true,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
-        opacity: 0.75
+        opacity: 0.85
       });
       pointCloud = new THREE.Points(pointGeo, pointMat);
       spatialScene.add(pointCloud);
@@ -2412,7 +2416,7 @@
         pointCloud.position.y = Math.sin(delta * 0.5) * 0.08;
       }
 
-      // Animate Hero Active Solved Camera along spline
+            // Animate Hero Active Solved Camera along spline
       if (trajectoryCurve && heroCameraGroup && heroDropLine && heroFloorTarget) {
         const u = (delta * 0.035) % 1.0;
         const heroPt = trajectoryCurve.getPoint(u);
@@ -2428,6 +2432,12 @@
         const rotatedPt = new THREE.Vector3(rotatedX, heroPt.y, rotatedZ);
 
         heroCameraGroup.position.copy(rotatedPt);
+
+        // Update traveling dynamic orange pulse light
+        if (window.trajectoryPulseLight) {
+          window.trajectoryPulseLight.position.copy(rotatedPt);
+          window.trajectoryPulseLight.intensity = 3.5 + Math.sin(delta * 4.0) * 1.5;
+        }
 
         const rotatedTangent = new THREE.Vector3(
           heroTangent.x * cosR - heroTangent.z * sinR,
