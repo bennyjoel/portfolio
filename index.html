@@ -2179,27 +2179,42 @@
       ];
       trajectoryCurve = new THREE.CatmullRomCurve3(curvePoints);
 
-      // 1. Sleek glowing path line
-      const splinePoints = trajectoryCurve.getPoints(240);
-      const splineGeo = new THREE.BufferGeometry().setFromPoints(splinePoints);
-      const splineMat = new THREE.LineBasicMaterial({
-        color: 0xf59e0b,
-        transparent: true,
-        opacity: 0.9,
-        linewidth: 2
-      });
-      cameraTrajectoryLine = new THREE.Line(splineGeo, splineMat);
-      spatialScene.add(cameraTrajectoryLine);
+      // 1. Vibrant Bright Orange Thread (Continuous 3D Optical Trajectory Tube)
+      cameraTrajectoryLine = new THREE.Group();
 
-      // 2. Micro luminous core tube (0.015 radius) for subtle specular sheen
-      const coreTubeGeo = new THREE.TubeGeometry(trajectoryCurve, 180, 0.015, 6, false);
-      const coreTubeMat = new THREE.MeshBasicMaterial({
-        color: 0xffffff,
+      // Primary Bright Neon Orange Thread Body
+      const threadGeo = new THREE.TubeGeometry(trajectoryCurve, 220, 0.044, 10, false);
+      const threadMat = new THREE.MeshBasicMaterial({
+        color: 0xff6600, // Vibrant bright neon optical orange
         transparent: true,
-        opacity: 0.35
+        opacity: 0.96
       });
-      const coreTube = new THREE.Mesh(coreTubeGeo, coreTubeMat);
-      spatialScene.add(coreTube);
+      const threadMesh = new THREE.Mesh(threadGeo, threadMat);
+      cameraTrajectoryLine.add(threadMesh);
+
+      // High-Luminance Radiant Yellow Core (Energized optical fiber sheen)
+      const coreGeo = new THREE.TubeGeometry(trajectoryCurve, 220, 0.018, 8, false);
+      const coreMat = new THREE.MeshBasicMaterial({
+        color: 0xffdf55, // Glowing radiant yellow-gold core
+        transparent: true,
+        opacity: 0.88
+      });
+      const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+      cameraTrajectoryLine.add(coreMesh);
+
+      // Atmospheric Outer Orange Glow Halo
+      const glowGeo = new THREE.TubeGeometry(trajectoryCurve, 140, 0.078, 8, false);
+      const glowMat = new THREE.MeshBasicMaterial({
+        color: 0xff3700,
+        transparent: true,
+        opacity: 0.22,
+        blending: THREE.AdditiveBlending,
+        side: THREE.BackSide
+      });
+      const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+      cameraTrajectoryLine.add(glowMesh);
+
+      spatialScene.add(cameraTrajectoryLine);
 
       // =======================================================================
       // HIGH-PRECISION WIREFRAME CAMERA FRUSTUMS & APEX BEADS (Zero Solid Cones)
@@ -2219,7 +2234,7 @@
         new THREE.Vector3(-0.4, 0.25, 0.8)
       ];
       const fBaseGeo = new THREE.BufferGeometry().setFromPoints(frustumPoints);
-      const beadGeo = new THREE.SphereGeometry(0.04, 12, 12);
+      const beadGeo = new THREE.SphereGeometry(0.055, 12, 12);
 
       for (let t = 0; t <= 1; t += 0.125) {
         const pt = trajectoryCurve.getPoint(t);
@@ -2274,7 +2289,7 @@
 
       // Hero gold apex bead
       const heroBeadMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
-      const heroBead = new THREE.Mesh(new THREE.SphereGeometry(0.065, 16, 16), heroBeadMat);
+      const heroBead = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 16), heroBeadMat);
       heroCameraGroup.add(heroBead);
 
       spatialScene.add(heroCameraGroup);
