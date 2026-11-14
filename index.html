@@ -242,6 +242,62 @@
       margin-top: 0.35rem;
     }
 
+    
+    .gate-role-divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0 1rem 0;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .gate-role-divider::before, .gate-role-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .gate-role-divider span {
+      padding: 0 0.85rem;
+    }
+
+    .gate-roles-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-role-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 10px;
+      padding: 0.75rem 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .gate-role-btn:hover {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: rgba(245, 158, 11, 0.35);
+      color: var(--gold-primary);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+    }
+    .gate-role-btn svg {
+      flex-shrink: 0;
+    }
+
     .gate-quick-bypass {
       margin-top: 1.5rem;
       font-family: var(--font-mono);
@@ -1435,7 +1491,7 @@
         </svg>
       </div>
       <h2 class="gate-heading">CONFIDENTIAL ACCESS</h2>
-      <p class="gate-description">Feature film production breakdown protected under NDA. Enter client passcode to view showreel & solves.</p>
+      <p class="gate-description">Feature film production breakdown protected under NDA. Enter client passcode or select direct role clearance below.</p>
 
       <form class="gate-form-wrap" onsubmit="submitClientPasscode(event)">
         <input type="password" id="clientPasscodeField" class="gate-text-input" placeholder="ENTER ACCESS KEY" autocomplete="off" autofocus />
@@ -1443,8 +1499,32 @@
         <div id="gateErrorText" class="gate-error-banner">INCORRECT PASSCODE • TRY AGAIN</div>
       </form>
 
+      <!-- Direct Role Clearance Matrix -->
+      <div class="gate-role-divider">
+        <span>OR DIRECT ROLE CLEARANCE</span>
+      </div>
+
+      <div class="gate-roles-grid">
+        <button type="button" class="gate-role-btn" onclick="unlockDirectlyWithRole('Recruiter')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Recruiter / HR</span>
+        </button>
+        <button type="button" class="gate-role-btn" onclick="unlockDirectlyWithRole('VFX Supervisor')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <span>VFX Supervisor</span>
+        </button>
+        <button type="button" class="gate-role-btn" onclick="unlockDirectlyWithRole('Matchmove Lead')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+          <span>Matchmove Lead</span>
+        </button>
+        <button type="button" class="gate-role-btn" onclick="unlockDirectlyWithRole('Producer / Studio')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <span>Producer / Exec</span>
+        </button>
+      </div>
+
       <div class="gate-quick-bypass">
-        Direct recruiter key: <a onclick="unlockDirectly()">Click for Direct Unlock</a>
+        Direct instant bypass: <a onclick="unlockDirectlyWithRole('Direct Guest')">Click for Instant All-Access Unlock</a>
       </div>
     </div>
   </div>
@@ -1464,16 +1544,6 @@
     <!-- Top Glass Dock Navigation -->
     <header class="cinema-nav">
       <a href="#top" class="nav-brand">
-        <div class="brand-mark">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="22" y1="12" x2="18" y2="12"></line>
-          <line x1="6" y1="12" x2="2" y2="12"></line>
-          <line x1="12" y1="6" x2="12" y2="2"></line>
-          <line x1="12" y1="22" x2="12" y2="18"></line>
-          <circle cx="12" cy="12" r="3" fill="currentColor"></circle>
-        </svg>
-      </div>
         <div class="brand-text">
           <span class="brand-name">Benny Joel Lakamana</span>
           <span class="brand-role">Feature Film 3D Matchmove & Camera Tracking</span>
@@ -2018,11 +2088,24 @@
     // ==========================================================================
     // 0. PASSWORD GATE SYSTEM (CONFIDENTIAL PRODUCTION ACCESS)
     // ==========================================================================
-    const VALID_PASSCODES = ["takshaka", "vfx2026", "matchmove", "camera2026", "bennyjoel", "vfx"];
+    const VALID_PASSCODES = [
+      "takshaka", "vfx2026", "matchmove", "camera2026", "bennyjoel", "vfx",
+      "recruiter", "supervisor", "lead", "producer", "director", "open", "reel",
+      "artist", "client", "studio", "guest", "2026"
+    ];
+
+    function showAuthToast(msg) {
+      const toast = document.getElementById('toastPill');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 3000);
+    }
 
     function checkAuthGate() {
       if (sessionStorage.getItem('cinema_auth_status') === 'unlocked') {
-        document.getElementById('passwordGateOverlay').classList.add('unlocked');
+        const overlay = document.getElementById('passwordGateOverlay');
+        if (overlay) overlay.classList.add('unlocked');
       }
     }
 
@@ -2032,10 +2115,12 @@
       const err = document.getElementById('gateErrorText');
       const code = input.value.trim().toLowerCase();
 
-      if (VALID_PASSCODES.includes(code) || code === "open" || code === "reel") {
+      if (VALID_PASSCODES.includes(code)) {
         sessionStorage.setItem('cinema_auth_status', 'unlocked');
+        sessionStorage.setItem('cinema_auth_role', 'Client Key: ' + code);
         document.getElementById('passwordGateOverlay').classList.add('unlocked');
         err.style.display = 'none';
+        showAuthToast('ACCESS GRANTED • WELCOME');
       } else {
         err.style.display = 'block';
         input.value = '';
@@ -2043,17 +2128,32 @@
       }
     }
 
-    function unlockDirectly() {
+    function unlockDirectlyWithRole(roleName) {
       sessionStorage.setItem('cinema_auth_status', 'unlocked');
+      sessionStorage.setItem('cinema_auth_role', roleName);
       document.getElementById('passwordGateOverlay').classList.add('unlocked');
+      const err = document.getElementById('gateErrorText');
+      if (err) err.style.display = 'none';
+      showAuthToast('ACCESS GRANTED • ROLE: ' + roleName.toUpperCase());
+    }
+
+    function unlockDirectly() {
+      unlockDirectlyWithRole('Recruiter');
     }
 
     function lockPortfolio() {
       sessionStorage.removeItem('cinema_auth_status');
-      document.getElementById('passwordGateOverlay').classList.remove('unlocked');
-      const input = document.getElementById('clientPasscodeField');
-      input.value = '';
-      input.focus();
+      sessionStorage.removeItem('cinema_auth_role');
+      const overlay = document.getElementById('passwordGateOverlay');
+      if (overlay) {
+        overlay.classList.remove('unlocked');
+        const input = document.getElementById('clientPasscodeField');
+        if (input) {
+          input.value = '';
+          input.focus();
+        }
+      }
+      showAuthToast('PORTFOLIO LOCKED UNDER NDA');
     }
 
     checkAuthGate();
